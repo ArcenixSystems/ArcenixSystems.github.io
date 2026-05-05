@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="es" style=""><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Rescate 72H — ARCENIX</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A192F;
+  --blue: #007BFF;
+  --blue-light: #3D9BFF;
+  --blue-glow: rgba(0,123,255,0.12);
+  --blue-subtle: rgba(0,123,255,0.06);
+  --white: #FFFFFF;
+  --text: #0A192F;
+  --text-muted: #4A6080;
+  --border: rgba(0,123,255,0.15);
+  --heading: 'Sora', sans-serif;
+  --body: 'DM Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);background:var(--white);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:0.75rem;height:68px}
+.nav-logo{width:38px;height:38px;object-fit:contain}
+.nav-brand{font-family:var(--heading);font-weight:800;font-size:1.4rem;letter-spacing:-0.03em;color:var(--navy)}
+.nav-brand span{color:var(--blue)}
+
+/* BUTTONS */
+.btn{display:inline-block;font-family:var(--heading);font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);border-radius:10px}
+.btn-primary{background:var(--blue);color:#fff;padding:1rem 2rem;font-size:1rem;box-shadow:0 4px 20px rgba(0,123,255,0.35)}
+.btn-primary:hover{background:#0065d9;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,123,255,0.45)}
+.btn-outline{background:transparent;color:var(--blue);border:2px solid var(--blue);padding:0.85rem 1.75rem;font-size:0.95rem}
+.btn-outline:hover{background:var(--blue);color:#fff;transform:translateY(-2px)}
+.btn-sub{display:block;font-size:0.8rem;font-weight:400;opacity:0.85;margin-top:0.35rem;font-family:var(--body)}
+.btn-lg{padding:1.2rem 2.5rem;font-size:1.1rem}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:820px;margin:0 auto}
+.container-wide{max-width:1100px;margin:0 auto}
+
+/* HERO */
+.hero{padding:8rem 2rem 6rem;background:linear-gradient(160deg,#f0f7ff 0%,#ffffff 40%,#f5f9ff 100%);position:relative;overflow:hidden;margin-top:68px}
+.hero::before{content:'';position:absolute;top:-80px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,123,255,0.1) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-60px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(10,25,47,0.04) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-block;background:var(--blue-glow);border:1px solid var(--border);color:var(--blue);font-family:var(--heading);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.45rem 1rem;border-radius:50px;margin-bottom:1.75rem}
+.hero h1{font-family:var(--heading);font-size:clamp(2.6rem,6vw,4.2rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em;color:var(--navy);margin-bottom:1.5rem}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero-sub{font-size:clamp(1.05rem,2vw,1.2rem);color:var(--text-muted);max-width:600px;margin-bottom:2.5rem;line-height:1.7}
+.hero-bullets{list-style:none;margin-bottom:3rem;display:flex;flex-direction:column;gap:0.75rem}
+.hero-bullets li{display:flex;align-items:center;gap:0.75rem;font-size:1rem;color:var(--navy);font-weight:500}
+.hero-bullets li::before{content:'';width:20px;height:20px;min-width:20px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center}
+.hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:0.5rem}
+
+/* PROBLEM */
+.section-problem{background:var(--navy);color:#fff}
+.section-problem .container{text-align:center}
+.section-problem h2{font-family:var(--heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:2rem;line-height:1.15}
+.problem-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2.5rem 0;text-align:left}
+.problem-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;font-size:1rem;line-height:1.6;color:rgba(255,255,255,0.85)}
+.problem-item strong{display:block;font-family:var(--heading);font-size:1.05rem;color:#fff;margin-bottom:0.4rem}
+.impact-box{background:rgba(0,123,255,0.15);border:1px solid rgba(0,123,255,0.3);border-radius:12px;padding:1.75rem 2rem;margin:2.5rem 0;font-size:1.15rem;font-weight:600;color:#fff}
+.impact-box span{color:var(--blue-light)}
+.section-problem .btn-outline{border-color:rgba(255,255,255,0.4);color:#fff;margin-top:2rem}
+.section-problem .btn-outline:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* PARADIGM */
+.section-paradigm{background:linear-gradient(135deg,#f0f7ff 0%,#ffffff 100%)}
+.section-paradigm .container{text-align:center}
+.paradigm-vs{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:3rem 0}
+.pv-box{border-radius:14px;padding:2rem;text-align:left}
+.pv-no{background:#fff5f5;border:2px solid #ffd0d0}
+.pv-yes{background:#f0f7ff;border:2px solid var(--border)}
+.pv-label{font-family:var(--heading);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem}
+.pv-no .pv-label{color:#e05555}
+.pv-yes .pv-label{color:var(--blue)}
+.pv-text{font-size:1.1rem;font-weight:600;color:var(--navy);line-height:1.4}
+.paradigm-proof{background:var(--blue-glow);border:1px solid var(--border);border-radius:12px;padding:1.5rem 2rem;font-size:1.05rem;color:var(--navy);margin:0 0 2.5rem}
+.paradigm-proof strong{color:var(--blue)}
+
+/* WHAT IS */
+.section-what{background:#fff}
+.what-claim{font-family:var(--heading);font-size:1.05rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem}
+.section-what h2{font-family:var(--heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:3rem;color:var(--navy)}
+.days-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3.5rem}
+.day-card{border:2px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s ease}
+.day-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 12px 40px var(--blue-glow)}
+.day-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue)}
+.day-num{font-family:var(--heading);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem}
+.day-title{font-family:var(--heading);font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem}
+.day-desc{font-size:0.95rem;color:var(--text-muted);line-height:1.6}
+.what-action{background:var(--navy);border-radius:16px;padding:2rem;text-align:center;margin-bottom:3rem;color:#fff;font-family:var(--heading);font-size:1.15rem;font-weight:700}
+.what-action span{color:var(--blue-light)}
+
+/* INCLUDES */
+.section-includes{background:linear-gradient(160deg,#f5f9ff 0%,#ffffff 100%)}
+.section-includes h2{font-family:var(--heading);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:3rem;color:var(--navy)}
+.includes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:3rem}
+.inc-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.inc-icon{width:42px;height:42px;background:var(--blue-glow);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.inc-icon svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.inc-title{font-family:var(--heading);font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem}
+.inc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.inc-list li{font-size:0.9rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem}
+.inc-list li::before{content:'';width:5px;height:5px;min-width:5px;border-radius:50%;background:var(--blue)}
+
+/* RESULTS */
+.section-results{background:var(--navy);color:#fff;text-align:center}
+.section-results h2{font-family:var(--heading);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;color:#fff}
+.results-sub{color:rgba(255,255,255,0.7);font-size:1.05rem;margin-bottom:3rem}
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:3rem}
+.result-item{background:rgba(255,255,255,0.06);border:1px solid rgba(0,123,255,0.25);border-radius:14px;padding:2rem;transition:all 0.3s}
+.result-item:hover{background:rgba(0,123,255,0.1);border-color:var(--blue)}
+.result-num{font-family:var(--heading);font-size:2.5rem;font-weight:800;color:var(--blue-light);line-height:1}
+.result-label{font-size:0.95rem;color:rgba(255,255,255,0.75);margin-top:0.5rem}
+.results-tag{display:inline-block;background:rgba(0,123,255,0.2);border:1px solid rgba(0,123,255,0.4);color:var(--blue-light);font-family:var(--heading);font-weight:700;font-size:0.85rem;padding:0.5rem 1.25rem;border-radius:50px;margin-bottom:2.5rem}
+
+/* OBJECTIONS */
+.section-objections{background:#fff}
+.section-objections h2{font-family:var(--heading);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:3rem;color:var(--navy)}
+.obj-list{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:3rem}
+.obj-item{background:linear-gradient(135deg,#f8fbff,#fff);border:1px solid var(--border);border-radius:14px;padding:1.75rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.obj-q{font-weight:700;color:var(--text-muted);font-size:1rem;font-style:italic}
+.obj-q::before{content:'"';color:var(--navy);font-size:1.5rem;font-family:var(--heading);font-style:normal;display:block;line-height:1}
+.obj-a{font-size:0.98rem;color:var(--navy);line-height:1.65}
+.obj-a strong{color:var(--blue)}
+
+/* PRICE */
+.section-price{background:linear-gradient(160deg,#f0f7ff 0%,#f8fbff 100%);text-align:center}
+.price-card{background:#fff;border:2px solid var(--blue);border-radius:24px;padding:3.5rem 3rem;max-width:520px;margin:0 auto;box-shadow:0 8px 60px rgba(0,123,255,0.12)}
+.price-tag{font-family:var(--heading);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
+.price-amount{font-family:var(--heading);font-size:4.5rem;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-0.04em}
+.price-amount sup{font-size:2rem;vertical-align:top;margin-top:0.75rem;display:inline-block}
+.price-desc{color:var(--text-muted);font-size:1rem;margin:1rem 0 0.5rem}
+.price-roi{background:var(--blue-glow);border:1px solid var(--border);border-radius:10px;padding:1rem 1.5rem;font-size:0.95rem;color:var(--navy);margin:2rem 0;font-weight:600}
+.price-roi span{color:var(--blue)}
+.guarantee{background:linear-gradient(135deg,#fff8f0,#fff);border:2px solid #ffb347;border-radius:14px;padding:1.75rem 2rem;margin-top:2rem;text-align:left}
+.guarantee-title{font-family:var(--heading);font-weight:700;font-size:1rem;color:#b45309;margin-bottom:0.5rem}
+.guarantee-text{font-size:0.92rem;color:var(--text-muted);line-height:1.6}
+
+/* TRANSITION */
+.section-transition{background:var(--navy);padding:4rem 2rem;text-align:center}
+.section-transition p{color:rgba(255,255,255,0.65);font-size:1rem;margin-bottom:1rem;font-style:italic}
+.section-transition h3{font-family:var(--heading);font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:#fff;margin-bottom:0.75rem;letter-spacing:-0.02em}
+.section-transition .btn-primary{margin-top:1.5rem}
+
+/* FINAL CTA */
+.section-final{background:linear-gradient(160deg,#0A192F 0%,#0d2240 50%,#0A192F 100%);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
+.section-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,123,255,0.15) 0%,transparent 70%);pointer-events:none}
+.section-final h2{font-family:var(--heading);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:1rem;position:relative}
+.section-final p{color:rgba(255,255,255,0.7);font-size:1.1rem;margin-bottom:3rem;position:relative}
+.final-fears{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:700px;margin:0 auto 3rem;position:relative}
+.fear-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1rem;font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.5}
+.fear-item strong{display:block;color:rgba(255,255,255,0.45);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.35rem}
+
+/* FOOTER */
+footer{background:var(--navy);padding:2rem;text-align:center;border-top:1px solid rgba(255,255,255,0.06)}
+footer p{color:rgba(255,255,255,0.35);font-size:0.82rem}
+
+/* SECTION LABELS */
+.section-label{font-family:var(--heading);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.animate{opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards}
+.animate.visible{opacity:1}
+.d1{animation-delay:0.1s}.d2{animation-delay:0.2s}.d3{animation-delay:0.3s}.d4{animation-delay:0.4s}
+
+@media(max-width:768px){
+  .paradigm-vs{grid-template-columns:1fr}
+  .days-grid{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:1fr;gap:1rem}
+  .obj-item{grid-template-columns:1fr}
+  .final-fears{grid-template-columns:1fr}
+  .hero-cta{align-items:stretch}
+  .btn{text-align:center}
+  .price-card{padding:2.5rem 1.75rem}
+}
+@media(prefers-reduced-motion:reduce){.animate{opacity:1;animation:none}}
+</style>
+<style id="htmlpub-breakpoint-visibility">@media (max-width: 390px) { .hp-hide-mobile { display: none !important; } }
+@media (min-width: 391px) and (max-width: 768px) { .hp-hide-tablet { display: none !important; } }
+@media (min-width: 769px) { .hp-hide-desktop { display: none !important; } }</style><style>#htmlpub-link-input::placeholder{color:rgba(0,0,0,0.40);}ul,ol{padding:20px;}</style><style>#htmlpub-link-input::placeholder{color:rgba(0,0,0,0.40);}ul,ol{padding:20px;}</style></head>
+<body style="">
+
+<nav style="">
+  <div class="nav-inner" style="">
+    <img src="https://leadpages.com/api/pages/qDAnOL4cp1/assets/ftqmw5uwgfntehjee4f3udyz" alt="ARCENIX Logo" class="nav-logo">
+    <div class="nav-brand" style="">ARCENIX</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="">
+  <div class="container" style="">
+    
+    <div class="hero-badge animate d1 visible" style="display: inline-block; position: relative;">Plan de Rescate 72H</div><h1 class="animate d2 visible" style="">Recupera clientes con<br><em style=""><span data-text-grad="1" style="background-image: linear-gradient(135deg, rgb(11, 96, 186) 0%, rgb(61, 155, 255) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">WhatsApp en 3 días</span></em></h1>
+    <p class="hero-sub animate d3 visible" style="">Plantillas listas + pasos exactos para convertir leads olvidados en reservas reales — sin gastar un euro en publicidad.</p>
+    <ul class="hero-bullets animate d3 visible" style="">
+      <li style="">Convierte conversaciones en clientes en menos de 72h</li>
+      <li style="">Usa mensajes que ya funcionan en centros fitness boutique</li>
+      <li style="">Sin conocimientos de marketing ni herramientas complejas</li>
+    </ul>
+    <div class="hero-cta animate d4 visible" style="">
+      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary btn-lg" style="">Quiero mi diagnóstico gratuito</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section-problem" style="">
+  <div class="container" style="">
+    <p class="section-label" style="color: rgba(0, 123, 255, 0.7);">El problema real</p>
+    <h2 style="">Tienes clientes esperando.<br>Solo falta el mensaje correcto.</h2>
+    <div class="problem-items" style="">
+      <div class="problem-item" style=""><strong style="">Te escribieron</strong>Mostraron interés, preguntaron precios, querían saber más.</div>
+      <div class="problem-item"><strong>Estuvieron cerca</strong>Estuvieron a punto de reservar… y algo los frenó.</div>
+      <div class="problem-item" style=""><strong style="">Nunca volvieron</strong>No los perdiste para siempre. Solo dejaste de activarlos.</div>
+    </div>
+    <div class="impact-box">No necesitas más leads. <span>Necesitas convertir los que ya tienes.</span> Un solo cliente recuperado puede pagar todo este plan.</div>
+    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-outline" style="">Auditoría gratuita de tus leads perdidos</a>
+  </div>
+</section>
+
+<!-- PARADIGM -->
+<section class="section-paradigm" style="">
+  <div class="container" style="">
+    <p class="section-label" style="">Cambia el enfoque</p>
+    <h2 style="font-family: var(--heading); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 2rem;">No más leads. Más conversiones.</h2>
+    <div class="paradigm-vs">
+      
+      
+    </div>
+    <div class="paradigm-proof" style="">Cada día que pasa sin activar esos leads es dinero que se queda sobre la mesa. <strong>El Plan de Rescate 72H te da exactamente lo que necesitas para recuperarlos hoy.</strong></div>
+    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary" style="">Consulta gratuita — Activa el plan</a>
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section class="section-what" style="">
+  <div class="container-wide" style="padding: 0px 2rem;">
+    <p class="what-claim" style="">qué es el plan de rescate 72h</p>
+    <h2 style="">No es una guía. Es un sistema<br>de acción en 3 días.</h2>
+    <div class="days-grid" style="">
+      <div class="day-card" style="">
+        <p class="day-num">Día 1</p>
+        <p class="day-title" style="">Activación</p>
+        <p class="day-desc" style="">Reactivas todos tus leads con un mensaje estratégico diseñado para provocar respuestas, no para vender de golpe.</p>
+      </div>
+      <div class="day-card" style="">
+        <p class="day-num" style="">Día 2</p>
+        <p class="day-title" style="">Seguimiento</p>
+        <p class="day-desc" style="">Recuperas a los que no respondieron con un segundo mensaje que reabre la conversación de forma natural.</p>
+      </div>
+      <div class="day-card" style="">
+        <p class="day-num" style="">Día 3</p>
+        <p class="day-title" style="">Cierre</p>
+        <p class="day-desc" style="">Provocas la decisión. Conviertes conversaciones en reservas reales con el mensaje que elimina la fricción final.</p>
+      </div>
+    </div>
+    <div class="what-action" style="">Solo copia, pega y ejecuta. <span>Sin complicaciones, sin curva de aprendizaje.</span></div>
+    <div style="text-align:center">
+      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary" style="">Diagnóstico gratuito — Ver si aplica a mi negocio</a>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+
+
+<!-- RESULTS -->
+<section class="section-results" style="">
+  <div class="container" style="">
+    <p class="section-label" style="color: rgba(0, 123, 255, 0.7);">Lo que puedes esperar</p>
+    <h2 style="">Resultados reales,<br>en menos de 72 horas</h2>
+    <p class="results-sub" style="">Después de aplicar el Plan de Rescate 72H:</p>
+    <div class="results-grid" style="">
+      <div class="result-item" style="">
+        <div class="result-num" style="">Más Respuestas</div>
+        
+      </div>
+      <div class="result-item" style="">
+        <div class="result-num" style="">Más Reservas</div>
+        
+      </div>
+      <div class="result-item" style="">
+        <div class="result-num" style="">En 72h</div>
+        
+      </div>
+    </div>
+    <div class="results-tag">Empieza a ver resultados este fin de semana</div><br>
+    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary">Diagnóstico gratuito — Cómo aplicarlo a mi negocio</a>
+  </div>
+</section>
+
+<!-- OBJECTIONS -->
+<section class="section-objections" style="">
+  <div class="container">
+    <p class="section-label">Resolvemos tus dudas</p>
+    <h2>Hemos escuchado<br>todas las objeciones.</h2>
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-q">No soy buena vendiendo</div>
+        <div class="obj-a">Estos mensajes están diseñados para <strong>vender sin parecer agresiva</strong>. El sistema hace el trabajo por ti — tú solo copias y pegas.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q">No tengo tiempo</div>
+        <div class="obj-a">Solo necesitas <strong>30–60 minutos</strong> para ejecutarlo. Está pensado para propietarias de negocio con agendas reales.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q">Mis leads no responden</div>
+        <div class="obj-a">No es el lead. <strong>Es el mensaje.</strong> La mayoría de leads fríos responden cuando reciben el mensaje correcto en el momento correcto.</div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-q">No sé qué decir</div>
+        <div class="obj-a">Por eso existe este plan. Aquí tienes <strong>exactamente qué decir</strong> en cada momento — sin improvisar.</div>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary">Consulta gratuita — Resuelve tus dudas con nosotros</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="section-price" style="">
+  <div class="container">
+    <p class="section-label" style="text-align:center">Invierte una vez. Recupera clientes siempre.</p>
+    <div class="price-card">
+      <p class="price-tag">Acceso inmediato</p>
+      <div class="price-amount"><sup>€</sup>27</div>
+      <p class="price-desc">Acceso completo al Plan de Rescate 72H</p>
+      <div class="price-roi">Recupera <span>1 solo cliente</span> y ya lo has rentabilizado. Con creces.</div>
+      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary" style="width:100%;text-align:center;display:block">Reservar diagnóstico gratuito ahora<span class="btn-sub">Sin tarjeta de crédito — Sin compromiso</span></a>
+      <div class="guarantee">
+        <p class="guarantee-title">Garantía total de resultados</p>
+        <p class="guarantee-text">Si aplicas el plan siguiendo los pasos y no obtienes ninguna respuesta, te devolvemos el dinero. Sin preguntas, sin burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<section class="section-transition" style="">
+  <div class="container">
+    <p>"Esto es lo que usamos dentro de nuestros sistemas automatizados"</p>
+    <h3>¿Quieres escalar esto sin depender de ti misma?</h3>
+    <p style="color:rgba(255,255,255,0.55);font-style:normal;font-size:0.95rem">Cuando estés lista para automatizar completamente tu reactivación de leads, nosotros te lo montamos.</p>
+    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary">Activa tu sistema automático — Consulta gratuita<span class="btn-sub">Hablamos de tu negocio, sin compromiso</span></a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section-final" style="">
+  <div class="container" style="position:relative">
+    <h2>Recupera clientes en 72 horas.<br>Empieza hoy.</h2>
+    <p>Resultados en días, no en meses.</p>
+    <div class="final-fears">
+      <div class="fear-item"><strong>Cada día que pasa</strong>Hay mensajes sin responder que se enfrían</div>
+      <div class="fear-item"><strong>No necesitas más</strong>Solo un plan claro y el mensaje correcto</div>
+      <div class="fear-item"><strong>Empieza hoy</strong>72 horas desde ahora ya puedes tener reservas</div>
+    </div>
+    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" class="btn btn-primary btn-lg">Quiero mi diagnóstico gratuito ahora<span class="btn-sub">Reserva en menos de 2 minutos</span></a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 ARCENIX Systems — Todos los derechos reservados</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.animate').forEach(el => obs.observe(el));
+</script>
+
+</body></html>
