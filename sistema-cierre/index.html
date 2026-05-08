@@ -7,470 +7,169 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #0A192F;
-  --blue: #007BFF;
-  --blue-light: #3d9fff;
-  --blue-pale: #e8f3ff;
-  --white: #FFFFFF;
-  --gray: #f7fbff;
-  --text: #0A192F;
-  --text-muted: #4a6580;
-  --heading: 'Sora', sans-serif;
-  --body: 'DM Sans', sans-serif;
-  --nav-h: 68px;
-  --radius: 14px;
+:root{--navy:#0A192F;--blue:#007BFF;--blue-light:#3d9fff;--blue-pale:#e8f3ff;--white:#FFFFFF;--gray:#f7fbff;--text:#0A192F;--text-muted:#4a6580;--heading:'Sora',sans-serif;--body:'DM Sans',sans-serif;--nav-h:68px;--radius:14px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);background:var(--white);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,123,255,0.1);transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(10,25,47,0.10)}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{height:34px;width:auto}
+.nav-name{font-family:var(--heading);font-weight:800;font-size:1.25rem;color:var(--navy);letter-spacing:-0.02em}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-back{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:0.82rem;font-weight:500;color:var(--text-muted);text-decoration:none;padding:7px 14px;border-radius:8px;border:1px solid rgba(10,25,47,0.1);transition:background 0.18s,color 0.18s}
+.nav-back:hover{background:var(--blue-pale);color:var(--blue);border-color:rgba(0,123,255,0.2)}
+.nav-cta{font-family:var(--body);font-size:0.875rem;font-weight:600;background:var(--blue);color:var(--white);border:none;border-radius:8px;padding:10px 22px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
+.nav-cta:hover{background:#0066dd;transform:translateY(-1px)}
+section{padding:88px 5%}
+.inner{max-width:860px;margin:0 auto}
+.inner-wide{max-width:1100px;margin:0 auto}
+.section-label{display:inline-block;font-family:var(--body);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.section-title{font-family:var(--heading);font-weight:800;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.08;letter-spacing:-0.03em;color:var(--navy)}
+.section-title span{color:var(--blue)}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:17px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(0,123,255,0.32);transition:background 0.22s,transform 0.22s,box-shadow 0.22s}
+.btn-primary:hover{background:#0066dd;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,123,255,0.42)}
+.btn-primary svg{transition:transform 0.2s}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-dark{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:17px 36px;border-radius:12px;text-decoration:none;transition:background 0.22s,transform 0.22s}
+.btn-dark:hover{background:#0d2a4f;transform:translateY(-2px)}
+.btn-note{display:block;font-size:0.82rem;color:var(--text-muted);margin-top:10px}
+.btn-note-light{display:block;font-size:0.82rem;color:rgba(255,255,255,0.4);margin-top:10px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
+.hero{padding:calc(var(--nav-h) + 80px) 5% 88px;background:var(--white);position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-180px;right:-200px;width:640px;height:640px;background:radial-gradient(circle,rgba(0,123,255,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--blue-pale);color:var(--blue);font-family:var(--body);font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:6px 14px;border-radius:100px;border:1px solid rgba(0,123,255,0.2);margin-bottom:28px;opacity:0;animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards}
+.hero-badge-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s ease infinite}
+.hero h1{font-family:var(--heading);font-weight:800;font-size:clamp(2.5rem,6.5vw,4.8rem);line-height:1.05;letter-spacing:-0.04em;color:var(--navy);margin-bottom:22px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards}
+.hero h1 .grad{background:linear-gradient(135deg,var(--blue) 0%,#00c6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(1.05rem,2vw,1.18rem);color:var(--text-muted);max-width:560px;margin:0 auto 36px;line-height:1.68;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.32s forwards}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.44s forwards}
+.hero-stats{display:flex;gap:0;justify-content:center;margin-top:60px;border:1px solid rgba(0,123,255,0.12);border-radius:16px;overflow:hidden;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.56s forwards}
+.hero-stat{flex:1;padding:22px 16px;text-align:center;border-right:1px solid rgba(0,123,255,0.12)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-num{font-family:var(--heading);font-weight:800;font-size:1.7rem;color:var(--blue);letter-spacing:-0.03em}
+.hero-stat-label{font-size:0.76rem;color:var(--text-muted);margin-top:4px;line-height:1.4}
+.problem{background:var(--navy)}
+.problem .section-label{color:#5bc3ff}
+.problem .section-title{color:var(--white)}
+.problem-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:48px}
+.flow-chain{display:flex;flex-direction:column;gap:0}
+.flow-step{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.07)}
+.flow-step:last-child{border-bottom:none}
+.flow-dot{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(0,123,255,0.18);border:1px solid rgba(0,123,255,0.35);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.flow-dot span{width:8px;height:8px;background:var(--blue);border-radius:50%;display:block}
+.flow-dot.red{background:rgba(255,80,80,0.15);border-color:rgba(255,80,80,0.3)}
+.flow-dot.red span{background:#FF5050}
+.flow-text{font-family:var(--heading);font-weight:600;font-size:0.97rem;color:rgba(255,255,255,0.82);padding-top:5px;line-height:1.4}
+.flow-text em{font-style:italic;color:rgba(255,255,255,0.4);font-weight:400}
+.problem-right{display:flex;flex-direction:column;gap:14px}
+.problem-who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 20px;transition:background 0.2s}
+.problem-who-card:hover{background:rgba(0,123,255,0.1)}
+.problem-who-card h4{font-family:var(--heading);font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:4px}
+.problem-who-card p{font-size:0.84rem;color:rgba(255,255,255,0.5);line-height:1.5}
+.problem-callout{background:rgba(0,123,255,0.12);border:1px solid rgba(0,123,255,0.3);border-radius:var(--radius);padding:22px 26px;margin-top:28px}
+.problem-callout p{font-family:var(--heading);font-weight:800;font-size:1.1rem;color:var(--white);line-height:1.4}
+.problem-callout span{color:#5bc3ff}
+.solution{background:var(--gray)}
+.solution-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:48px}
+.solution-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.solution-list li{display:flex;align-items:flex-start;gap:14px}
+.sol-check{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.solution-list li span{font-size:0.97rem;color:var(--navy);line-height:1.55;font-weight:500}
+.solution-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.solution-tag{background:var(--white);border:1px solid rgba(0,123,255,0.15);color:var(--blue);border-radius:100px;padding:6px 14px;font-family:var(--heading);font-weight:700;font-size:0.74rem;letter-spacing:0.04em;text-transform:uppercase}
+.ba-box{background:var(--navy);border-radius:16px;overflow:hidden}
+.ba-col{padding:26px 24px}
+.ba-col.without{border-bottom:1px solid rgba(255,255,255,0.08)}
+.ba-col-label{font-family:var(--heading);font-weight:700;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px}
+.ba-col.without .ba-col-label{color:rgba(255,255,255,0.35)}
+.ba-col.with .ba-col-label{color:#5bc3ff}
+.ba-item{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ba-item:last-of-type{margin-bottom:0}
+.ba-item-icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ba-col.without .ba-item-icon{background:rgba(255,80,80,0.15)}
+.ba-col.with .ba-item-icon{background:rgba(0,123,255,0.25)}
+.ba-item span{font-family:var(--heading);font-weight:600;font-size:0.88rem;line-height:1.35}
+.ba-col.without .ba-item span{color:rgba(255,255,255,0.5)}
+.ba-col.with .ba-item span{color:rgba(255,255,255,0.85)}
+.ba-footer{font-family:var(--heading);font-weight:800;font-size:0.95rem;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08)}
+.ba-col.without .ba-footer{color:rgba(255,255,255,0.28)}
+.ba-col.with .ba-footer{color:var(--white)}
+.features{background:var(--white)}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
+.feature-card{background:var(--gray);border-radius:var(--radius);border:1px solid rgba(0,123,255,0.1);padding:30px 26px;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#00c6ff);transform:scaleX(0);transform-origin:left;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1)}
+.feature-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(10,25,47,0.09)}
+.feature-card:hover::before{transform:scaleX(1)}
+.feature-icon{width:44px;height:44px;border-radius:11px;background:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feature-card h4{font-family:var(--heading);font-weight:800;font-size:1rem;color:var(--navy);margin-bottom:8px}
+.feature-card p{font-size:0.9rem;color:var(--text-muted);line-height:1.62}
+.feature-result{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:0.77rem;font-weight:600;color:var(--blue);background:var(--blue-pale);padding:4px 10px;border-radius:100px}
+.results-strip{background:var(--navy);padding:64px 5%}
+.results-strip-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.result-stat{text-align:center;padding:0 24px}
+.result-stat:not(:last-child){border-right:1px solid rgba(255,255,255,0.08)}
+.result-stat-num{font-family:var(--heading);font-weight:800;font-size:2.2rem;color:var(--blue-light);letter-spacing:-0.04em;display:block}
+.result-stat-label{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:8px;display:block;line-height:1.4}
+.faq{background:var(--gray)}
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-top:44px}
+.faq-item{background:var(--white);border-radius:var(--radius);border:1px solid rgba(0,123,255,0.1);overflow:hidden}
+.faq-q{padding:20px 24px;font-family:var(--heading);font-weight:700;font-size:0.97rem;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.15s}
+.faq-q:hover{background:var(--blue-pale)}
+.faq-q-arrow{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),background 0.2s}
+.faq-item.open .faq-q-arrow{transform:rotate(180deg);background:var(--blue)}
+.faq-item.open .faq-q-arrow svg{stroke:white}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1);font-size:0.93rem;color:var(--text-muted);line-height:1.7}
+.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px;border-top:1px solid rgba(0,123,255,0.08);padding-top:14px}
+.final-cta{background:linear-gradient(135deg,#0d2a4f 0%,var(--navy) 50%,#0a1f3d 100%);text-align:center;padding:110px 5%;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:600px;background:radial-gradient(ellipse,rgba(0,123,255,0.16) 0%,transparent 65%);pointer-events:none}
+.final-cta .section-label{color:#5bc3ff;position:relative;z-index:1}
+.final-cta h2{font-family:var(--heading);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);color:var(--white);line-height:1.08;letter-spacing:-0.03em;max-width:660px;margin:14px auto 0;position:relative;z-index:1}
+.final-cta h2 span{color:var(--blue-light)}
+.final-cta-sub{color:rgba(255,255,255,0.55);font-size:1rem;margin:14px auto 40px;position:relative;z-index:1;max-width:460px;display:block;line-height:1.65}
+.final-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:0 0 40px;position:relative;z-index:1}
+.final-badge{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:7px 14px;font-family:var(--heading);font-weight:600;font-size:0.83rem;color:rgba(255,255,255,0.7)}
+.final-btn{display:inline-flex;flex-direction:column;align-items:center;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1.1rem;padding:20px 48px;border-radius:14px;text-decoration:none;box-shadow:0 8px 32px rgba(0,123,255,0.4);position:relative;z-index:1;transition:transform 0.2s,box-shadow 0.2s}
+.final-btn:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,123,255,0.5)}
+.final-btn-sub{font-size:0.8rem;font-weight:400;opacity:0.8;margin-top:4px}
+.final-note{color:rgba(255,255,255,0.3);font-size:0.82rem;margin-top:16px;position:relative;z-index:1}
+footer{background:var(--navy);padding:36px 5%;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.07)}
+.footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.footer-logo{height:28px}
+.footer-name{font-family:var(--heading);font-weight:700;color:var(--white);font-size:1rem}
+footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+@media(max-width:900px){
+  .problem-layout,.solution-layout{grid-template-columns:1fr;gap:36px}
+  .features-grid{grid-template-columns:1fr}
+  .results-strip-inner{grid-template-columns:1fr;gap:28px}
+  .result-stat:not(:last-child){border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:24px}
+  footer{flex-direction:column;gap:14px;text-align:center}
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--body); color: var(--text); background: var(--white); overflow-x: hidden; }
-
-/* ===== NAV ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: var(--nav-h);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%;
-  background: rgba(255,255,255,0.93);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0,123,255,0.1);
-  transition: box-shadow 0.3s;
+@media(max-width:768px){
+  section{padding:64px 5%}
+  .hero{padding:calc(var(--nav-h) + 48px) 5% 64px}
+  .hero h1{font-size:2.3rem}
+  .hero-stats{flex-direction:column}
+  .hero-stat{border-right:none!important;border-bottom:1px solid rgba(0,123,255,0.12)}
+  .hero-stat:last-child{border-bottom:none}
+  .btn-primary,.btn-dark{justify-content:center;width:100%}
+  .nav-back{display:none}
+  .final-badges{flex-direction:column;align-items:center}
+  .results-strip{padding:52px 5%}
 }
-nav.scrolled { box-shadow: 0 4px 24px rgba(10,25,47,0.10); }
-.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav-logo { height: 34px; width: auto; }
-.nav-name { font-family: var(--heading); font-weight: 800; font-size: 1.25rem; color: var(--navy); letter-spacing: -0.02em; }
-.nav-right { display: flex; align-items: center; gap: 10px; }
-.nav-back {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--body); font-size: 0.82rem; font-weight: 500;
-  color: var(--text-muted); text-decoration: none;
-  padding: 7px 14px; border-radius: 8px;
-  border: 1px solid rgba(10,25,47,0.1);
-  transition: background 0.18s, color 0.18s;
-}
-.nav-back:hover { background: var(--blue-pale); color: var(--blue); border-color: rgba(0,123,255,0.2); }
-.nav-cta {
-  font-family: var(--body); font-size: 0.875rem; font-weight: 600;
-  background: var(--blue); color: var(--white);
-  border: none; border-radius: 8px; padding: 10px 22px;
-  cursor: pointer; text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-  white-space: nowrap;
-}
-.nav-cta:hover { background: #0066dd; transform: translateY(-1px); }
-
-/* ===== SHARED ===== */
-section { padding: 88px 5%; }
-.inner { max-width: 860px; margin: 0 auto; }
-.inner-wide { max-width: 1100px; margin: 0 auto; }
-.section-label {
-  display: inline-block; font-family: var(--body); font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px;
-}
-.section-title {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(1.9rem, 4.5vw, 3rem);
-  line-height: 1.08; letter-spacing: -0.03em; color: var(--navy);
-}
-.section-title span { color: var(--blue); }
-
-/* ===== BUTTONS ===== */
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1rem;
-  padding: 17px 36px; border-radius: 12px; text-decoration: none;
-  box-shadow: 0 4px 20px rgba(0,123,255,0.32);
-  transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
-}
-.btn-primary:hover { background: #0066dd; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,123,255,0.42); }
-.btn-primary svg { transition: transform 0.2s; }
-.btn-primary:hover svg { transform: translateX(3px); }
-.btn-primary-dark {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--navy); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1rem;
-  padding: 17px 36px; border-radius: 12px; text-decoration: none;
-  box-shadow: 0 4px 16px rgba(10,25,47,0.2);
-  transition: background 0.22s, transform 0.22s;
-}
-.btn-primary-dark:hover { background: #0d2a4f; transform: translateY(-2px); }
-.btn-note { display: block; font-size: 0.82rem; color: var(--text-muted); margin-top: 10px; }
-.btn-note-light { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-top: 10px; }
-
-@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
-
-/* ===== HERO ===== */
-.hero {
-  padding: calc(var(--nav-h) + 80px) 5% 90px;
-  background: var(--white);
-  position: relative; overflow: hidden; text-align: center;
-}
-.hero::before {
-  content: ''; position: absolute; top: -180px; right: -200px;
-  width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(0,123,255,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero::after {
-  content: ''; position: absolute; bottom: -80px; left: -140px;
-  width: 440px; height: 440px;
-  background: radial-gradient(circle, rgba(10,25,47,0.04) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-inner { max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--blue-pale); color: var(--blue);
-  font-family: var(--body); font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 6px 14px; border-radius: 100px;
-  border: 1px solid rgba(0,123,255,0.2); margin-bottom: 28px;
-  opacity: 0; animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
-}
-.hero-badge-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s ease infinite; }
-.hero h1 {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(2.6rem, 6.5vw, 5rem);
-  line-height: 1.05; letter-spacing: -0.04em; color: var(--navy); margin-bottom: 24px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
-}
-.hero h1 .grad {
-  background: linear-gradient(135deg, var(--blue) 0%, #00c6ff 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.hero-sub {
-  font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--text-muted);
-  max-width: 580px; margin: 0 auto 40px; line-height: 1.68;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.32s forwards;
-}
-.hero-cta {
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.44s forwards;
-}
-.hero-stats {
-  display: flex; gap: 48px; justify-content: center; margin-top: 60px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.58s forwards;
-}
-.hero-stat { text-align: center; }
-.hero-stat-num { font-family: var(--heading); font-weight: 800; font-size: 2rem; color: var(--blue); letter-spacing: -0.03em; }
-.hero-stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 3px; }
-.hero-divider { width: 1px; background: rgba(0,123,255,0.15); }
-
-/* ===== PROBLEM ===== */
-.problem { background: var(--navy); }
-.problem .section-label { color: #5bc3ff; }
-.problem .section-title { color: var(--white); max-width: 620px; }
-.problem-sub { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; margin-top: 14px; max-width: 540px; }
-.flow-chain { margin: 44px 0; max-width: 560px; display: flex; flex-direction: column; gap: 0; }
-.flow-step {
-  display: flex; align-items: flex-start; gap: 18px;
-  padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
-  position: relative;
-}
-.flow-step:last-child { border-bottom: none; }
-.flow-step-dot {
-  flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
-  background: rgba(0,123,255,0.18); border: 1px solid rgba(0,123,255,0.35);
-  display: flex; align-items: center; justify-content: center; margin-top: 3px;
-}
-.flow-step-dot span { width: 9px; height: 9px; background: var(--blue); border-radius: 50%; display: block; }
-.flow-step-dot.red { background: rgba(255,80,80,0.15); border-color: rgba(255,80,80,0.3); }
-.flow-step-dot.red span { background: #FF5050; }
-.flow-step-text { font-family: var(--heading); font-weight: 600; font-size: 1rem; color: rgba(255,255,255,0.85); padding-top: 5px; line-height: 1.4; }
-.flow-step-text em { font-style: italic; color: rgba(255,255,255,0.45); }
-.problem-callout {
-  background: linear-gradient(135deg, rgba(0,123,255,0.15), rgba(0,123,255,0.06));
-  border: 1px solid rgba(0,123,255,0.3); border-radius: var(--radius);
-  padding: 26px 30px; margin: 8px 0 40px;
-}
-.problem-callout p { font-family: var(--heading); font-weight: 800; font-size: 1.2rem; color: var(--white); line-height: 1.4; }
-.problem-callout p span { color: #5bc3ff; }
-
-/* ===== WHO ===== */
-.who { background: var(--gray); }
-.who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 44px 0; }
-.who-card {
-  background: var(--white); border-radius: var(--radius);
-  border: 1px solid rgba(0,123,255,0.1);
-  padding: 24px; box-shadow: 0 2px 10px rgba(10,25,47,0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.who-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(10,25,47,0.09); }
-.who-card-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--blue-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
-}
-.who-card h4 { font-family: var(--heading); font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; }
-.who-card p { font-size: 0.88rem; line-height: 1.55; color: var(--text-muted); }
-.who-insight {
-  background: var(--navy); border-radius: var(--radius);
-  padding: 24px 28px; display: flex; align-items: center; gap: 18px; margin-bottom: 40px;
-}
-.who-insight-icon { flex-shrink: 0; width: 38px; height: 38px; border-radius: 9px; background: var(--blue); display: flex; align-items: center; justify-content: center; }
-.who-insight p { font-family: var(--heading); font-weight: 700; font-size: 1rem; color: var(--white); line-height: 1.4; }
-.who-insight p span { color: #5bc3ff; }
-
-/* ===== PARADIGM ===== */
-.paradigm { background: var(--white); }
-.paradigm-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 44px 0; }
-.pv-card { border-radius: var(--radius); padding: 32px 28px; }
-.pv-card.before { background: rgba(10,25,47,0.04); border: 1px solid rgba(10,25,47,0.1); }
-.pv-card.after { background: linear-gradient(135deg, var(--blue) 0%, #005FCC 100%); }
-.pv-label { font-family: var(--heading); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-.pv-card.before .pv-label { color: var(--text-muted); }
-.pv-card.after .pv-label { color: rgba(255,255,255,0.65); }
-.pv-list { display: flex; flex-direction: column; gap: 12px; }
-.pv-item { display: flex; align-items: flex-start; gap: 10px; }
-.pv-icon { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-.pv-card.before .pv-icon { background: rgba(255,80,80,0.12); }
-.pv-card.after .pv-icon { background: rgba(255,255,255,0.2); }
-.pv-item-text { font-family: var(--heading); font-weight: 600; font-size: 0.93rem; line-height: 1.45; }
-.pv-card.before .pv-item-text { color: var(--navy); }
-.pv-card.after .pv-item-text { color: var(--white); }
-.pv-footer { font-family: var(--heading); font-weight: 800; font-size: 1.05rem; margin-top: 22px; }
-.pv-card.before .pv-footer { color: var(--text-muted); }
-.pv-card.after .pv-footer { color: var(--white); }
-
-.stats-strip { display: flex; justify-content: center; gap: 64px; margin: 0 0 44px; text-align: center; flex-wrap: wrap; }
-.stat-item { }
-.stat-num { font-family: var(--heading); font-weight: 800; font-size: 2.8rem; color: var(--blue); letter-spacing: -0.04em; line-height: 1; }
-.stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; max-width: 160px; line-height: 1.4; }
-
-/* ===== SOLUTION ===== */
-.solution { background: var(--navy); overflow: hidden; position: relative; }
-.solution::before {
-  content: ''; position: absolute; top: -100px; right: -160px;
-  width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(0,123,255,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-.solution .section-label { color: #5bc3ff; }
-.solution .section-title { color: var(--white); }
-.solution-sub { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; margin-top: 14px; max-width: 540px; }
-.solution-list { list-style: none; margin: 40px 0; display: flex; flex-direction: column; gap: 14px; max-width: 600px; }
-.solution-list li { display: flex; align-items: flex-start; gap: 16px; }
-.sol-check {
-  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(0,123,255,0.2); border: 1px solid rgba(0,123,255,0.4);
-  display: flex; align-items: center; justify-content: center; margin-top: 2px;
-}
-.solution-list li span { font-family: var(--heading); font-weight: 600; font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
-.solution-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
-.solution-tag {
-  background: rgba(0,123,255,0.15); border: 1px solid rgba(0,123,255,0.3);
-  color: #5bc3ff; border-radius: 100px; padding: 7px 16px;
-  font-family: var(--heading); font-weight: 700; font-size: 0.78rem;
-  letter-spacing: 0.05em; text-transform: uppercase;
-}
-
-/* ===== FEATURES ===== */
-.features { background: var(--white); }
-.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
-.feature-card {
-  background: var(--gray); border-radius: var(--radius);
-  border: 1px solid rgba(0,123,255,0.1); padding: 32px 28px;
-  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s, border-color 0.25s;
-  position: relative; overflow: hidden;
-}
-.feature-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue), #00c6ff);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-.feature-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(10,25,47,0.10); border-color: rgba(0,123,255,0.2); }
-.feature-card:hover::before { transform: scaleX(1); }
-.feature-icon {
-  width: 48px; height: 48px; border-radius: 12px; background: var(--blue);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
-}
-.feature-card h4 { font-family: var(--heading); font-weight: 800; font-size: 1.05rem; color: var(--navy); margin-bottom: 10px; }
-.feature-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; }
-.feature-result {
-  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
-  font-size: 0.78rem; font-weight: 600; color: var(--blue);
-  background: var(--blue-pale); padding: 4px 10px; border-radius: 100px;
-}
-
-/* ===== BEFORE/AFTER ===== */
-.before-after { background: var(--gray); }
-.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
-.ba-col { border-radius: var(--radius); padding: 32px 28px; }
-.ba-col.without { background: rgba(10,25,47,0.05); border: 1px solid rgba(10,25,47,0.1); }
-.ba-col.with { background: var(--navy); }
-.ba-col-label { font-family: var(--heading); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 22px; }
-.ba-col.without .ba-col-label { color: var(--text-muted); }
-.ba-col.with .ba-col-label { color: rgba(255,255,255,0.5); }
-.ba-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-.ba-item-icon { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-.ba-col.without .ba-item-icon { background: rgba(255,80,80,0.12); }
-.ba-col.with .ba-item-icon { background: rgba(0,123,255,0.25); }
-.ba-item span { font-family: var(--heading); font-weight: 600; font-size: 0.93rem; line-height: 1.4; }
-.ba-col.without .ba-item span { color: var(--navy); }
-.ba-col.with .ba-item span { color: rgba(255,255,255,0.85); }
-.ba-footer { font-family: var(--heading); font-weight: 800; font-size: 1.05rem; margin-top: 20px; }
-.ba-col.without .ba-footer { color: var(--text-muted); }
-.ba-col.with .ba-footer { color: var(--white); }
-
-/* ===== RESULTS ===== */
-.results { background: var(--white); }
-.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
-.result-card {
-  text-align: center; background: var(--gray); border-radius: var(--radius);
-  padding: 36px 22px; border: 1px solid rgba(0,123,255,0.1);
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-.result-card:hover { transform: translateY(-4px); border-color: rgba(0,123,255,0.25); box-shadow: 0 10px 30px rgba(10,25,47,0.08); }
-.result-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--blue); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; }
-.result-card h4 { font-family: var(--heading); font-weight: 800; font-size: 1.05rem; color: var(--navy); margin-bottom: 8px; }
-.result-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
-
-/* ===== URGENCY ===== */
-.urgency { background: var(--navy); padding: 60px 5%; text-align: center; }
-.urgency-inner { max-width: 640px; margin: 0 auto; }
-.urgency-tag {
-  display: inline-block; background: rgba(255,165,0,0.12); border: 1px solid rgba(255,165,0,0.3);
-  color: #FFA500; font-family: var(--heading); font-weight: 700; font-size: 0.72rem;
-  letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px;
-  border-radius: 100px; margin-bottom: 22px;
-}
-.urgency h3 {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--white); margin-bottom: 12px; line-height: 1.2;
-}
-.urgency p { color: rgba(255,255,255,0.55); font-size: 0.97rem; line-height: 1.65; max-width: 480px; margin: 0 auto; }
-
-/* ===== FAQ ===== */
-.faq { background: var(--gray); }
-.faq-list { display: flex; flex-direction: column; gap: 14px; margin-top: 44px; }
-.faq-item {
-  background: var(--white); border-radius: var(--radius);
-  border: 1px solid rgba(0,123,255,0.1); overflow: hidden;
-}
-.faq-q {
-  padding: 22px 26px; font-family: var(--heading); font-weight: 700; font-size: 0.98rem;
-  color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  transition: background 0.15s;
-}
-.faq-q:hover { background: var(--blue-pale); }
-.faq-q-arrow {
-  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-  background: var(--blue-pale); display: flex; align-items: center; justify-content: center;
-  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), background 0.2s;
-}
-.faq-item.open .faq-q-arrow { transform: rotate(180deg); background: var(--blue); }
-.faq-item.open .faq-q-arrow svg { stroke: white; }
-.faq-a {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), padding 0.3s;
-  font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;
-}
-.faq-item.open .faq-a { max-height: 200px; padding: 0 26px 22px; border-top: 1px solid rgba(0,123,255,0.08); padding-top: 16px; }
-
-/* ===== FINAL CTA ===== */
-.final-cta {
-  background: linear-gradient(135deg, #0d2a4f 0%, var(--navy) 50%, #0a1f3d 100%);
-  text-align: center; padding: 110px 5%; position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
-  width: 700px; height: 600px;
-  background: radial-gradient(ellipse, rgba(0,123,255,0.16) 0%, transparent 65%);
-  pointer-events: none;
-}
-.final-cta .section-label { color: #5bc3ff; position: relative; z-index: 1; }
-.final-cta h2 {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color: var(--white); line-height: 1.08; letter-spacing: -0.03em;
-  max-width: 680px; margin: 14px auto 0; position: relative; z-index: 1;
-}
-.final-cta h2 span { color: var(--blue-light); }
-.final-cta-sub { color: rgba(255,255,255,0.55); font-size: 1rem; margin: 14px 0 40px; position: relative; z-index: 1; max-width: 480px; display: block; margin-left: auto; margin-right: auto; line-height: 1.65; }
-.final-badges {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
-  margin: 0 0 44px; position: relative; z-index: 1;
-}
-.final-badge {
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 100px; padding: 8px 16px;
-  font-family: var(--heading); font-weight: 600; font-size: 0.85rem; color: rgba(255,255,255,0.75);
-}
-.final-btn {
-  display: inline-flex; flex-direction: column; align-items: center;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
-  padding: 20px 48px; border-radius: 14px; text-decoration: none;
-  box-shadow: 0 8px 32px rgba(0,123,255,0.4);
-  position: relative; z-index: 1;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.final-btn:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,123,255,0.5); }
-.final-btn-sub { font-size: 0.8rem; font-weight: 400; opacity: 0.8; margin-top: 4px; }
-.final-note { color: rgba(255,255,255,0.3); font-size: 0.82rem; margin-top: 16px; position: relative; z-index: 1; }
-
-/* ===== FOOTER ===== */
-footer {
-  background: var(--navy); padding: 36px 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.07);
-}
-.footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.footer-logo { height: 28px; }
-.footer-name { font-family: var(--heading); font-weight: 700; color: var(--white); font-size: 1rem; }
-footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
-
-/* ===== SCROLL REVEAL ===== */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .who-grid { grid-template-columns: 1fr; }
-  .paradigm-vs { grid-template-columns: 1fr; }
-  .features-grid { grid-template-columns: 1fr; }
-  .ba-grid { grid-template-columns: 1fr; }
-  .results-grid { grid-template-columns: 1fr; }
-  .stats-strip { gap: 36px; }
-  .hero-stats { gap: 28px; }
-  footer { flex-direction: column; gap: 14px; text-align: center; }
-  .final-badges { flex-direction: column; align-items: center; gap: 10px; }
-}
-
-@media (max-width: 768px) {
-  section { padding: 64px 5%; }
-  .hero { padding: calc(var(--nav-h) + 48px) 5% 64px; }
-  .hero h1 { font-size: 2.4rem; }
-  .hero-stats { flex-direction: column; gap: 20px; }
-  .hero-divider { display: none; }
-  .who-grid { grid-template-columns: 1fr 1fr; }
-  .btn-primary, .btn-primary-dark { justify-content: center; width: 100%; }
-  .nav-back { display: none; }
-  .stats-strip { flex-direction: column; gap: 24px; align-items: center; }
-  .solution-tags { gap: 8px; }
-}
-
-@media (max-width: 480px) {
-  .hero h1 { font-size: 2rem; }
-  .who-grid { grid-template-columns: 1fr; }
-  .urgency h3 { font-size: 1.3rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, .hero-badge, .hero h1, .hero-sub, .hero-cta, .hero-stats, .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
-}
+@media(max-width:480px){.hero h1{font-size:1.95rem}}
+@media(prefers-reduced-motion:reduce){*,.hero-badge,.hero h1,.hero-sub,.hero-cta,.hero-stats,.reveal{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="../index.html" class="nav-brand">
     <img src="../Logo.png" alt="ARCENIX logo" class="nav-logo">
@@ -485,12 +184,11 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <span class="hero-badge"><span class="hero-badge-dot"></span>Sistema de Cierre en 5 Minutos</span>
+    <span class="hero-badge"><span class="hero-badge-dot"></span>Para centros fitness boutique</span>
     <h1>Estás perdiendo clientes<br><span class="grad">cada día sin darte cuenta.</span></h1>
-    <p class="hero-sub">Un sistema automático que responde, califica y agenda por ti — en menos de 5 minutos, las 24 horas del día, sin que tengas que hacer nada.</p>
+    <p class="hero-sub">Un sistema automático que responde, califica y agenda por ti — en menos de 5 minutos, 24 horas al día, sin que tengas que hacer nada.</p>
     <div class="hero-cta">
       <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary">
         Quiero saber qué está fallando
@@ -503,12 +201,10 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
         <div class="hero-stat-num">78%</div>
         <div class="hero-stat-label">de clientes elige al primero que responde</div>
       </div>
-      <div class="hero-divider"></div>
       <div class="hero-stat">
         <div class="hero-stat-num">&lt;5 min</div>
-        <div class="hero-stat-label">tiempo crítico de respuesta</div>
+        <div class="hero-stat-label">tiempo crítico antes de que el lead se enfríe</div>
       </div>
-      <div class="hero-divider"></div>
       <div class="hero-stat">
         <div class="hero-stat-num">3x</div>
         <div class="hero-stat-label">más conversiones con respuesta automática</div>
@@ -517,450 +213,165 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   </div>
 </section>
 
-<!-- PROBLEM -->
 <section class="problem" id="problema">
-  <div class="inner">
+  <div class="inner-wide">
     <span class="section-label reveal">El problema real</span>
-    <h2 class="section-title reveal">Ahora mismo te está pasando esto:</h2>
-    <p class="problem-sub reveal">Sin darte cuenta, tu negocio pierde reservas cada día por un único motivo: el tiempo de respuesta.</p>
-    <div class="flow-chain reveal">
-      <div class="flow-step">
-        <div class="flow-step-dot"><span></span></div>
-        <p class="flow-step-text">Alguien pregunta por tus clases</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-dot"><span></span></div>
-        <p class="flow-step-text">Estás impartiendo clase — no puedes responder al instante</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-dot"><span></span></div>
-        <p class="flow-step-text">El cliente se enfría. Mira otras opciones.</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-step-dot red"><span></span></div>
-        <p class="flow-step-text">No reserva. <em>Y ese cliente se pierde para siempre.</em></p>
-      </div>
-    </div>
-    <div class="problem-callout reveal">
-      <p>El primer centro que responde <span>se queda con el cliente.</span> Siempre.</p>
-    </div>
-    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
-      Descubrir cuántos leads estoy perdiendo
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
-    <span class="btn-note-light reveal">Auditoría gratuita sin compromiso</span>
-  </div>
-</section>
-
-<!-- WHO IS IT FOR -->
-<section class="who" id="para-quien">
-  <div class="inner-wide">
-    <span class="section-label reveal">Si tienes un centro fitness boutique</span>
-    <h2 class="section-title reveal">Esto te suena, ¿verdad?</h2>
-    <div class="who-grid">
-      <div class="who-card reveal">
-        <div class="who-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
+    <h2 class="section-title reveal">Ahora mismo te está pasando esto.</h2>
+    <div class="problem-layout">
+      <div>
+        <div class="flow-chain reveal">
+          <div class="flow-step"><div class="flow-dot"><span></span></div><p class="flow-text">Alguien pregunta por tus clases</p></div>
+          <div class="flow-step"><div class="flow-dot"><span></span></div><p class="flow-text">Estás impartiendo clase — no puedes responder</p></div>
+          <div class="flow-step"><div class="flow-dot"><span></span></div><p class="flow-text">El cliente se enfría y mira otras opciones</p></div>
+          <div class="flow-step"><div class="flow-dot red"><span></span></div><p class="flow-text">No reserva. <em>Y ese cliente se pierde para siempre.</em></p></div>
         </div>
-        <h4>Das clases y gestionas todo</h4>
-        <p>Eres profesor, gestor y comercial al mismo tiempo. No puedes estar en todo a la vez.</p>
-      </div>
-      <div class="who-card reveal reveal-delay-1">
-        <div class="who-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <div class="problem-callout reveal">
+          <p>El primer centro que responde <span>se queda con el cliente.</span> Siempre.</p>
         </div>
-        <h4>No puedes responder siempre</h4>
-        <p>Mientras impartes clase, los mensajes se acumulan. El cliente no espera más de 5 minutos.</p>
       </div>
-      <div class="who-card reveal reveal-delay-2">
-        <div class="who-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      <div class="problem-right reveal">
+        <div class="problem-who-card">
+          <h4>Eres profesor, gestor y comercial a la vez</h4>
+          <p>No puedes responder mensajes mientras impartes clase. Y eso te cuesta reservas cada día.</p>
         </div>
-        <h4>Conversaciones que no cierran</h4>
-        <p>Leads interesados que quedan abiertos porque nadie hizo el seguimiento en el momento justo.</p>
-      </div>
-      <div class="who-card reveal reveal-delay-3">
-        <div class="who-card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <div class="problem-who-card">
+          <h4>El seguimiento no siempre se hace</h4>
+          <p>Leads interesados que se enfrían porque nadie hizo el segundo contacto en el momento justo.</p>
         </div>
-        <h4>Crees que faltan clientes</h4>
-        <p>Pero la demanda existe. El problema no es la captación. Es la conversión.</p>
-      </div>
-    </div>
-    <div class="who-insight reveal">
-      <div class="who-insight-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-      </div>
-      <p>Esto <span>no es falta de demanda.</span> Es un problema de conversión que tiene solución directa.</p>
-    </div>
-    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
-      Quiero mi diagnóstico gratuito
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
-  </div>
-</section>
-
-<!-- PARADIGM SHIFT -->
-<section class="paradigm" id="paradigma">
-  <div class="inner-wide">
-    <span class="section-label reveal">Cambia el enfoque</span>
-    <h2 class="section-title reveal">No necesitas más leads.<br>Necesitas <span>responder mejor y más rápido.</span></h2>
-    <div class="stats-strip reveal" style="margin-top:44px;">
-      <div class="stat-item">
-        <div class="stat-num">78%</div>
-        <div class="stat-label">de los clientes elige al primero que responde</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">5 min</div>
-        <div class="stat-label">es el tiempo crítico de respuesta antes de que el lead se enfríe</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3x</div>
-        <div class="stat-label">más conversiones con respuesta automática inmediata</div>
-      </div>
-    </div>
-    <div class="paradigm-vs reveal">
-      <div class="pv-card before">
-        <p class="pv-label">Sin el sistema</p>
-        <div class="pv-list">
-          <div class="pv-item">
-            <div class="pv-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </div>
-            <p class="pv-item-text">Respondes cuando puedes — horas más tarde</p>
-          </div>
-          <div class="pv-item">
-            <div class="pv-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </div>
-            <p class="pv-item-text">El seguimiento no siempre se hace</p>
-          </div>
-          <div class="pv-item">
-            <div class="pv-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </div>
-            <p class="pv-item-text">Pierdes oportunidades cada semana sin saberlo</p>
-          </div>
+        <div class="problem-who-card">
+          <h4>Crees que faltan clientes</h4>
+          <p>La demanda existe. El problema no es la captación — es la conversión. Y eso tiene solución.</p>
         </div>
-        <p class="pv-footer">Dependes de ti para cada venta</p>
       </div>
-      <div class="pv-card after">
-        <p class="pv-label">Con el sistema</p>
-        <div class="pv-list">
-          <div class="pv-item">
-            <div class="pv-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <p class="pv-item-text">Todo se responde en menos de 5 minutos, 24/7</p>
-          </div>
-          <div class="pv-item">
-            <div class="pv-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <p class="pv-item-text">Todo se sigue de forma automática y sin errores</p>
-          </div>
-          <div class="pv-item">
-            <div class="pv-icon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <p class="pv-item-text">Todo se convierte sin que tú intervengas</p>
-          </div>
-        </div>
-        <p class="pv-footer">El sistema trabaja. Tú enseñas.</p>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top: 40px;">
-      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
-        Ver cómo mejorar mi conversión
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
     </div>
   </div>
 </section>
 
-<!-- SOLUTION -->
 <section class="solution" id="solucion">
-  <div class="inner">
+  <div class="inner-wide">
     <span class="section-label reveal">La solución</span>
-    <h2 class="section-title reveal">Sistema "Cierre en 5 Minutos"</h2>
-    <p class="solution-sub reveal">Un sistema que trabaja por ti las 24 horas, sin que tengas que hacer nada. Implementado y configurado por ARCENIX a medida de tu centro.</p>
-    <ul class="solution-list reveal">
-      <li>
-        <div class="sol-check">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <h2 class="section-title reveal">Sistema "Cierre en 5 Minutos":<br><span>trabaja por ti las 24h.</span></h2>
+    <div class="solution-layout">
+      <div class="reveal">
+        <ul class="solution-list">
+          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Responde a cada lead en segundos, a cualquier hora</span></li>
+          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Califica con las preguntas correctas y guía al lead al servicio ideal</span></li>
+          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Agenda directamente sin ninguna intervención tuya</span></li>
+          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Hace seguimiento automático a quien no confirmó</span></li>
+        </ul>
+        <div class="solution-tags">
+          <span class="solution-tag">24/7 activo</span>
+          <span class="solution-tag">Implementado por ARCENIX</span>
+          <span class="solution-tag">A medida de tu centro</span>
         </div>
-        <span>Responde automáticamente a cada lead en segundos, a cualquier hora</span>
-      </li>
-      <li>
-        <div class="sol-check">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <div style="margin-top:32px;">
+          <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-dark">
+            Cómo funciona en mi centro
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <span class="btn-note">Te lo explicamos en 30 minutos sin compromiso</span>
         </div>
-        <span>Hace las preguntas clave para entender qué necesita cada cliente</span>
-      </li>
-      <li>
-        <div class="sol-check">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="ba-box reveal reveal-delay-1">
+        <div class="ba-col without">
+          <p class="ba-col-label">Sin el sistema</p>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>Mensajes sin leer mientras impartes clase</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>El seguimiento llega tarde o no se hace</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>Pierdes oportunidades cada semana sin saberlo</span></div>
+          <p class="ba-footer">Dependes de ti para cada venta.</p>
         </div>
-        <span>Recomienda la clase o servicio ideal según el perfil del lead</span>
-      </li>
-      <li>
-        <div class="sol-check">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <div class="ba-col with">
+          <p class="ba-col-label">Con el sistema</p>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Todo se responde en menos de 5 minutos, siempre</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>El seguimiento es automático y sin errores</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Conviertes más leads sin dedicar más tiempo</span></div>
+          <p class="ba-footer">El sistema trabaja. Tú enseñas.</p>
         </div>
-        <span>Agenda directamente sin ninguna intervención tuya</span>
-      </li>
-      <li>
-        <div class="sol-check">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </div>
-        <span>Hace seguimiento automático a los leads que no confirmaron</span>
-      </li>
-    </ul>
-    <div class="solution-tags reveal">
-      <span class="solution-tag">24/7 activo</span>
-      <span class="solution-tag">Personalizado a tu centro</span>
-      <span class="solution-tag">Implementación a cargo de ARCENIX</span>
-      <span class="solution-tag">Resultados desde el primer día</span>
+      </div>
     </div>
-    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
-      Cómo funciona en mi centro
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
-    <span class="btn-note-light reveal">Te lo explicamos en 30 minutos sin compromiso</span>
   </div>
 </section>
 
-<!-- FEATURES -->
 <section class="features" id="que-incluye">
   <div class="inner-wide">
     <span class="section-label reveal">Qué incluye</span>
-    <h2 class="section-title reveal">Todo lo que necesitas<br>para <span>no perder ni un lead.</span></h2>
+    <h2 class="section-title reveal">Todo para no perder<br><span>ni un solo lead.</span></h2>
     <div class="features-grid">
       <div class="feature-card reveal">
-        <div class="feature-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        </div>
+        <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
         <h4>Respuesta automática instantánea</h4>
-        <p>El sistema detecta cada nuevo mensaje y responde en segundos con información personalizada sobre tus clases, precios y disponibilidad.</p>
-        <span class="feature-result">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          0 leads sin respuesta
-        </span>
+        <p>Detecta cada nuevo mensaje y responde en segundos con información personalizada sobre tus clases, precios y disponibilidad.</p>
+        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>0 leads sin respuesta</span>
       </div>
       <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        </div>
-        <h4>Calificación inteligente del lead</h4>
-        <p>El sistema hace las preguntas correctas para entender qué busca el cliente — objetivo, disponibilidad, experiencia previa — y lo guía al servicio ideal.</p>
-        <span class="feature-result">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Solo hablas con quien va a reservar
-        </span>
+        <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+        <h4>Calificación inteligente</h4>
+        <p>Pregunta lo necesario para entender qué busca el cliente y lo guía al servicio ideal. Tú solo hablas con quien ya tiene intención de reservar.</p>
+        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Solo hablas con quien va a reservar</span>
       </div>
       <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-        </div>
+        <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
         <h4>Agendado automático</h4>
-        <p>Una vez que el lead muestra intención, el sistema ofrece disponibilidad y confirma la reserva directamente — sin que tú intervengas en ningún momento.</p>
-        <span class="feature-result">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Reservas confirmadas en minutos
-        </span>
+        <p>Cuando el lead muestra intención, el sistema ofrece disponibilidad y confirma la reserva directamente — sin que tú intervengas.</p>
+        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Reservas confirmadas en minutos</span>
       </div>
       <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-        </div>
+        <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
         <h4>Seguimiento automático</h4>
-        <p>Cuando alguien no confirma, el sistema lo reactiva con mensajes de seguimiento calibrados. Sin presión. Sin perder el tono de tu marca.</p>
-        <span class="feature-result">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Recuperas leads que creías perdidos
-        </span>
+        <p>Si alguien no confirma, el sistema lo reactiva con mensajes calibrados. Sin presión, sin perder el tono de tu marca.</p>
+        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Recuperas leads que creías perdidos</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- BEFORE / AFTER -->
-<section class="before-after" id="demo">
-  <div class="inner-wide">
-    <span class="section-label reveal">Antes vs. Después</span>
-    <h2 class="section-title reveal">La diferencia es<br><span>inmediata y medible.</span></h2>
-    <div class="ba-grid">
-      <div class="ba-col without reveal">
-        <p class="ba-col-label">Sin el sistema</p>
-        <div class="ba-item">
-          <div class="ba-item-icon">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </div>
-          <span>Hay mensajes sin leer mientras impartes clase</span>
-        </div>
-        <div class="ba-item">
-          <div class="ba-item-icon">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </div>
-          <span>El seguimiento no se hace siempre — o se hace tarde</span>
-        </div>
-        <div class="ba-item">
-          <div class="ba-item-icon">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </div>
-          <span>Pierdes oportunidades cada semana sin saberlo</span>
-        </div>
-        <p class="ba-footer">Dependes de ti para cada venta.</p>
-      </div>
-      <div class="ba-col with reveal reveal-delay-1">
-        <p class="ba-col-label">Con el sistema</p>
-        <div class="ba-item">
-          <div class="ba-item-icon">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <span>Todo se responde en menos de 5 minutos — sin excepción</span>
-        </div>
-        <div class="ba-item">
-          <div class="ba-item-icon">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <span>El seguimiento es automático, consistente y sin errores</span>
-        </div>
-        <div class="ba-item">
-          <div class="ba-item-icon">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <span>Conviertes más leads sin dedicar más tiempo</span>
-        </div>
-        <p class="ba-footer">El sistema trabaja. Tú enseñas.</p>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:40px;">
+    <div style="text-align:center;margin-top:44px;">
       <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
         Pedir consulta gratuita
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
-      <span class="btn-note reveal">Analizamos tu caso concreto sin compromiso</span>
     </div>
   </div>
 </section>
 
-<!-- RESULTS -->
-<section class="results" id="resultados">
-  <div class="inner-wide">
-    <span class="section-label reveal">Después de implementarlo</span>
-    <h2 class="section-title reveal">Lo que ocurre en los primeros<br><span>30 días.</span></h2>
-    <div class="results-grid">
-      <div class="result-card reveal">
-        <div class="result-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        </div>
-        <h4>Más respuestas</h4>
-        <p>Ningún lead sin contestar. Nunca más. El sistema actúa en segundos, a cualquier hora.</p>
-      </div>
-      <div class="result-card reveal reveal-delay-1">
-        <div class="result-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-        </div>
-        <h4>Más reservas</h4>
-        <p>Clientes que preguntan hoy, reservan hoy. Sin fricción, sin esperas, sin pérdidas.</p>
-      </div>
-      <div class="result-card reveal reveal-delay-2">
-        <div class="result-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-        </div>
-        <h4>Clases más llenas</h4>
-        <p>Sin más horas de trabajo. Sin estrés adicional. Solo el sistema haciendo su trabajo.</p>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
-        Quiero estos resultados
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-    </div>
+<div class="results-strip">
+  <div class="results-strip-inner">
+    <div class="result-stat reveal"><span class="result-stat-num">+40%</span><span class="result-stat-label">de media en reservas el primer mes</span></div>
+    <div class="result-stat reveal reveal-delay-1"><span class="result-stat-num">24/7</span><span class="result-stat-label">el sistema activo aunque el estudio esté cerrado</span></div>
+    <div class="result-stat reveal reveal-delay-2"><span class="result-stat-num">0 h</span><span class="result-stat-label">de trabajo manual adicional para el propietario</span></div>
   </div>
-</section>
+</div>
 
-<!-- URGENCY -->
-<section class="urgency" id="plazas">
-  <div class="urgency-inner reveal">
-    <span class="urgency-tag">Plazas limitadas</span>
-    <h3>Solo trabajamos con un número limitado de centros a la vez.</h3>
-    <p>Para garantizar una implementación 100% personalizada y acompañamiento real, limitamos los accesos. Cuando se llena, se llena.</p>
-  </div>
-</section>
-
-<!-- FAQ -->
 <section class="faq" id="preguntas">
   <div class="inner">
     <span class="section-label reveal">Preguntas frecuentes</span>
     <h2 class="section-title reveal">Resolvemos tus dudas.</h2>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <div class="faq-q">
-          "No sé si funcionará en mi centro"
-          <div class="faq-q-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-        </div>
-        <div class="faq-a">Este sistema se adapta completamente a tus clases, tu horario y tu cliente ideal. Lo configuramos a tu medida, no al revés. Por eso hacemos un diagnóstico previo.</div>
+        <div class="faq-q">"No sé si funcionará en mi centro"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Este sistema se adapta completamente a tus clases, horario y cliente ideal. Lo configuramos a tu medida — por eso hacemos siempre un diagnóstico previo.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">
-          "No tengo tiempo para implementarlo"
-          <div class="faq-q-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-        </div>
+        <div class="faq-q">"No tengo tiempo para implementarlo"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
         <div class="faq-a">Lo instalamos nosotros por ti. Tú no haces nada técnico. Solo nos cuentas cómo funciona tu centro y nosotros nos encargamos del resto.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">
-          "Me parece caro"
-          <div class="faq-q-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-        </div>
-        <div class="faq-a">Un par de clientes recuperados cada mes lo amortizan de sobra. Y el sistema trabaja cada día del año, sin descanso, sin vacaciones, sin errores.</div>
+        <div class="faq-q">"Me parece caro"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Un par de clientes recuperados cada mes lo amortizan. Y el sistema trabaja todos los días del año, sin descanso, sin vacaciones, sin errores.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">
-          "Prefiero hacerlo de forma manual"
-          <div class="faq-q-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-        </div>
-        <div class="faq-a">Manual significa inconsistente. Y inconsistente significa pérdidas silenciosas. El sistema garantiza que ningún lead se quede sin respuesta, nunca, a ninguna hora.</div>
+        <div class="faq-q">"Prefiero hacerlo de forma manual"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Manual significa inconsistente. Y inconsistente significa pérdidas silenciosas. El sistema garantiza que ningún lead se quede sin respuesta, a ninguna hora.</div>
       </div>
-    </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary-dark reveal">
-        Consulta gratuita — Aclara todas tus dudas
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
 <section class="final-cta" id="contacto">
   <span class="section-label">Es el momento</span>
   <h2>Activa tu sistema de<br><span>cierre automático.</span></h2>
-  <span class="final-cta-sub">Deja de perder clientes y empieza a llenar tus clases. Sin más horas de trabajo. Sin depender de ti.</span>
+  <span class="final-cta-sub">Deja de perder clientes. Empieza a llenar tus clases sin más horas de trabajo.</span>
   <div class="final-badges">
-    <div class="final-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      Implementación a cargo de ARCENIX
-    </div>
-    <div class="final-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      Sistema personalizado para tu centro
-    </div>
-    <div class="final-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      Resultados desde el primer día
-    </div>
+    <div class="final-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Implementación a cargo de ARCENIX</div>
+    <div class="final-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Sistema personalizado para tu centro</div>
+    <div class="final-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Resultados desde el primer día</div>
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="final-btn reveal">
     Quiero activar mi sistema
@@ -969,7 +380,6 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   <p class="final-note">Sin compromiso. Sin tarjeta de crédito.</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <a href="../index.html" class="footer-brand">
     <img src="../Logo.png" alt="ARCENIX logo" class="footer-logo">
@@ -979,28 +389,17 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 </footer>
 
 <script>
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
-
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// FAQ accordion
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-q').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+const obs=new IntersectionObserver((e)=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open)item.classList.add('open');
   });
 });
 </script>
-
 </body>
 </html>
