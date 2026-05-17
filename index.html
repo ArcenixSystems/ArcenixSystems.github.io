@@ -493,7 +493,7 @@ body.dark .icon-moon{display:block}
         </div>
       </div>
 
-      <!-- CHAT MOCKUP -->
+      <!-- CHAT MOCKUP ANIMADO -->
       <div class="reveal reveal-delay-1" style="display:flex;flex-direction:column;align-items:center;gap:8px">
         <p class="chat-label">El sistema responde por ti — en segundos</p>
         <div class="chat-mockup">
@@ -504,18 +504,9 @@ body.dark .icon-moon{display:block}
               <div class="chat-mockup-status">Activo 24/7</div>
             </div>
           </div>
-          <div class="chat-messages">
-            <div class="chat-msg user">Hola, ¿tenéis plazas para pilates por las mañanas?</div>
-            <div class="chat-time">10:47 — Tú impartiendo clase</div>
-            <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);text-align:right;margin-bottom:2px">ARCENIX · Respuesta en 8 segundos</div>
-            <div class="chat-msg bot">¡Hola! Sí, tenemos clases de pilates a las 9h y 11h de lunes a viernes. ¿Te gustaría reservar una clase de prueba gratuita?</div>
-            <div class="chat-msg user">Sí, me interesa el jueves a las 9h</div>
-            <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);text-align:right;margin-bottom:2px">ARCENIX · Respuesta en 5 segundos</div>
-            <div class="chat-msg bot">Perfecto, te he reservado el jueves 22 a las 9h. Te llega una confirmación ahora mismo. ¡Hasta el jueves! 🎉</div>
-          </div>
-          </div>
-            <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;max-width:300px">Mientras tú dabas clase, el sistema captó, calificó y cerró la reserva.</p>
+          <div class="chat-messages" id="chatMessages" style="min-height:220px"></div>
         </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;max-width:300px;margin-top:4px">Mientras tú dabas clase, el sistema captó, calificó y cerró la reserva.</p>
       </div>
     </div>
   </div>
@@ -806,6 +797,63 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
     body.classList.toggle('dark');
     localStorage.setItem('arcenix-theme',body.classList.contains('dark')?'dark':'light');
   });
+})();
+</script>
+<script>
+(function(){
+  const container=document.getElementById('chatMessages');
+  if(!container)return;
+  const steps=[
+    {type:'user',text:'Hola, ¿tenéis plazas para pilates por las mañanas?'},
+    {type:'time',text:'10:47 — Tú impartiendo clase'},
+    {type:'typing',duration:1400},
+    {type:'label',text:'ARCENIX · Respuesta en 8 segundos'},
+    {type:'bot',text:'¡Hola! Sí, tenemos clases de pilates a las 9h y 11h de lunes a viernes. ¿Te gustaría reservar una clase de prueba gratuita?'},
+    {type:'pause',duration:1600},
+    {type:'user',text:'Sí, me interesa el jueves a las 9h'},
+    {type:'typing',duration:1100},
+    {type:'label',text:'ARCENIX · Respuesta en 5 segundos'},
+    {type:'bot',text:'Perfecto, te he reservado el jueves 22 a las 9h. Te llega una confirmación ahora mismo. ¡Hasta el jueves! 🎉'},
+    {type:'pause',duration:3500},
+    {type:'reset'},
+  ];
+  let idx=0,started=false;
+  function makeEl(type,text){
+    const el=document.createElement('div');
+    if(type==='user'){el.className='chat-msg user';el.textContent=text;}
+    else if(type==='bot'){el.className='chat-msg bot';el.textContent=text;}
+    else if(type==='time'){el.className='chat-time';el.textContent=text;}
+    else if(type==='label'){el.style.cssText='font-size:0.68rem;color:rgba(255,255,255,0.4);text-align:right;margin-bottom:2px';el.textContent=text;}
+    else if(type==='typing'){el.className='chat-typing';el.innerHTML='<span></span><span></span><span></span>';}
+    el.style.opacity='0';el.style.transform='translateY(6px)';
+    el.style.transition='opacity 0.3s ease,transform 0.3s ease';
+    return el;
+  }
+  function fadeIn(el){requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='translateY(0)'});}
+  let typingEl=null;
+  function runStep(){
+    if(idx>=steps.length)idx=0;
+    const step=steps[idx++];
+    if(step.type==='reset'){setTimeout(()=>{container.innerHTML='';runStep();},step.duration||0);return;}
+    if(step.type==='pause'){setTimeout(runStep,step.duration);return;}
+    if(step.type==='typing'){
+      typingEl=makeEl('typing','');
+      container.appendChild(typingEl);fadeIn(typingEl);
+      container.scrollTop=container.scrollHeight;
+      setTimeout(()=>{if(typingEl&&typingEl.parentNode)typingEl.parentNode.removeChild(typingEl);runStep();},step.duration);
+      return;
+    }
+    const el=makeEl(step.type,step.text);
+    container.appendChild(el);
+    requestAnimationFrame(()=>fadeIn(el));
+    container.scrollTop=container.scrollHeight;
+    const delay=step.type==='user'?950:step.type==='bot'?750:450;
+    setTimeout(runStep,delay);
+  }
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting&&!started){started=true;runStep();}});
+  },{threshold:0.3});
+  obs.observe(container);
 })();
 </script>
 </body>
