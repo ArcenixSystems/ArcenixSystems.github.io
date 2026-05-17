@@ -216,6 +216,100 @@ footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
   .result-stat:nth-child(odd){border-right:none}
 }
 @media(prefers-reduced-motion:reduce){*,.hero-badge,.hero h1,.hero-sub,.hero-impact,.hero-cta,.hero-stats,.reveal{animation:none!important;opacity:1!important;transform:none!important}}
+
+/* ===== DARK MODE — SaaS/AI aesthetic ===== */
+body.dark{background:#080e1a;color:#f0f6ff}
+
+/* Fondo base y secciones */
+body.dark .hero{background:#080e1a}
+body.dark .hero::before{background:radial-gradient(ellipse at center,rgba(0,200,255,0.08) 0%,rgba(0,123,255,0.04) 50%,transparent 70%)}
+body.dark .problem{background:#0d1526}
+body.dark .how{background:#080e1a}
+body.dark .services{background:#0d1526}
+body.dark .forwho{background:#080e1a}
+body.dark .method{background:#0a1020}
+body.dark footer{background:#060c18;border-top-color:rgba(255,255,255,0.05)}
+
+/* Nav */
+body.dark nav{background:rgba(8,14,26,0.92);border-bottom-color:rgba(0,200,255,0.12)}
+body.dark .nav-name{color:#ffffff}
+body.dark .nav-dropdown-btn{color:#c8deff}
+body.dark .nav-dropdown-btn:hover{background:rgba(0,123,255,0.15);color:#00c8ff}
+body.dark .nav-dropdown-menu{background:#0d1a2e;border-color:rgba(0,200,255,0.15);box-shadow:0 8px 32px rgba(0,0,0,0.6),0 0 0 1px rgba(0,200,255,0.08)}
+body.dark .nav-dropdown-item{color:#c8deff}
+body.dark .nav-dropdown-item:hover{background:rgba(0,123,255,0.15);color:#00c8ff}
+body.dark .nav-dropdown-item-label{color:#e8f4ff}
+body.dark .nav-dropdown-item:hover .nav-dropdown-item-label{color:#00c8ff}
+body.dark .nav-dropdown-item-icon{background:rgba(0,123,255,0.15)}
+body.dark .nav-hamburger span{background:#c8deff}
+body.dark .mobile-menu{background:rgba(8,14,26,0.98);border-bottom-color:rgba(0,200,255,0.12)}
+body.dark .mobile-menu-item{color:#c8deff}
+body.dark .mobile-menu-item:hover{background:rgba(0,123,255,0.15)}
+body.dark .mobile-menu-item-label{color:#e8f4ff}
+body.dark .mobile-menu-item-icon{background:rgba(0,123,255,0.15)}
+
+/* Hero textos */
+body.dark .hero h1{color:#ffffff}
+body.dark .hero h1 .grad{background:linear-gradient(135deg,#00c8ff 0%,#007BFF 60%,#a855f7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.dark .hero-sub{color:#8bafd4}
+body.dark .hero-badge{background:rgba(0,200,255,0.1);color:#00c8ff;border-color:rgba(0,200,255,0.25)}
+body.dark .hero-badge-dot{background:#00c8ff}
+body.dark .hero-impact{background:rgba(0,200,255,0.08);border:1px solid rgba(0,200,255,0.2);color:#e8f4ff;box-shadow:0 0 20px rgba(0,200,255,0.08)}
+body.dark .hero-cta{background:linear-gradient(135deg,#007BFF,#0060cc);color:#fff;box-shadow:0 4px 24px rgba(0,123,255,0.4),0 0 0 1px rgba(0,200,255,0.2)}
+body.dark .hero-cta:hover{box-shadow:0 8px 32px rgba(0,123,255,0.55),0 0 40px rgba(0,200,255,0.15)}
+body.dark .hero-stat-num{color:#00c8ff}
+body.dark .hero-stat-label{color:#5a7fa0}
+body.dark .hero-divider{background:rgba(0,200,255,0.15)}
+
+/* Section labels y títulos */
+body.dark .section-label{color:#00c8ff}
+body.dark .section-title{color:#f0f6ff}
+body.dark .section-title span{color:#00c8ff}
+
+/* Problema */
+body.dark .problem-item{background:#111d33;border-color:rgba(255,255,255,0.06);box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+body.dark .problem-icon{background:rgba(224,62,62,0.12)}
+body.dark .problem-item-text h4{color:#f0f6ff}
+body.dark .problem-item-text p{color:#6a8fae}
+
+/* Cómo funciona */
+body.dark .how-step h3{color:#f0f6ff}
+body.dark .how-step p{color:#5a7fa0}
+body.dark .how-num{background:linear-gradient(135deg,#007BFF,#00c8ff);box-shadow:0 0 0 8px rgba(0,200,255,0.08),0 0 20px rgba(0,123,255,0.3)}
+body.dark .how-steps::before{background:linear-gradient(90deg,transparent,rgba(0,200,255,0.3),transparent)}
+body.dark .how-step-result{background:rgba(0,200,255,0.1);color:#00c8ff;border:1px solid rgba(0,200,255,0.2)}
+
+/* Servicios */
+body.dark .service-card{background:#111d33;border-color:rgba(0,200,255,0.1);box-shadow:0 2px 16px rgba(0,0,0,0.3)}
+body.dark .service-card:hover{box-shadow:0 16px 40px rgba(0,0,0,0.4),0 0 30px rgba(0,200,255,0.08)}
+body.dark .service-card::before{background:linear-gradient(90deg,#00c8ff,#007BFF)}
+body.dark .service-card h3{color:#f0f6ff}
+body.dark .service-card p{color:#6a8fae}
+body.dark .service-tag.gancho{background:rgba(0,200,255,0.1);color:#00c8ff;border-color:rgba(0,200,255,0.25)}
+body.dark .service-tag.core{background:rgba(0,220,130,0.1);color:#00dc82;border-color:rgba(0,220,130,0.25)}
+body.dark .service-tag.premium{background:rgba(168,85,247,0.1);color:#c084fc;border-color:rgba(168,85,247,0.25)}
+body.dark .service-result{background:rgba(0,200,255,0.1);color:#00c8ff}
+body.dark .service-link{color:#00c8ff}
+
+/* Para quién */
+body.dark .forwho-list li{background:#111d33;border-color:rgba(0,200,255,0.1);color:#f0f6ff}
+
+/* Resultados strip */
+body.dark .result-stat-num{color:#00c8ff}
+
+/* Footer */
+body.dark footer p{color:rgba(255,255,255,0.3)}
+body.dark .footer-brand span{color:#ffffff}
+
+/* TOGGLE BUTTON */
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid rgba(0,123,255,0.2);background:transparent;cursor:pointer;transition:all 0.2s;flex-shrink:0}
+.theme-toggle:hover{background:var(--blue-pale);border-color:rgba(0,123,255,0.4)}
+body.dark .theme-toggle{border-color:rgba(0,200,255,0.2);background:rgba(0,200,255,0.05)}
+body.dark .theme-toggle:hover{background:rgba(0,200,255,0.12);border-color:rgba(0,200,255,0.4)}
+.icon-sun{display:block}
+.icon-moon{display:none}
+body.dark .icon-sun{display:none}
+body.dark .icon-moon{display:block}
 </style>
 </head>
 <body>
@@ -257,6 +351,10 @@ footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
     </div>
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="nav-cta">Reservar llamada</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo oscuro/claro">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
   <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -560,6 +658,17 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   hamburger.addEventListener('click',function(e){e.stopPropagation();const isOpen=hamburger.classList.toggle('open');mobileMenu.classList.toggle('open',isOpen);hamburger.setAttribute('aria-expanded',isOpen);mobileMenu.setAttribute('aria-hidden',!isOpen)});
   document.addEventListener('click',function(e){if(!hamburger.contains(e.target)&&!mobileMenu.contains(e.target)){hamburger.classList.remove('open');mobileMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileMenu.setAttribute('aria-hidden','true')}});
   mobileMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileMenu.setAttribute('aria-hidden','true')})});
+})();
+</script>
+<script>
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const body=document.body;
+  if(localStorage.getItem('arcenix-theme')==='dark')body.classList.add('dark');
+  toggle.addEventListener('click',function(){
+    body.classList.toggle('dark');
+    localStorage.setItem('arcenix-theme',body.classList.contains('dark')?'dark':'light');
+  });
 })();
 </script>
 </body>
