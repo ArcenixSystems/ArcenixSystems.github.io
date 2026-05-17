@@ -37,10 +37,7 @@ nav {
 nav.scrolled { box-shadow: 0 4px 24px rgba(10,25,47,0.10); }
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo { height: 36px; width: auto; }
-.nav-name {
-  font-family: var(--heading); font-weight: 800; font-size: 1.3rem;
-  color: var(--navy); letter-spacing: -0.02em;
-}
+.nav-name { font-family: var(--heading); font-weight: 800; font-size: 1.3rem; color: var(--navy); letter-spacing: -0.02em; }
 .nav-cta {
   font-family: var(--body); font-size: 0.875rem; font-weight: 500;
   background: var(--blue); color: var(--white);
@@ -49,8 +46,6 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(10,25,47,0.10); }
   transition: background 0.2s, transform 0.2s;
 }
 .nav-cta:hover { background: #0066dd; transform: translateY(-1px); }
-
-/* NAV CENTER */
 .nav-center { display: flex; align-items: center; gap: 8px; }
 .nav-dropdown { position: relative; }
 .nav-dropdown-btn {
@@ -82,80 +77,46 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(10,25,47,0.10); }
   transition: background 0.15s;
 }
 .nav-dropdown-item:hover { background: var(--blue-pale); color: var(--blue); }
-.nav-dropdown-item-icon {
-  width: 34px; height: 34px; min-width: 34px; border-radius: 8px;
-  background: var(--blue-pale); display: flex; align-items: center; justify-content: center;
-}
+.nav-dropdown-item-icon { width: 34px; height: 34px; min-width: 34px; border-radius: 8px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; }
 .nav-dropdown-item-text { display: flex; flex-direction: column; gap: 2px; }
 .nav-dropdown-item-label { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
 .nav-dropdown-item-sub { font-size: 0.76rem; color: var(--text-muted); font-weight: 400; }
 .nav-dropdown-item:hover .nav-dropdown-item-label { color: var(--blue); }
-/* HAMBURGER BUTTON — solo móvil */
+
+/* HAMBURGER */
 .nav-hamburger {
-  display: none;
-  flex-direction: column; justify-content: center; align-items: center;
+  display: none; flex-direction: column; justify-content: center; align-items: center;
   gap: 5px; width: 40px; height: 40px;
-  background: none; border: none; cursor: pointer;
-  border-radius: 8px; padding: 6px;
+  background: none; border: none; cursor: pointer; border-radius: 8px; padding: 6px;
   transition: background 0.18s;
 }
 .nav-hamburger:hover { background: var(--blue-pale); }
-.nav-hamburger span {
-  display: block; width: 22px; height: 2px;
-  background: var(--navy); border-radius: 2px;
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.2s;
-  transform-origin: center;
-}
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.2s; transform-origin: center; }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* MOBILE DRAWER */
 .mobile-menu {
-  display: none;
-  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(20px);
+  display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0,123,255,0.12);
   padding: 16px 5% 20px;
   transform: translateY(-8px); opacity: 0;
   transition: transform 0.28s cubic-bezier(0.16,1,0.3,1), opacity 0.22s;
   pointer-events: none;
 }
-.mobile-menu.open {
-  transform: translateY(0); opacity: 1;
-  pointer-events: auto;
-}
-.mobile-menu-label {
-  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-muted);
-  padding: 0 4px; margin-bottom: 10px;
-}
-.mobile-menu-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 13px 12px; border-radius: 12px; text-decoration: none;
-  color: var(--navy); font-size: 0.95rem; font-weight: 500;
-  transition: background 0.15s;
-  margin-bottom: 4px;
-}
+.mobile-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.mobile-menu-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 0 4px; margin-bottom: 10px; }
+.mobile-menu-item { display: flex; align-items: center; gap: 12px; padding: 13px 12px; border-radius: 12px; text-decoration: none; color: var(--navy); font-size: 0.95rem; font-weight: 500; transition: background 0.15s; margin-bottom: 4px; }
 .mobile-menu-item:hover { background: var(--blue-pale); }
-.mobile-menu-item-icon {
-  width: 36px; height: 36px; min-width: 36px; border-radius: 9px;
-  background: var(--blue-pale); display: flex; align-items: center; justify-content: center;
-}
+.mobile-menu-item-icon { width: 36px; height: 36px; min-width: 36px; border-radius: 9px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; }
 .mobile-menu-item-text { display: flex; flex-direction: column; gap: 2px; }
 .mobile-menu-item-label { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
 .mobile-menu-item-sub { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
 .mobile-menu-divider { height: 1px; background: rgba(0,123,255,0.1); margin: 12px 0; }
-.mobile-menu-cta {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 0.95rem;
-  padding: 14px; border-radius: 12px; text-decoration: none;
-  transition: background 0.2s;
-}
+.mobile-menu-cta { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--blue); color: var(--white); font-family: var(--heading); font-weight: 700; font-size: 0.95rem; padding: 14px; border-radius: 12px; text-decoration: none; transition: background 0.2s; }
 .mobile-menu-cta:hover { background: #0066dd; }
-
 @media (max-width: 600px) {
   .nav-center { display: none; }
   .nav-cta { display: none; }
@@ -168,14 +129,10 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(10,25,47,0.10); }
   min-height: 100vh;
   padding: calc(var(--nav-h) + 60px) 5% 80px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center;
-  position: relative;
-  background: var(--white);
-  overflow: hidden;
+  text-align: center; position: relative; background: var(--white); overflow: hidden;
 }
 .hero::before {
-  content: '';
-  position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+  content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
   width: 900px; height: 700px;
   background: radial-gradient(ellipse at center, rgba(0,123,255,0.10) 0%, rgba(0,123,255,0.03) 50%, transparent 70%);
   pointer-events: none;
@@ -186,329 +143,243 @@ nav.scrolled { box-shadow: 0 4px 24px rgba(10,25,47,0.10); }
   font-family: var(--body); font-size: 0.8rem; font-weight: 500;
   letter-spacing: 0.06em; text-transform: uppercase;
   padding: 6px 16px; border-radius: 100px;
-  border: 1px solid rgba(0,123,255,0.2);
-  margin-bottom: 28px;
+  border: 1px solid rgba(0,123,255,0.2); margin-bottom: 28px;
   opacity: 0; animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
 }
 .hero-badge-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s ease infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
-
 .hero h1 {
   font-family: var(--heading); font-weight: 800;
   font-size: clamp(2.8rem, 7vw, 5.2rem);
-  line-height: 1.06; letter-spacing: -0.035em;
-  color: var(--navy);
-  max-width: 860px;
+  line-height: 1.06; letter-spacing: -0.035em; color: var(--navy); max-width: 860px;
   opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
 }
-.hero h1 .grad {
-  background: linear-gradient(135deg, var(--blue) 0%, #00c6ff 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
+.hero h1 .grad { background: linear-gradient(135deg, var(--blue) 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .hero-sub {
   font-family: var(--body); font-size: clamp(1.05rem, 2vw, 1.2rem);
-  color: var(--text-muted); line-height: 1.65; max-width: 560px;
-  margin: 24px auto 0;
+  color: var(--text-muted); line-height: 1.65; max-width: 560px; margin: 24px auto 0;
   opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
 }
 .hero-sub strong { color: var(--navy); font-weight: 600; }
-
-.hero-pills {
-  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 28px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.45s forwards;
+.hero-impact {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--navy); color: var(--white);
+  font-family: var(--heading); font-weight: 700; font-size: 0.88rem;
+  padding: 10px 20px; border-radius: 100px; margin-top: 20px;
+  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.42s forwards;
 }
-.hero-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #f0f7ff; color: var(--navy);
-  font-size: 0.82rem; font-weight: 500;
-  padding: 6px 14px; border-radius: 100px;
-  border: 1px solid rgba(0,123,255,0.12);
-}
-.hero-pill-dot { width: 7px; height: 7px; background: var(--blue); border-radius: 50%; }
-
+.hero-impact-dot { width: 7px; height: 7px; background: #00e676; border-radius: 50%; animation: pulse 2s ease infinite; }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 10px;
   background: var(--navy); color: var(--white);
   font-family: var(--heading); font-weight: 700; font-size: 1rem;
-  padding: 18px 36px; border-radius: 12px; text-decoration: none;
-  margin-top: 40px;
+  padding: 18px 36px; border-radius: 12px; text-decoration: none; margin-top: 32px;
   box-shadow: 0 4px 16px rgba(10,25,47,0.18), 0 1px 4px rgba(10,25,47,0.12);
   transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.55s forwards;
+  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.52s forwards;
 }
 .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(10,25,47,0.22), 0 2px 8px rgba(10,25,47,0.14); }
 .hero-cta svg { transition: transform 0.2s; }
 .hero-cta:hover svg { transform: translateX(3px); }
-
 .hero-stats {
-  display: flex; gap: 48px; justify-content: center;
-  margin-top: 64px;
+  display: flex; gap: 48px; justify-content: center; margin-top: 64px;
   opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
 }
 .hero-stat { text-align: center; }
 .hero-stat-num { font-family: var(--heading); font-weight: 800; font-size: 2rem; color: var(--blue); letter-spacing: -0.03em; }
 .hero-stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
 .hero-divider { width: 1px; background: rgba(0,123,255,0.15); }
-
 @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
-/* SECTIONS SHARED */
+/* SHARED */
 section { padding: 100px 5%; }
 .section-inner { max-width: 1100px; margin: 0 auto; }
 .section-label {
-  display: inline-block;
-  font-family: var(--body); font-size: 0.75rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 16px;
+  display: inline-block; font-family: var(--body); font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px;
 }
 .section-title {
   font-family: var(--heading); font-weight: 800;
   font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.1; letter-spacing: -0.03em; color: var(--navy);
-  max-width: 680px;
+  line-height: 1.1; letter-spacing: -0.03em; color: var(--navy); max-width: 680px;
 }
 .section-title span { color: var(--blue); }
 
-/* PROBLEM SECTION */
-.problem { background: #f7fbff; }
-.problem-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 52px;
+/* INTERMEDIATE CTA */
+.mid-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+  background: var(--navy); border-radius: 16px; padding: 28px 36px;
+  margin-top: 52px;
 }
+.mid-cta-text p { font-family: var(--heading); font-weight: 700; font-size: 1.1rem; color: var(--white); line-height: 1.35; }
+.mid-cta-text span { color: #5bc3ff; }
+.mid-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue); color: var(--white);
+  font-family: var(--heading); font-weight: 700; font-size: 0.9rem;
+  padding: 13px 24px; border-radius: 10px; text-decoration: none; white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.mid-cta-btn:hover { background: #0066dd; transform: translateY(-1px); }
+.mid-cta-btn svg { transition: transform 0.2s; }
+.mid-cta-btn:hover svg { transform: translateX(3px); }
+.mid-cta-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.65); font-family: var(--body); font-weight: 500; font-size: 0.88rem;
+  text-decoration: none; transition: color 0.2s;
+}
+.mid-cta-ghost:hover { color: var(--white); }
+.mid-cta-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+/* PROBLEM */
+.problem { background: #f7fbff; }
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 52px; }
 .problem-list { display: flex; flex-direction: column; gap: 16px; }
 .problem-item {
   display: flex; align-items: flex-start; gap: 16px;
   background: var(--white); border-radius: 14px; padding: 20px 22px;
-  border: 1px solid rgba(10,25,47,0.07);
-  box-shadow: 0 2px 10px rgba(10,25,47,0.04);
+  border: 1px solid rgba(10,25,47,0.07); box-shadow: 0 2px 10px rgba(10,25,47,0.04);
 }
-.problem-icon {
-  width: 40px; height: 40px; min-width: 40px; border-radius: 10px;
-  background: #fff0f0; display: flex; align-items: center; justify-content: center;
-}
-.problem-item-text h4 { font-family: var(--heading); font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 4px; }
-.problem-item-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
-.problem-solution {
-  background: var(--navy); border-radius: 20px; padding: 44px 40px;
-}
-.problem-solution-badge {
-  display: inline-block; background: rgba(0,123,255,0.2);
-  color: #5bc3ff; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 5px 12px; border-radius: 100px;
-  margin-bottom: 20px;
-}
-.problem-solution h3 {
-  font-family: var(--heading); font-weight: 800; font-size: 1.5rem;
-  color: var(--white); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 20px;
-}
-.problem-solution-results { display: flex; flex-direction: column; gap: 14px; }
-.sol-result {
-  display: flex; align-items: center; gap: 14px;
-  color: rgba(255,255,255,0.85); font-size: 0.97rem; font-weight: 500;
-}
-.sol-result-icon {
-  width: 32px; height: 32px; min-width: 32px;
-  background: var(--blue); border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-}
+.problem-icon { width: 40px; height: 40px; min-width: 40px; border-radius: 10px; background: #fff0f0; display: flex; align-items: center; justify-content: center; }
+.problem-item-text h4 { font-family: var(--heading); font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 2px; }
+.problem-item-text p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.5; }
+.problem-item-cost { display: inline-block; margin-top: 8px; font-family: var(--heading); font-weight: 700; font-size: 0.78rem; color: #e03e3e; background: #fff0f0; padding: 3px 10px; border-radius: 100px; }
+.problem-solution { background: var(--navy); border-radius: 20px; padding: 40px; }
+.problem-solution-badge { display: inline-block; background: rgba(0,123,255,0.2); color: #5bc3ff; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 18px; }
+.problem-solution h3 { font-family: var(--heading); font-weight: 800; font-size: 1.4rem; color: var(--white); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 18px; }
+.problem-solution-results { display: flex; flex-direction: column; gap: 12px; }
+.sol-result { display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 500; }
+.sol-result-icon { width: 28px; height: 28px; min-width: 28px; background: var(--blue); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.sol-result strong { color: var(--white); }
 
 /* RESULTS STRIP */
-.results-strip {
-  background: var(--navy); padding: 56px 5%;
-}
-.results-strip-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-}
+.results-strip { background: var(--navy); padding: 56px 5%; }
+.results-strip-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
 .result-stat { text-align: center; padding: 0 24px; }
 .result-stat:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.1); }
-.result-stat-num {
-  font-family: var(--heading); font-weight: 800; font-size: 2.4rem;
-  color: var(--blue-light); letter-spacing: -0.04em; display: block;
-}
+.result-stat-num { font-family: var(--heading); font-weight: 800; font-size: 2.4rem; color: var(--blue-light); letter-spacing: -0.04em; display: block; }
 .result-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 6px; display: block; line-height: 1.4; }
 
-/* WHAT WE DO */
+/* HOW */
+.how { background: #f7fbff; }
+.how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: 64px; }
+.how-steps::before { content: ''; position: absolute; top: 36px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--blue-pale), var(--blue), var(--blue-pale)); }
+.how-step { text-align: center; padding: 0 20px; position: relative; }
+.how-num { width: 72px; height: 72px; border-radius: 50%; background: var(--blue); color: var(--white); font-family: var(--heading); font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 0 0 8px var(--blue-pale); position: relative; z-index: 1; }
+.how-step h3 { font-family: var(--heading); font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 8px; }
+.how-step p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.55; max-width: 190px; margin: 0 auto; }
+.how-step-result { display: inline-block; margin-top: 12px; font-family: var(--heading); font-weight: 700; font-size: 0.75rem; color: var(--blue); background: var(--blue-pale); padding: 4px 10px; border-radius: 100px; }
+
+/* WHAT */
 .what { background: var(--white); }
 .what-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
 .what-card {
   background: var(--white); border-radius: 16px; padding: 32px;
-  border: 1px solid rgba(0,123,255,0.1);
-  box-shadow: 0 2px 12px rgba(10,25,47,0.05);
+  border: 1px solid rgba(0,123,255,0.1); box-shadow: 0 2px 12px rgba(10,25,47,0.05);
   transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
   position: relative; overflow: hidden;
 }
-.what-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue), #00c6ff);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
-}
+.what-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), #00c6ff); transform: scaleX(0); transform-origin: left; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
 .what-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(10,25,47,0.10); }
 .what-card:hover::before { transform: scaleX(1); }
-.what-icon {
-  width: 48px; height: 48px; background: var(--blue-pale);
-  border-radius: 12px; display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
-}
-.what-card h3 { font-family: var(--heading); font-weight: 700; font-size: 1.1rem; color: var(--navy); margin-bottom: 10px; }
-.what-card p { font-size: 0.93rem; color: var(--text-muted); line-height: 1.65; }
-.what-result {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 16px;
-  font-size: 0.82rem; font-weight: 600; color: var(--blue);
-  background: var(--blue-pale); padding: 5px 12px; border-radius: 100px;
-}
+.what-icon { width: 48px; height: 48px; background: var(--blue-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.what-card h3 { font-family: var(--heading); font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 12px; }
+.what-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.what-bullets li { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-muted); }
+.what-bullet-dot { width: 5px; height: 5px; min-width: 5px; background: var(--blue); border-radius: 50%; }
+.what-result { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: var(--blue); background: var(--blue-pale); padding: 5px 12px; border-radius: 100px; }
 
-/* HOW IT WORKS */
-.how { background: #f7fbff; }
-.how-intro { max-width: 600px; margin-bottom: 64px; }
-.how-steps {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; position: relative;
-}
-.how-steps::before {
-  content: ''; position: absolute; top: 36px; left: 12%; right: 12%; height: 2px;
-  background: linear-gradient(90deg, var(--blue-pale), var(--blue), var(--blue-pale));
-}
-.how-step { text-align: center; padding: 0 20px; position: relative; }
-.how-num {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 800; font-size: 1.4rem;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 24px;
-  box-shadow: 0 0 0 8px var(--blue-pale);
-  position: relative; z-index: 1;
-}
-.how-step h3 { font-family: var(--heading); font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 10px; }
-.how-step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; max-width: 200px; margin: 0 auto; }
-.how-step-tag {
-  display: inline-block; margin-top: 12px;
-  font-size: 0.75rem; font-weight: 600; color: var(--blue);
-  background: var(--blue-pale); padding: 4px 10px; border-radius: 100px;
-  letter-spacing: 0.04em;
-}
+/* METODO ARCENIX */
+.metodo { background: var(--white); }
+.metodo-intro { max-width: 640px; margin-bottom: 52px; }
+.metodo-intro p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-top: 14px; }
+.metodo-connector { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 28px 0; }
+.metodo-connector-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,123,255,0.2), transparent); }
+.metodo-connector-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--blue-pale); color: var(--blue); border: 1px solid rgba(0,123,255,0.2); border-radius: 100px; padding: 5px 14px; font-family: var(--heading); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+.metodo-phases { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.metodo-phase { border-radius: 18px; padding: 36px 32px; border: 1px solid rgba(0,123,255,0.12); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s; }
+.metodo-phase:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(10,25,47,0.10); }
+.metodo-phase.phase-1 { background: #f7fbff; }
+.metodo-phase.phase-2 { background: var(--navy); border-color: transparent; }
+.metodo-phase-tag { display: inline-flex; align-items: center; gap: 7px; font-family: var(--body); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 18px; }
+.phase-1 .metodo-phase-tag { background: var(--blue-pale); color: var(--blue); border: 1px solid rgba(0,123,255,0.2); }
+.phase-2 .metodo-phase-tag { background: rgba(0,123,255,0.2); color: #5bc3ff; }
+.metodo-phase-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.metodo-phase h3 { font-family: var(--heading); font-weight: 800; font-size: clamp(1.2rem, 2.5vw, 1.55rem); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 10px; }
+.phase-1 .metodo-phase h3 { color: var(--navy); }
+.phase-2 .metodo-phase h3 { color: var(--white); }
+.metodo-phase-desc { font-size: 0.91rem; line-height: 1.62; margin-bottom: 20px; }
+.phase-1 .metodo-phase-desc { color: var(--text-muted); }
+.phase-2 .metodo-phase-desc { color: rgba(255,255,255,0.6); }
+.metodo-phase-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
+.metodo-phase-feat { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; font-weight: 500; }
+.phase-1 .metodo-phase-feat { color: var(--navy); }
+.phase-2 .metodo-phase-feat { color: rgba(255,255,255,0.82); }
+.metodo-phase-feat-icon { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.phase-1 .metodo-phase-feat-icon { background: var(--blue-pale); }
+.phase-2 .metodo-phase-feat-icon { background: rgba(0,123,255,0.25); }
+.metodo-phase-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--heading); font-weight: 700; font-size: 0.88rem; text-decoration: none; border-radius: 10px; padding: 11px 20px; transition: background 0.2s, transform 0.2s; }
+.phase-1 .metodo-phase-link { background: var(--blue); color: var(--white); box-shadow: 0 4px 14px rgba(0,123,255,0.3); }
+.phase-1 .metodo-phase-link:hover { background: #0066dd; transform: translateY(-1px); }
+.phase-2 .metodo-phase-link { background: rgba(255,255,255,0.1); color: var(--white); border: 1px solid rgba(255,255,255,0.15); }
+.phase-2 .metodo-phase-link:hover { background: rgba(255,255,255,0.18); transform: translateY(-1px); }
+.metodo-phase-link svg { transition: transform 0.2s; }
+.metodo-phase-link:hover svg { transform: translateX(3px); }
 
 /* FOR WHO */
-.forwho { background: var(--white); }
+.forwho { background: #f7fbff; }
 .forwho-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
-.forwho-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.forwho-list li {
-  display: flex; align-items: center; gap: 16px;
-  font-size: 1.05rem; color: var(--navy); font-weight: 500;
-  background: #f7fbff; padding: 16px 22px; border-radius: 12px;
-  border: 1px solid rgba(0,123,255,0.1);
-  box-shadow: 0 2px 8px rgba(10,25,47,0.04);
-  transition: transform 0.2s;
-}
+.forwho-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.forwho-list li { display: flex; align-items: center; gap: 16px; font-size: 1rem; color: var(--navy); font-weight: 500; background: var(--white); padding: 14px 20px; border-radius: 12px; border: 1px solid rgba(0,123,255,0.1); box-shadow: 0 2px 8px rgba(10,25,47,0.04); transition: transform 0.2s; }
 .forwho-list li:hover { transform: translateX(4px); }
 .forwho-dot { width: 10px; height: 10px; min-width: 10px; background: var(--blue); border-radius: 50%; }
-.forwho-right { background: var(--navy); border-radius: 20px; padding: 44px; }
-.forwho-right h3 { font-family: var(--heading); font-weight: 700; font-size: 1.25rem; color: var(--white); margin-bottom: 16px; }
-.forwho-right p { color: rgba(255,255,255,0.7); font-size: 0.97rem; line-height: 1.7; }
-.forwho-right-badge {
-  display: inline-block; background: rgba(0,123,255,0.2);
-  color: #5bc3ff; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
-  text-transform: uppercase; padding: 5px 12px; border-radius: 100px;
-  margin-bottom: 20px;
-}
-.forwho-pain { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
-.forwho-pain-item {
-  display: flex; align-items: center; gap: 12px;
-  color: rgba(255,255,255,0.75); font-size: 0.92rem;
-}
-.forwho-pain-check {
-  width: 22px; height: 22px; min-width: 22px; border-radius: 50%;
-  background: rgba(0,123,255,0.25); border: 2px solid var(--blue);
-  display: flex; align-items: center; justify-content: center;
-}
+.forwho-right { background: var(--navy); border-radius: 20px; padding: 40px; }
+.forwho-right h3 { font-family: var(--heading); font-weight: 700; font-size: 1.2rem; color: var(--white); margin-bottom: 14px; }
+.forwho-right-badge { display: inline-block; background: rgba(0,123,255,0.2); color: #5bc3ff; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 18px; }
+.forwho-pain { display: flex; flex-direction: column; gap: 10px; }
+.forwho-pain-item { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.78); font-size: 0.92rem; }
+.forwho-pain-check { width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: rgba(0,123,255,0.25); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; }
 
-/* METHOD / PHILOSOPHY — replaced with method block */
+/* METHOD */
 .method { background: var(--navy); }
 .method .section-label { color: #5bc3ff; }
 .method .section-title { color: var(--white); max-width: 720px; }
 .method-sub { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 580px; margin-top: 16px; }
 .method-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
-.method-pillar {
-  background: rgba(255,255,255,0.04); border-radius: 16px; padding: 32px 28px;
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: background 0.2s, border-color 0.2s;
-}
+.method-pillar { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.08); transition: background 0.2s, border-color 0.2s; }
 .method-pillar:hover { background: rgba(0,123,255,0.1); border-color: rgba(0,123,255,0.3); }
-.method-pillar-num {
-  font-family: var(--heading); font-weight: 800; font-size: 2.5rem;
-  color: rgba(0,123,255,0.25); letter-spacing: -0.04em; line-height: 1;
-  margin-bottom: 16px;
-}
+.method-pillar-num { font-family: var(--heading); font-weight: 800; font-size: 2.5rem; color: rgba(0,123,255,0.25); letter-spacing: -0.04em; line-height: 1; margin-bottom: 16px; }
 .method-pillar h3 { font-family: var(--heading); font-weight: 700; font-size: 1.05rem; color: var(--white); margin-bottom: 10px; }
 .method-pillar p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
 /* CTA FINAL */
 .cta-final {
   background: linear-gradient(135deg, #0d2a4f 0%, var(--navy) 50%, #0a1f3d 100%);
-  text-align: center; padding: 120px 5%;
-  position: relative; overflow: hidden;
+  text-align: center; padding: 120px 5%; position: relative; overflow: hidden;
 }
-.cta-final::before {
-  content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
-  width: 800px; height: 600px;
-  background: radial-gradient(ellipse, rgba(0,123,255,0.18) 0%, transparent 65%);
-}
+.cta-final::before { content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse, rgba(0,123,255,0.18) 0%, transparent 65%); }
 .cta-final .section-label { color: #5bc3ff; position: relative; z-index: 1; }
-.cta-final h2 {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  color: var(--white); line-height: 1.1; letter-spacing: -0.03em;
-  max-width: 720px; margin: 16px auto 0;
-  position: relative; z-index: 1;
-}
+.cta-final h2 { font-family: var(--heading); font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); line-height: 1.1; letter-spacing: -0.03em; max-width: 720px; margin: 16px auto 0; position: relative; z-index: 1; }
 .cta-final h2 span { color: var(--blue-light); }
-.cta-final-sub {
-  color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 480px;
-  margin: 16px auto 0; line-height: 1.65; position: relative; z-index: 1;
-}
-.cta-nopes {
-  display: flex; gap: 28px; justify-content: center;
-  margin: 36px auto;
-  position: relative; z-index: 1;
-  flex-wrap: wrap;
-}
+.cta-final-sub { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 480px; margin: 16px auto 0; line-height: 1.65; position: relative; z-index: 1; }
+.cta-nopes { display: flex; gap: 28px; justify-content: center; margin: 36px auto; position: relative; z-index: 1; flex-wrap: wrap; }
 .cta-nope { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.65); font-size: 0.9rem; }
-.cta-check {
-  width: 20px; height: 20px; border-radius: 50%;
-  background: rgba(0,123,255,0.3); border: 2px solid var(--blue);
-  display: flex; align-items: center; justify-content: center; min-width: 20px;
-}
-.cta-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
-  padding: 20px 44px; border-radius: 14px; text-decoration: none;
-  box-shadow: 0 8px 32px rgba(0,123,255,0.4);
-  transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s;
-  position: relative; z-index: 1; margin-top: 8px;
-}
+.cta-check { width: 20px; height: 20px; border-radius: 50%; background: rgba(0,123,255,0.3); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; min-width: 20px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--blue); color: var(--white); font-family: var(--heading); font-weight: 700; font-size: 1.1rem; padding: 20px 44px; border-radius: 14px; text-decoration: none; box-shadow: 0 8px 32px rgba(0,123,255,0.4); transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s; position: relative; z-index: 1; margin-top: 8px; }
 .cta-btn:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,123,255,0.5); }
 .cta-btn:hover svg { transform: translateX(3px); }
 .cta-btn svg { transition: transform 0.2s; }
-.cta-fine {
-  color: rgba(255,255,255,0.35); font-size: 0.82rem;
-  margin-top: 18px; position: relative; z-index: 1;
-}
+.cta-fine { color: rgba(255,255,255,0.35); font-size: 0.82rem; margin-top: 18px; position: relative; z-index: 1; }
 
 /* FOOTER */
-footer {
-  background: var(--navy); padding: 32px 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.07);
-}
+footer { background: var(--navy); padding: 32px 5%; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.07); }
 .footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .footer-logo { height: 28px; }
 .footer-brand span { font-family: var(--heading); font-weight: 700; color: var(--white); font-size: 1rem; }
 footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 
-/* SCROLL ANIMATIONS */
+/* REVEAL */
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
@@ -528,6 +399,8 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   .cta-nopes { flex-direction: column; align-items: center; gap: 12px; }
   .hero-stats { gap: 24px; }
   footer { flex-direction: column; gap: 16px; text-align: center; }
+  .metodo-phases { grid-template-columns: 1fr; }
+  .mid-cta { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 600px) {
   section { padding: 72px 6%; }
@@ -537,6 +410,7 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   .how-steps { grid-template-columns: 1fr; }
   .results-strip-inner { grid-template-columns: 1fr; }
   .result-stat:nth-child(odd) { border-right: none; }
+  .metodo-phase { padding: 28px 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, .hero-badge, .hero h1, .hero-sub, .hero-cta, .hero-stats, .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
@@ -545,7 +419,6 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-brand">
     <img src="Logo.png" alt="ARCENIX logo" class="nav-logo">
@@ -559,27 +432,21 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
       </button>
       <div class="nav-dropdown-menu" role="menu">
         <a href="/plan-rescate" class="nav-dropdown-item" role="menuitem">
-          <div class="nav-dropdown-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-          </div>
+          <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
           <div class="nav-dropdown-item-text">
             <span class="nav-dropdown-item-label">Plan de Rescate 72h</span>
             <span class="nav-dropdown-item-sub">Recupera leads perdidos</span>
           </div>
         </a>
         <a href="/sistema-cierre" class="nav-dropdown-item" role="menuitem">
-          <div class="nav-dropdown-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          </div>
+          <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
           <div class="nav-dropdown-item-text">
             <span class="nav-dropdown-item-label">Sistema Cierre en 5 Minutos</span>
             <span class="nav-dropdown-item-sub">Convierte interés en reserva</span>
           </div>
         </a>
         <a href="/agenda-llena" class="nav-dropdown-item" role="menuitem">
-          <div class="nav-dropdown-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          </div>
+          <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
           <div class="nav-dropdown-item-text">
             <span class="nav-dropdown-item-label">Agenda Llena + Facturación Predecible</span>
             <span class="nav-dropdown-item-sub">El sistema completo</span>
@@ -589,38 +456,29 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
     </div>
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="nav-cta">Reservar llamada</a>
-
-  <!-- Hamburger — solo visible en móvil -->
   <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE DRAWER -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <p class="mobile-menu-label">Servicios</p>
   <a href="/plan-rescate" class="mobile-menu-item">
-    <div class="mobile-menu-item-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-    </div>
+    <div class="mobile-menu-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
     <div class="mobile-menu-item-text">
       <span class="mobile-menu-item-label">Plan de Rescate 72h</span>
       <span class="mobile-menu-item-sub">Recupera leads perdidos rápido</span>
     </div>
   </a>
   <a href="/sistema-cierre" class="mobile-menu-item">
-    <div class="mobile-menu-item-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-    </div>
+    <div class="mobile-menu-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
     <div class="mobile-menu-item-text">
       <span class="mobile-menu-item-label">Sistema Cierre en 5 Minutos</span>
       <span class="mobile-menu-item-sub">Convierte interés en reserva al instante</span>
     </div>
   </a>
   <a href="/agenda-llena" class="mobile-menu-item">
-    <div class="mobile-menu-item-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-    </div>
+    <div class="mobile-menu-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
     <div class="mobile-menu-item-text">
       <span class="mobile-menu-item-label">Agenda Llena + Facturación Predecible</span>
       <span class="mobile-menu-item-sub">El sistema completo para escalar</span>
@@ -636,15 +494,13 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 <!-- HERO -->
 <section class="hero" id="hero">
   <span class="hero-badge"><span class="hero-badge-dot"></span>Para centros fitness boutique</span>
-  <h1>Tu estudio lleno.<br><span class="grad">Sin gestionar leads a mano.</span></h1>
+  <h1>Más reservas. Más ingresos.<br><span class="grad">Sin trabajo manual.</span></h1>
   <p class="hero-sub">
-    Automatizamos la captación y conversión de clientes para estudios de pilates, yoga y entrenamiento personal.
-    <strong>Más reservas. Menos trabajo manual. Ingresos predecibles.</strong>
+    Automatizamos la captación, conversión y retención de clientes para estudios de pilates, yoga y entrenamiento personal.
   </p>
-  <div class="hero-pills">
-    <span class="hero-pill"><span class="hero-pill-dot"></span>Respuesta automática 24/7</span>
-    <span class="hero-pill"><span class="hero-pill-dot"></span>Sin contratar más personal</span>
-    <span class="hero-pill"><span class="hero-pill-dot"></span>Desde la primera semana</span>
+  <div class="hero-impact">
+    <span class="hero-impact-dot"></span>
+    Centros que usan nuestro sistema recuperan entre <strong>800€ y 2.600€/mes</strong> que ya estaban perdiendo
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="hero-cta">
     Ver cómo funciona
@@ -652,86 +508,91 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   </a>
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="hero-stat-num">24/7</div>
-      <div class="hero-stat-label">Sistema activo</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
       <div class="hero-stat-num">+40%</div>
-      <div class="hero-stat-label">Más reservas</div>
+      <div class="hero-stat-label">Más reservas el primer mes</div>
     </div>
     <div class="hero-divider"></div>
     <div class="hero-stat">
-      <div class="hero-stat-num">0</div>
-      <div class="hero-stat-label">Trabajo manual extra</div>
+      <div class="hero-stat-num">0 h</div>
+      <div class="hero-stat-label">Trabajo manual adicional</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">24/7</div>
+      <div class="hero-stat-label">Sistema activo siempre</div>
     </div>
   </div>
 </section>
 
-<!-- PROBLEM + SOLUTION -->
+<!-- PROBLEM -->
 <section class="problem" id="problema">
   <div class="section-inner">
     <span class="section-label reveal">El problema</span>
-    <h2 class="section-title reveal">Los leads llegan.<br>Pero se pierden por el camino.</h2>
+    <h2 class="section-title reveal">Estás perdiendo reservas<br>e ingresos cada semana.</h2>
     <div class="problem-grid">
       <div class="problem-list reveal">
         <div class="problem-item">
-          <div class="problem-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          </div>
+          <div class="problem-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
           <div class="problem-item-text">
             <h4>Respondes tarde o nunca</h4>
-            <p>Un lead que no recibe respuesta en menos de 5 minutos tiene un 80% menos de probabilidad de convertir.</p>
+            <p>Un lead sin respuesta en 5 min tiene un 80% menos de probabilidad de convertir.</p>
+            <span class="problem-item-cost">Coste estimado: 200–500€/mes en leads perdidos</span>
           </div>
         </div>
         <div class="problem-item">
-          <div class="problem-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-          </div>
+          <div class="problem-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="23" y1="11" x2="17" y2="11"></line></svg></div>
           <div class="problem-item-text">
-            <h4>Gestionas todo de forma manual</h4>
-            <p>WhatsApp, Instagram, correo… cada canal por separado, sin sistema, sin seguimiento claro.</p>
+            <h4>Gestionas todo a mano</h4>
+            <p>WhatsApp, Instagram, correo… sin sistema. Horas de trabajo que no generan ingresos.</p>
+            <span class="problem-item-cost">Coste estimado: 5–10h semanales perdidas</span>
           </div>
         </div>
         <div class="problem-item">
-          <div class="problem-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-          </div>
+          <div class="problem-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
           <div class="problem-item-text">
-            <h4>No sabes qué leads son reales</h4>
-            <p>Sin calificación automática, pierdes tiempo con curiosos y dejas escapar a los que sí querían reservar.</p>
+            <h4>Bajas que no reactivas</h4>
+            <p>Alumnos que se van y no vuelven porque nadie les envió el mensaje correcto.</p>
+            <span class="problem-item-cost">Coste estimado: 800–1.500€/mes en ingresos no recuperados</span>
           </div>
         </div>
       </div>
       <div class="problem-solution reveal reveal-delay-1">
         <span class="problem-solution-badge">La solución ARCENIX</span>
-        <h3>Un sistema que convierte leads en reservas mientras tú entrenas clases.</h3>
+        <h3>Un sistema que trabaja por ti las 24h y convierte leads en ingresos.</h3>
         <div class="problem-solution-results">
           <div class="sol-result">
-            <div class="sol-result-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Respuesta automática en segundos, a cualquier hora
+            <div class="sol-result-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Respuesta automática en segundos -> <strong>a cualquier hora</strong>
           </div>
           <div class="sol-result">
-            <div class="sol-result-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Calificación automática: solo hablas con quien va a reservar
+            <div class="sol-result-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Calificación automática —> <strong>solo hablas con quien reserva</strong>
           </div>
           <div class="sol-result">
-            <div class="sol-result-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Seguimiento y cierre sin intervención manual
+            <div class="sol-result-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Reactivación automática —> <strong>clientes inactivos vuelven solos</strong>
           </div>
           <div class="sol-result">
-            <div class="sol-result-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Ingresos más estables y predecibles cada mes
+            <div class="sol-result-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Ingresos predecibles —> <strong>sin depender del mes bueno</strong>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- CTA INTERMEDIO 1 → Sistema de Cierre -->
+    <div class="mid-cta reveal">
+      <div class="mid-cta-text">
+        <p>¿Pierdes leads porque no puedes responder a tiempo?<br><span>El Sistema de Cierre en 5 Minutos lo resuelve.</span></p>
+      </div>
+      <div class="mid-cta-actions">
+        <a href="/sistema-cierre" class="mid-cta-btn">
+          Ver cómo funciona
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="mid-cta-ghost">
+          O reservar llamada →
+        </a>
       </div>
     </div>
   </div>
@@ -740,22 +601,10 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 <!-- RESULTS STRIP -->
 <div class="results-strip">
   <div class="results-strip-inner">
-    <div class="result-stat reveal">
-      <span class="result-stat-num">+40%</span>
-      <span class="result-stat-label">Media de aumento en reservas el primer mes</span>
-    </div>
-    <div class="result-stat reveal reveal-delay-1">
-      <span class="result-stat-num">5 min</span>
-      <span class="result-stat-label">Tiempo máximo de respuesta al lead</span>
-    </div>
-    <div class="result-stat reveal reveal-delay-2">
-      <span class="result-stat-num">0 h</span>
-      <span class="result-stat-label">Trabajo manual adicional para el propietario</span>
-    </div>
-    <div class="result-stat reveal reveal-delay-3">
-      <span class="result-stat-num">24/7</span>
-      <span class="result-stat-label">El sistema trabaja aunque el estudio esté cerrado</span>
-    </div>
+    <div class="result-stat reveal"><span class="result-stat-num">+40%</span><span class="result-stat-label">Media de aumento en reservas el primer mes</span></div>
+    <div class="result-stat reveal reveal-delay-1"><span class="result-stat-num">5 min</span><span class="result-stat-label">Tiempo máximo de respuesta al lead</span></div>
+    <div class="result-stat reveal reveal-delay-2"><span class="result-stat-num">0 h</span><span class="result-stat-label">Trabajo manual adicional para el propietario</span></div>
+    <div class="result-stat reveal reveal-delay-3"><span class="result-stat-num">+2.600€</span><span class="result-stat-label">Media de ingresos recuperados al mes</span></div>
   </div>
 </div>
 
@@ -763,34 +612,48 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 <section class="how" id="como-funciona">
   <div class="section-inner">
     <span class="section-label reveal">Cómo funciona</span>
-    <h2 class="section-title reveal">Un proceso en 4 pasos.<br>Claro. Medible. Escalable.</h2>
-    <p class="method-sub reveal" style="margin-top:16px;margin-bottom:0;color:var(--text-muted)">
-      No es magia. Es un sistema estructurado que implementamos, configuramos y optimizamos contigo.
-    </p>
-    <div class="how-steps" style="margin-top:64px;">
+    <h2 class="section-title reveal">Un proceso en 4 pasos.<br><span>Claro. Medible. Escalable.</span></h2>
+    <p class="reveal" style="margin-top:14px;color:var(--text-muted);font-size:0.97rem;max-width:560px">No es magia. Es un sistema estructurado que implementamos, configuramos y optimizamos contigo.</p>
+    <div class="how-steps">
       <div class="how-step reveal">
         <div class="how-num">1</div>
         <h3>Análisis</h3>
-        <p>Auditamos tu proceso actual: de dónde vienen tus leads, dónde los pierdes y cuánto te cuesta cada reserva.</p>
-        <span class="how-step-tag">Semana 1</span>
+        <p>Auditamos tu proceso: de dónde vienen tus leads, dónde los pierdes y cuánto te cuesta cada reserva.</p>
+        <span class="how-step-result">Identificamos tus agujeros de ingresos</span>
       </div>
       <div class="how-step reveal reveal-delay-1">
         <div class="how-num">2</div>
         <h3>Implementación</h3>
-        <p>Configuramos el sistema de captación y respuesta automática adaptado a tu estudio y a tu perfil de cliente.</p>
-        <span class="how-step-tag">Semana 1–2</span>
+        <p>Configuramos el sistema de captación y respuesta automática adaptado a tu estudio y tu cliente.</p>
+        <span class="how-step-result">Sistema activo en menos de 48h</span>
       </div>
       <div class="how-step reveal reveal-delay-2">
         <div class="how-num">3</div>
         <h3>Automatización</h3>
         <p>El sistema responde, califica y cierra leads de forma autónoma. Tú ves los resultados en tiempo real.</p>
-        <span class="how-step-tag">Semana 2</span>
+        <span class="how-step-result">Primeras reservas automatizadas</span>
       </div>
       <div class="how-step reveal reveal-delay-3">
         <div class="how-num">4</div>
         <h3>Optimización</h3>
         <p>Revisamos métricas cada mes y ajustamos el sistema para que los resultados mejoren continuamente.</p>
-        <span class="how-step-tag">Mensual</span>
+        <span class="how-step-result">+Revenue mes a mes</span>
+      </div>
+    </div>
+
+    <!-- CTA INTERMEDIO 2 → Agenda Llena (high ticket) -->
+    <div class="mid-cta reveal" style="margin-top:52px">
+      <div class="mid-cta-text">
+        <p>¿Quieres el sistema completo — captación, cierre y retención?<br><span>El programa Agenda Llena lo integra todo.</span></p>
+      </div>
+      <div class="mid-cta-actions">
+        <a href="/agenda-llena" class="mid-cta-btn">
+          Ver el sistema completo
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="mid-cta-ghost">
+          O reservar llamada →
+        </a>
       </div>
     </div>
   </div>
@@ -800,40 +663,120 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 <section class="what" id="que-hacemos">
   <div class="section-inner">
     <span class="section-label reveal">Qué hacemos exactamente</span>
-    <h2 class="section-title reveal">Tres palancas para llenar<br>tu agenda de reservas.</h2>
+    <h2 class="section-title reveal">Tres palancas para más ingresos<br><span>con el mismo esfuerzo.</span></h2>
     <div class="what-cards">
       <div class="what-card reveal">
-        <div class="what-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-        </div>
-        <h3>Captación y calificación de leads</h3>
-        <p>Organizamos y priorizamos cada contacto automáticamente. Tu equipo solo habla con quien tiene intención real de reservar, no con curiosos.</p>
-        <span class="what-result">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Menos tiempo perdido, más cierres
-        </span>
+        <div class="what-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+        <h3>Captación y calificación</h3>
+        <ul class="what-bullets">
+          <li><span class="what-bullet-dot"></span>Organiza y prioriza leads automáticamente</li>
+          <li><span class="what-bullet-dot"></span>Filtra curiosos — solo hablas con quien reserva</li>
+          <li><span class="what-bullet-dot"></span>Cero leads perdidos por falta de seguimiento</li>
+        </ul>
+        <span class="what-result">+Reservas con el mismo tráfico</span>
       </div>
       <div class="what-card reveal reveal-delay-1">
-        <div class="what-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-        </div>
+        <div class="what-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
         <h3>Respuesta automática 24/7</h3>
-        <p>El sistema responde en segundos, califica al lead y lo guía hacia la reserva sin intervención manual. Disponible fuera del horario y los fines de semana.</p>
-        <span class="what-result">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          0 leads perdidos por tiempo de espera
-        </span>
+        <ul class="what-bullets">
+          <li><span class="what-bullet-dot"></span>Responde en segundos, a cualquier hora</li>
+          <li><span class="what-bullet-dot"></span>Guía al lead a la reserva sin intervención</li>
+          <li><span class="what-bullet-dot"></span>Activo fines de semana y fuera de horario</li>
+        </ul>
+        <span class="what-result">0 leads perdidos por tiempo de espera</span>
       </div>
       <div class="what-card reveal reveal-delay-2">
-        <div class="what-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        <div class="what-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+        <h3>Retención y reactivación</h3>
+        <ul class="what-bullets">
+          <li><span class="what-bullet-dot"></span>Reactiva alumnos inactivos automáticamente</li>
+          <li><span class="what-bullet-dot"></span>Renovaciones y upsells sin esfuerzo manual</li>
+          <li><span class="what-bullet-dot"></span>Ingresos estables 12 meses al año</li>
+        </ul>
+        <span class="what-result">+800€/mes en ingresos recuperados</span>
+      </div>
+    </div>
+
+    <!-- CTA INTERMEDIO 3 → Plan de Rescate -->
+    <div class="mid-cta reveal" style="margin-top:52px">
+      <div class="mid-cta-text">
+        <p>¿Quieres empezar recuperando los leads que ya tienes?<br><span>El Plan de Rescate 72H lo hace en 3 días.</span></p>
+      </div>
+      <div class="mid-cta-actions">
+        <a href="/plan-rescate" class="mid-cta-btn">
+          Ver el Plan de Rescate
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="mid-cta-ghost">
+          O reservar llamada →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO ARCENIX -->
+<section class="metodo" id="metodo-arcenix">
+  <div class="section-inner">
+    <div class="metodo-intro">
+      <span class="section-label reveal">El método ARCENIX</span>
+      <h2 class="section-title reveal">Dos herramientas.<br><span>Un mismo sistema.</span></h2>
+      <p class="reveal">Cada servicio resuelve una fase distinta del mismo problema. Primero recuperas los leads que ya tienes. Después construyes un sistema para que no se vuelvan a perder.</p>
+    </div>
+    <div class="metodo-connector reveal">
+      <div class="metodo-connector-line"></div>
+      <span class="metodo-connector-badge">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+        Progresión natural
+      </span>
+      <div class="metodo-connector-line"></div>
+    </div>
+    <div class="metodo-phases">
+      <div class="metodo-phase phase-1 reveal">
+        <span class="metodo-phase-tag"><span class="metodo-phase-tag-dot"></span>Empieza aquí</span>
+        <h3>Plan de Rescate 72H</h3>
+        <p class="metodo-phase-desc">Recupera leads fríos y genera reservas en 72 horas. Ideal si quieres resultados rápidos sin compromisos.</p>
+        <div class="metodo-phase-features">
+          <div class="metodo-phase-feat">
+            <div class="metodo-phase-feat-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Mensajes listos para copiar y enviar
+          </div>
+          <div class="metodo-phase-feat">
+            <div class="metodo-phase-feat-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Resultados visibles en menos de 72h
+          </div>
+          <div class="metodo-phase-feat">
+            <div class="metodo-phase-feat-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Sin herramientas ni conocimientos previos
+          </div>
         </div>
-        <h3>Optimización del proceso de cierre</h3>
-        <p>Auditamos y mejoramos cada etapa del embudo: del primer contacto a la reserva confirmada, eliminando los puntos de fuga que te cuestan dinero cada mes.</p>
-        <span class="what-result">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Más ingresos con los mismos leads
-        </span>
+        <a href="/plan-rescate" class="metodo-phase-link">
+          Ver el Plan de Rescate
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+      <div class="metodo-phase phase-2 reveal reveal-delay-1">
+        <span class="metodo-phase-tag"><span class="metodo-phase-tag-dot"></span>La solución definitiva</span>
+        <h3>Agenda Llena + Facturación Predecible</h3>
+        <p class="metodo-phase-desc">El sistema completo: captación, cierre, retención y reactivación integrados. Ingresos estables sin trabajo manual.</p>
+        <div class="metodo-phase-features">
+          <div class="metodo-phase-feat">
+            <div class="metodo-phase-feat-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5bc3ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            5 palancas de ingresos integradas
+          </div>
+          <div class="metodo-phase-feat">
+            <div class="metodo-phase-feat-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5bc3ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Implementado y configurado por ARCENIX
+          </div>
+          <div class="metodo-phase-feat">
+            <div class="metodo-phase-feat-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#5bc3ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            +2.600€/mes de media en ingresos recuperados
+          </div>
+        </div>
+        <a href="/agenda-llena" class="metodo-phase-link">
+          Ver el sistema completo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -846,47 +789,28 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
       <div>
         <span class="section-label reveal">Para quién es</span>
         <h2 class="section-title reveal">Trabajamos con centros<br>fitness boutique.</h2>
-        <ul class="forwho-list" style="margin-top: 36px;">
-          <li class="reveal">
-            <span class="forwho-dot"></span>
-            Estudios de Pilates
-          </li>
-          <li class="reveal reveal-delay-1">
-            <span class="forwho-dot"></span>
-            Centros de Yoga
-          </li>
-          <li class="reveal reveal-delay-2">
-            <span class="forwho-dot"></span>
-            Entrenamiento personal
-          </li>
-          <li class="reveal reveal-delay-3">
-            <span class="forwho-dot"></span>
-            Clases dirigidas y funcional
-          </li>
+        <ul class="forwho-list" style="margin-top:36px">
+          <li class="reveal"><span class="forwho-dot"></span>Estudios de Pilates</li>
+          <li class="reveal reveal-delay-1"><span class="forwho-dot"></span>Centros de Yoga</li>
+          <li class="reveal reveal-delay-2"><span class="forwho-dot"></span>Entrenamiento personal</li>
+          <li class="reveal reveal-delay-3"><span class="forwho-dot"></span>Clases dirigidas y funcional</li>
         </ul>
       </div>
       <div class="forwho-right reveal">
         <span class="forwho-right-badge">Ideal si...</span>
         <h3>Ya tienes clientes pero quieres crecer sin más carga</h3>
-        <p>Este sistema es para ti si tienes un negocio en marcha y quieres escalar sin contratar más personal ni gestionar leads de forma manual.</p>
         <div class="forwho-pain">
           <div class="forwho-pain-item">
-            <div class="forwho-pain-check">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Sientes que pierdes clientes antes de hablar con ellos
+            <div class="forwho-pain-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Pierdes clientes antes de hablar con ellos
           </div>
           <div class="forwho-pain-item">
-            <div class="forwho-pain-check">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Tus ingresos son irregulares y difíciles de predecir
+            <div class="forwho-pain-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Tus ingresos son irregulares mes a mes
           </div>
           <div class="forwho-pain-item">
-            <div class="forwho-pain-check">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Quieres resultados reales, no métricas vacías
+            <div class="forwho-pain-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            Quieres más reservas sin más horas de trabajo
           </div>
         </div>
       </div>
@@ -894,19 +818,17 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   </div>
 </section>
 
-<!-- METHOD / PRINCIPLES -->
+<!-- METHOD -->
 <section class="method" id="metodologia">
   <div class="section-inner">
     <span class="section-label reveal">Nuestra metodología</span>
     <h2 class="section-title reveal">Un sistema, no servicios sueltos.<br><span style="color:#5bc3ff">Así lo hacemos diferente.</span></h2>
-    <p class="method-sub reveal">
-      No vendemos herramientas. Implementamos un proceso completo que funciona como un equipo de ventas propio, pero sin el coste fijo.
-    </p>
+    <p class="method-sub reveal">No vendemos herramientas. Implementamos un proceso completo que funciona como un equipo de ventas propio, pero sin el coste fijo.</p>
     <div class="method-pillars">
       <div class="method-pillar reveal">
         <div class="method-pillar-num">01</div>
-        <h3>Optimizar antes que añadir</h3>
-        <p>Antes de crear nuevos canales, maximizamos el rendimiento de lo que ya tienes. El 80% de los ingresos perdidos están en el proceso, no en el tráfico.</p>
+        <h3>Impacto económico primero</h3>
+        <p>Antes de hablar de tecnología, identificamos cuánto dinero estás perdiendo y qué hay que tapar. El ROI es siempre el punto de partida.</p>
       </div>
       <div class="method-pillar reveal reveal-delay-1">
         <div class="method-pillar-num">02</div>
@@ -916,7 +838,7 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
       <div class="method-pillar reveal reveal-delay-2">
         <div class="method-pillar-num">03</div>
         <h3>Medir antes que cambiar</h3>
-        <p>Cada decisión de optimización parte de datos reales de tu negocio. Sin suposiciones. Sin estrategias genéricas que no aplican a tu caso.</p>
+        <p>Cada decisión parte de datos reales de tu negocio. Sin suposiciones. Sin estrategias genéricas que no aplican a tu caso.</p>
       </div>
     </div>
   </div>
@@ -925,21 +847,12 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 <!-- CTA FINAL -->
 <section class="cta-final" id="contacto">
   <span class="section-label">Da el paso</span>
-  <h2>¿Listo para llenar tus clases<br><span>de verdad?</span></h2>
-  <p class="cta-final-sub">Reserva una llamada de 30 minutos. Analizamos tu situación y te mostramos exactamente qué mejoraría en tu caso.</p>
+  <h2>¿Cuánto dinero estás<br><span>dejando sobre la mesa?</span></h2>
+  <p class="cta-final-sub">Reserva una llamada de 30 minutos. Analizamos tu negocio y te decimos exactamente cuánto estás perdiendo y cómo lo recuperamos.</p>
   <div class="cta-nopes">
-    <div class="cta-nope">
-      <div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      Sin setup complicado
-    </div>
-    <div class="cta-nope">
-      <div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      Sin contratos largos
-    </div>
-    <div class="cta-nope">
-      <div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      Resultados desde la primera semana
-    </div>
+    <div class="cta-nope"><div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Sin setup complicado</div>
+    <div class="cta-nope"><div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Sin contratos largos</div>
+    <div class="cta-nope"><div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Resultados desde la primera semana</div>
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="cta-btn">
     Reservar llamada gratuita
@@ -957,61 +870,28 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 </footer>
 
 <script>
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
-
 <script>
 (function(){
-  const dd = document.getElementById('navServiciosDropdown');
-  const btn = dd.querySelector('.nav-dropdown-btn');
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = dd.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen);
-  });
-  document.addEventListener('click', function(e){
-    if(!dd.contains(e.target)){ dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-  });
+  const dd=document.getElementById('navServiciosDropdown');
+  const btn=dd.querySelector('.nav-dropdown-btn');
+  btn.addEventListener('click',function(e){e.stopPropagation();const isOpen=dd.classList.toggle('open');btn.setAttribute('aria-expanded',isOpen)});
+  document.addEventListener('click',function(e){if(!dd.contains(e.target)){dd.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
 })();
 </script>
-
 <script>
 (function(){
-  const hamburger = document.getElementById('navHamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (!hamburger || !mobileMenu) return;
-  hamburger.addEventListener('click', function(e){
-    e.stopPropagation();
-    const isOpen = hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
-    mobileMenu.setAttribute('aria-hidden', !isOpen);
-  });
-  document.addEventListener('click', function(e){
-    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      mobileMenu.setAttribute('aria-hidden', 'true');
-    }
-  });
-  mobileMenu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      mobileMenu.setAttribute('aria-hidden', 'true');
-    });
-  });
+  const hamburger=document.getElementById('navHamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  if(!hamburger||!mobileMenu)return;
+  hamburger.addEventListener('click',function(e){e.stopPropagation();const isOpen=hamburger.classList.toggle('open');mobileMenu.classList.toggle('open',isOpen);hamburger.setAttribute('aria-expanded',isOpen);mobileMenu.setAttribute('aria-hidden',!isOpen)});
+  document.addEventListener('click',function(e){if(!hamburger.contains(e.target)&&!mobileMenu.contains(e.target)){hamburger.classList.remove('open');mobileMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileMenu.setAttribute('aria-hidden','true')}});
+  mobileMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileMenu.setAttribute('aria-hidden','true')})});
 })();
 </script>
-
 </body>
 </html>
