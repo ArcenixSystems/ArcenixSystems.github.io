@@ -85,6 +85,64 @@ section{padding:88px 5%}
 .section-title{font-family:var(--heading);font-weight:800;font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-0.03em;color:var(--navy);max-width:680px}
 .section-title span{color:var(--blue)}
 
+/* ===== CHAT MOCKUP ===== */
+.chat-mockup{background:var(--navy);border-radius:18px;padding:20px;width:100%;max-width:360px;box-shadow:0 16px 48px rgba(10,25,47,0.2)}
+.chat-mockup-bar{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:14px}
+.chat-mockup-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#00c6ff);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:0.7rem;color:#fff;flex-shrink:0}
+.chat-mockup-name{font-family:var(--heading);font-weight:700;font-size:0.82rem;color:#fff}
+.chat-mockup-status{font-size:0.7rem;color:#00e676;display:flex;align-items:center;gap:4px}
+.chat-mockup-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#00e676;display:inline-block}
+.chat-messages{display:flex;flex-direction:column;gap:8px}
+.chat-msg{max-width:82%;padding:9px 13px;border-radius:12px;font-size:0.8rem;line-height:1.45}
+.chat-msg.user{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);align-self:flex-start;border-radius:12px 12px 12px 3px}
+.chat-msg.bot{background:var(--blue);color:#fff;align-self:flex-end;border-radius:12px 12px 3px 12px}
+.chat-msg.bot strong{display:block;font-size:0.72rem;opacity:0.8;margin-bottom:2px}
+.chat-time{font-size:0.68rem;color:rgba(255,255,255,0.35);text-align:right;margin-top:2px}
+.chat-typing{display:flex;align-items:center;gap:4px;padding:9px 13px;background:rgba(255,255,255,0.06);border-radius:12px;align-self:flex-end;width:52px}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);animation:typing 1.2s ease infinite}
+.chat-typing span:nth-child(2){animation-delay:0.2s}
+.chat-typing span:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-4px);opacity:1}}
+.chat-label{font-size:0.7rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+
+/* ===== DASHBOARD MOCKUP ===== */
+.dashboard{background:var(--white);border-radius:18px;border:1px solid rgba(0,123,255,0.1);box-shadow:0 8px 40px rgba(10,25,47,0.10);overflow:hidden;width:100%}
+.dashboard-header{background:var(--navy);padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.dashboard-title{font-family:var(--heading);font-weight:700;font-size:0.82rem;color:#fff}
+.dashboard-dot{width:8px;height:8px;border-radius:50%;background:#00e676;animation:pulse 2s ease infinite}
+.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,123,255,0.08)}
+.dashboard-metric{background:var(--white);padding:16px 18px}
+.dashboard-metric-label{font-size:0.72rem;color:var(--text-muted);font-weight:500;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em}
+.dashboard-metric-num{font-family:var(--heading);font-weight:800;font-size:1.5rem;color:var(--navy);letter-spacing:-0.03em}
+.dashboard-metric-num.green{color:#16a34a}
+.dashboard-metric-num.blue{color:var(--blue)}
+.dashboard-metric-delta{font-size:0.72rem;color:#16a34a;font-weight:600;margin-top:2px}
+.dashboard-metric-delta.red{color:#e03e3e}
+.dashboard-chart{padding:16px 18px;background:var(--white);border-top:1px solid rgba(0,123,255,0.08)}
+.dashboard-chart-label{font-size:0.72rem;color:var(--text-muted);font-weight:500;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em}
+.dashboard-bars{display:flex;align-items:flex-end;gap:5px;height:48px}
+.dashboard-bar{flex:1;border-radius:4px 4px 0 0;background:var(--blue-pale);transition:height 0.3s}
+.dashboard-bar.active{background:var(--blue)}
+.dashboard-activity{padding:14px 18px;border-top:1px solid rgba(0,123,255,0.08);display:flex;flex-direction:column;gap:8px;background:var(--white)}
+.dashboard-activity-item{display:flex;align-items:center;gap:10px;font-size:0.78rem}
+.dashboard-activity-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dashboard-activity-dot.green{background:#16a34a}
+.dashboard-activity-dot.blue{background:var(--blue)}
+.dashboard-activity-dot.orange{background:#f97316}
+.dashboard-activity-text{color:var(--text-muted);flex:1}
+.dashboard-activity-time{color:rgba(10,25,47,0.3);font-size:0.7rem;white-space:nowrap}
+
+/* Dark mode for mockups */
+body.dark .dashboard{background:#111d33;border-color:rgba(0,200,255,0.1)}
+body.dark .dashboard-grid{background:rgba(0,200,255,0.06)}
+body.dark .dashboard-metric{background:#111d33}
+body.dark .dashboard-metric-num{color:#f0f6ff}
+body.dark .dashboard-chart{background:#111d33;border-top-color:rgba(0,200,255,0.08)}
+body.dark .dashboard-bar{background:rgba(0,200,255,0.12)}
+body.dark .dashboard-bar.active{background:#00c8ff}
+body.dark .dashboard-activity{background:#111d33;border-top-color:rgba(0,200,255,0.08)}
+body.dark .dashboard-activity-text{color:#6a8fae}
+
 /* PROBLEM */
 .problem{background:var(--gray)}
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:48px}
@@ -434,15 +492,30 @@ body.dark .icon-moon{display:block}
           </div>
         </div>
       </div>
-      <div class="problem-solution reveal reveal-delay-1">
-        <span class="problem-solution-badge">La solución ARCENIX</span>
-        <h3>Un sistema que convierte leads en ingresos mientras tú impartes clases.</h3>
-        <div class="problem-solution-results">
-          <div class="sol-result"><div class="sol-result-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Respuesta automática en segundos, a cualquier hora</div>
-          <div class="sol-result"><div class="sol-result-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Solo hablas con quien va a reservar</div>
-          <div class="sol-result"><div class="sol-result-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Clientes inactivos reactivados automáticamente</div>
-          <div class="sol-result"><div class="sol-result-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Ingresos predecibles sin depender del mes bueno</div>
+
+      <!-- CHAT MOCKUP -->
+      <div class="reveal reveal-delay-1" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <p class="chat-label">El sistema responde por ti — en segundos</p>
+        <div class="chat-mockup">
+          <div class="chat-mockup-bar">
+            <div class="chat-mockup-avatar">AI</div>
+            <div>
+              <div class="chat-mockup-name">ARCENIX Sistema</div>
+              <div class="chat-mockup-status">Activo 24/7</div>
+            </div>
+          </div>
+          <div class="chat-messages">
+            <div class="chat-msg user">Hola, ¿tenéis plazas para pilates por las mañanas?</div>
+            <div class="chat-time">10:47 — Tú impartiendo clase</div>
+            <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);text-align:right;margin-bottom:2px">ARCENIX · Respuesta en 8 segundos</div>
+            <div class="chat-msg bot">¡Hola! Sí, tenemos clases de pilates a las 9h y 11h de lunes a viernes. ¿Te gustaría reservar una clase de prueba gratuita?</div>
+            <div class="chat-msg user">Sí, me interesa el jueves a las 9h</div>
+            <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);text-align:right;margin-bottom:2px">ARCENIX · Respuesta en 5 segundos</div>
+            <div class="chat-msg bot">Perfecto, te he reservado el jueves 22 a las 9h. Te llega una confirmación ahora mismo. ¡Hasta el jueves! 🎉</div>
+          </div>
+          </div>
         </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;max-width:300px">Mientras tú dabas clase, el sistema captó, calificó y cerró la reserva.</p>
       </div>
     </div>
   </div>
@@ -496,6 +569,68 @@ body.dark .icon-moon{display:block}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
       <p style="margin-top:10px;font-size:0.82rem;color:var(--text-muted)">Sin compromiso · 30 minutos</p>
+    </div>
+
+    <!-- DASHBOARD MOCKUP -->
+    <div class="reveal" style="margin-top:56px">
+      <p class="chat-label" style="text-align:center;margin-bottom:16px">Lo que ves en tiempo real cuando el sistema trabaja</p>
+      <div class="dashboard">
+        <div class="dashboard-header">
+          <span class="dashboard-title">ARCENIX Dashboard — Esta semana</span>
+          <span class="dashboard-dot"></span>
+        </div>
+        <div class="dashboard-grid">
+          <div class="dashboard-metric">
+            <div class="dashboard-metric-label">Reservas cerradas</div>
+            <div class="dashboard-metric-num green">14</div>
+            <div class="dashboard-metric-delta">↑ +6 vs semana anterior</div>
+          </div>
+          <div class="dashboard-metric">
+            <div class="dashboard-metric-label">Leads respondidos</div>
+            <div class="dashboard-metric-num blue">31</div>
+            <div class="dashboard-metric-delta">Tiempo medio: 23 seg</div>
+          </div>
+          <div class="dashboard-metric">
+            <div class="dashboard-metric-label">Ingresos recuperados</div>
+            <div class="dashboard-metric-num green">680€</div>
+            <div class="dashboard-metric-delta">↑ reactivaciones incluidas</div>
+          </div>
+          <div class="dashboard-metric">
+            <div class="dashboard-metric-label">Horas manuales ahorradas</div>
+            <div class="dashboard-metric-num">8,5 h</div>
+            <div class="dashboard-metric-delta" style="color:var(--text-muted)">vs gestión manual</div>
+          </div>
+        </div>
+        <div class="dashboard-chart">
+          <div class="dashboard-chart-label">Reservas diarias esta semana</div>
+          <div class="dashboard-bars">
+            <div class="dashboard-bar" style="height:40%"></div>
+            <div class="dashboard-bar" style="height:55%"></div>
+            <div class="dashboard-bar" style="height:35%"></div>
+            <div class="dashboard-bar" style="height:70%"></div>
+            <div class="dashboard-bar" style="height:60%"></div>
+            <div class="dashboard-bar active" style="height:90%"></div>
+            <div class="dashboard-bar active" style="height:75%"></div>
+          </div>
+        </div>
+        <div class="dashboard-activity">
+          <div class="dashboard-activity-item">
+            <span class="dashboard-activity-dot green"></span>
+            <span class="dashboard-activity-text">Reserva confirmada — Laura M. · Pilates martes 10h</span>
+            <span class="dashboard-activity-time">hace 4 min</span>
+          </div>
+          <div class="dashboard-activity-item">
+            <span class="dashboard-activity-dot blue"></span>
+            <span class="dashboard-activity-text">Lead calificado y agenda enviada — Carlos R.</span>
+            <span class="dashboard-activity-time">hace 12 min</span>
+          </div>
+          <div class="dashboard-activity-item">
+            <span class="dashboard-activity-dot orange"></span>
+            <span class="dashboard-activity-text">Reactivación enviada — Ana G. (inactiva 3 semanas)</span>
+            <span class="dashboard-activity-time">hace 31 min</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
