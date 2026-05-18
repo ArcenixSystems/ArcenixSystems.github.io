@@ -3,459 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan de Rescate 72H — ARCENIX</title>
+<title>Plan Rescate de Clientes 72H — ARCENIX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #0A192F;
-  --blue: #007BFF;
-  --blue-light: #3d9fff;
-  --blue-pale: #e8f3ff;
-  --white: #FFFFFF;
-  --text: #0A192F;
-  --text-muted: #4a6580;
-  --heading: 'Sora', sans-serif;
-  --body: 'DM Sans', sans-serif;
-  --nav-h: 68px;
-  --radius: 14px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--body); color: var(--text); background: var(--white); overflow-x: hidden; }
+:root{--navy:#0A192F;--blue:#007BFF;--blue-light:#3d9fff;--blue-pale:#e8f3ff;--white:#FFFFFF;--gray:#f7fbff;--text:#0A192F;--text-muted:#4a6580;--heading:'Sora',sans-serif;--body:'DM Sans',sans-serif;--nav-h:68px;--radius:14px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);background:var(--white);overflow-x:hidden}
 
-/* ===== NAV ===== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: var(--nav-h);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%;
-  background: rgba(255,255,255,0.93);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(0,123,255,0.1);
-  transition: box-shadow 0.3s;
-}
-nav.scrolled { box-shadow: 0 4px 24px rgba(10,25,47,0.10); }
-.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav-logo { height: 34px; width: auto; }
-.nav-name { font-family: var(--heading); font-weight: 800; font-size: 1.25rem; color: var(--navy); letter-spacing: -0.02em; }
-.nav-back {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--body); font-size: 0.82rem; font-weight: 500;
-  color: var(--text-muted); text-decoration: none;
-  padding: 7px 14px; border-radius: 8px;
-  border: 1px solid rgba(10,25,47,0.1);
-  transition: background 0.18s, color 0.18s;
-}
-.nav-back:hover { background: var(--blue-pale); color: var(--blue); border-color: rgba(0,123,255,0.2); }
-.nav-cta {
-  font-family: var(--body); font-size: 0.875rem; font-weight: 600;
-  background: var(--blue); color: var(--white);
-  border: none; border-radius: 8px; padding: 10px 22px;
-  cursor: pointer; text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
-  white-space: nowrap;
-}
-.nav-cta:hover { background: #0066dd; transform: translateY(-1px); }
-.nav-right { display: flex; align-items: center; gap: 10px; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,123,255,0.1);transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(10,25,47,0.10)}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{height:34px;width:auto}
+.nav-name{font-family:var(--heading);font-weight:800;font-size:1.25rem;color:var(--navy);letter-spacing:-0.02em}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-back{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:0.82rem;font-weight:500;color:var(--text-muted);text-decoration:none;padding:7px 14px;border-radius:8px;border:1px solid rgba(10,25,47,0.1);transition:background 0.18s,color 0.18s}
+.nav-back:hover{background:var(--blue-pale);color:var(--blue)}
+.nav-cta{font-family:var(--body);font-size:0.875rem;font-weight:600;background:var(--blue);color:var(--white);border:none;border-radius:8px;padding:10px 22px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
+.nav-cta:hover{background:#0066dd;transform:translateY(-1px)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid rgba(0,123,255,0.2);background:transparent;cursor:pointer;transition:all 0.2s;flex-shrink:0}
+.theme-toggle:hover{background:var(--blue-pale)}
+body.dark .theme-toggle{border-color:rgba(0,200,255,0.2);background:rgba(0,200,255,0.05)}
+.icon-sun{display:block}.icon-moon{display:none}
+body.dark .icon-sun{display:none}body.dark .icon-moon{display:block}
 
-/* ===== SHARED ===== */
-section { padding: 88px 5%; }
-.inner { max-width: 860px; margin: 0 auto; }
-.inner-wide { max-width: 1100px; margin: 0 auto; }
-.section-label {
-  display: inline-block; font-family: var(--body); font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 14px;
-}
-.section-title {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(1.9rem, 4.5vw, 3rem);
-  line-height: 1.08; letter-spacing: -0.03em; color: var(--navy);
-}
-.section-title span { color: var(--blue); }
-.section-title em { font-style: normal; color: var(--blue); }
+/* SHARED */
+section{padding:88px 5%}
+.inner{max-width:860px;margin:0 auto}
+.inner-wide{max-width:1100px;margin:0 auto}
+.section-label{display:inline-block;font-family:var(--body);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.section-title{font-family:var(--heading);font-weight:800;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.08;letter-spacing:-0.03em;color:var(--navy)}
+.section-title span{color:var(--blue)}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:17px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(0,123,255,0.32);transition:background 0.22s,transform 0.22s,box-shadow 0.22s}
+.btn-primary:hover{background:#0066dd;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,123,255,0.42)}
+.btn-primary svg{transition:transform 0.2s}
+.btn-primary:hover svg{transform:translateX(3px)}
 
-/* ===== HERO ===== */
-.hero {
-  padding: calc(var(--nav-h) + 72px) 5% 80px;
-  background: linear-gradient(160deg, #f0f7ff 0%, #fff 45%, #f7fbff 100%);
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; top: -80px; right: -100px;
-  width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(0,123,255,0.09) 0%, transparent 68%);
-  pointer-events: none;
-}
-.hero::after {
-  content: ''; position: absolute; bottom: -60px; left: -80px;
-  width: 360px; height: 360px;
-  background: radial-gradient(circle, rgba(10,25,47,0.04) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--blue-pale); color: var(--blue);
-  font-family: var(--body); font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 6px 14px; border-radius: 100px;
-  border: 1px solid rgba(0,123,255,0.2);
-  margin-bottom: 26px;
-  opacity: 0; animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
-}
-.hero-badge-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s ease infinite; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
-.hero h1 {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(2.5rem, 6vw, 4.2rem);
-  line-height: 1.07; letter-spacing: -0.035em;
-  color: var(--navy); margin-bottom: 22px;
-  max-width: 760px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
-}
-.hero h1 .grad {
-  background: linear-gradient(135deg, var(--blue) 0%, #00c6ff 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted);
-  max-width: 580px; line-height: 1.7; margin-bottom: 32px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.32s forwards;
-}
-.hero-bullets {
-  list-style: none; display: flex; flex-direction: column; gap: 12px;
-  margin-bottom: 40px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.42s forwards;
-}
-.hero-bullets li {
-  display: flex; align-items: flex-start; gap: 12px;
-  font-size: 0.97rem; color: var(--navy); font-weight: 500; line-height: 1.5;
-}
-.hero-bullet-icon {
-  width: 22px; height: 22px; min-width: 22px; background: var(--blue);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  margin-top: 1px;
-}
-.hero-cta {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
-  opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.52s forwards;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1rem;
-  padding: 17px 36px; border-radius: 12px; text-decoration: none;
-  box-shadow: 0 4px 20px rgba(0,123,255,0.32);
-  transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
-}
-.btn-primary:hover { background: #0066dd; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,123,255,0.42); }
-.btn-primary svg { transition: transform 0.2s; }
-.btn-primary:hover svg { transform: translateX(3px); }
-.btn-primary-dark {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--navy); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1rem;
-  padding: 17px 36px; border-radius: 12px; text-decoration: none;
-  box-shadow: 0 4px 16px rgba(10,25,47,0.2);
-  transition: background 0.22s, transform 0.22s;
-}
-.btn-primary-dark:hover { background: #0d2a4f; transform: translateY(-2px); }
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: var(--blue);
-  font-family: var(--body); font-weight: 600; font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.btn-ghost:hover { color: #0055cc; }
-.hero-note { font-size: 0.82rem; color: var(--text-muted); }
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
 
-@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+/* HERO */
+.hero{padding:calc(var(--nav-h) + 72px) 5% 80px;background:var(--white);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-100px;width:520px;height:520px;background:radial-gradient(circle,rgba(0,123,255,0.07) 0%,transparent 68%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--blue-pale);color:var(--blue);font-family:var(--body);font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:6px 14px;border-radius:100px;border:1px solid rgba(0,123,255,0.2);margin-bottom:24px;opacity:0;animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards}
+.hero-badge-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s ease infinite}
+.hero h1{font-family:var(--heading);font-weight:800;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.06;letter-spacing:-0.035em;color:var(--navy);margin-bottom:18px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards}
+.hero h1 .grad{background:linear-gradient(135deg,var(--blue) 0%,#00c6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.05rem;color:var(--text-muted);max-width:480px;line-height:1.65;margin-bottom:28px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.32s forwards}
+.hero-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.42s forwards}
+.hero-bullets li{display:flex;align-items:center;gap:10px;font-size:0.93rem;color:var(--navy);font-weight:500}
+.hero-bullet-check{width:20px;height:20px;min-width:20px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.hero-cta-group{display:flex;flex-direction:column;align-items:flex-start;gap:8px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.52s forwards}
+.hero-note{font-size:0.82rem;color:var(--text-muted)}
 
-/* ===== PROBLEM ===== */
-.problem { background: var(--navy); }
-.problem .section-label { color: #5bc3ff; }
-.problem .section-title { color: var(--white); }
-.problem-intro { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.7; max-width: 600px; margin-top: 14px; }
-.problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
-.problem-card {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px; padding: 24px 22px;
-  transition: background 0.2s, border-color 0.2s;
-}
-.problem-card:hover { background: rgba(0,123,255,0.1); border-color: rgba(0,123,255,0.3); }
-.problem-card-num {
-  font-family: var(--heading); font-weight: 800; font-size: 2rem;
-  color: rgba(0,123,255,0.3); letter-spacing: -0.04em; line-height: 1; margin-bottom: 14px;
-}
-.problem-card h3 { font-family: var(--heading); font-weight: 700; font-size: 1.05rem; color: var(--white); margin-bottom: 8px; }
-.problem-card p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
-.problem-impact {
-  background: rgba(0,123,255,0.12); border: 1px solid rgba(0,123,255,0.25);
-  border-radius: 14px; padding: 24px 28px; margin-top: 32px;
-  display: flex; align-items: center; gap: 20px;
-}
-.problem-impact-icon {
-  width: 44px; height: 44px; min-width: 44px; background: rgba(0,123,255,0.25);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
-}
-.problem-impact p { font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.6; font-weight: 500; }
-.problem-impact span { color: #5bc3ff; font-weight: 700; }
+/* HERO VISUAL — message preview */
+.hero-visual{opacity:0;animation:fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s forwards}
+.msg-preview{background:var(--navy);border-radius:20px;padding:24px;box-shadow:0 20px 60px rgba(10,25,47,0.18)}
+.msg-preview-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.msg-preview-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#00c6ff);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:0.75rem;color:#fff}
+.msg-preview-name{font-family:var(--heading);font-weight:700;font-size:0.85rem;color:#fff}
+.msg-preview-sub{font-size:0.7rem;color:rgba(255,255,255,0.4)}
+.msg-preview-days{display:flex;flex-direction:column;gap:16px}
+.msg-day{display:flex;flex-direction:column;gap:8px}
+.msg-day-label{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.msg-bubble{background:var(--blue);color:#fff;border-radius:12px 12px 3px 12px;padding:10px 14px;font-size:0.8rem;line-height:1.5;align-self:flex-end;max-width:90%}
+.msg-bubble.day2{background:rgba(0,123,255,0.6)}
+.msg-bubble.day3{background:rgba(0,123,255,0.35)}
+.msg-result{display:inline-flex;align-items:center;gap:5px;background:rgba(0,230,118,0.15);border:1px solid rgba(0,230,118,0.3);color:#00e676;font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;align-self:flex-start}
 
-/* ===== WHAT IS ===== */
-.what { background: #f7fbff; }
-.what-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 56px; }
-.what-header-text p { color: var(--text-muted); font-size: 1rem; line-height: 1.72; margin-top: 16px; }
-.what-header-box {
-  background: var(--navy); border-radius: 16px; padding: 32px 28px;
-}
-.what-header-box-label {
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: #5bc3ff; margin-bottom: 16px;
-}
-.what-header-box-stat { display: flex; flex-direction: column; gap: 16px; }
-.what-stat-row {
-  display: flex; align-items: center; gap: 14px;
-  color: rgba(255,255,255,0.8); font-size: 0.95rem; font-weight: 500;
-}
-.what-stat-icon {
-  width: 30px; height: 30px; min-width: 30px; border-radius: 7px;
-  background: var(--blue); display: flex; align-items: center; justify-content: center;
-}
-.days-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.day-card {
-  background: var(--white); border-radius: 16px; padding: 28px 24px;
-  border: 1px solid rgba(0,123,255,0.1);
-  box-shadow: 0 2px 10px rgba(10,25,47,0.05);
-  position: relative; overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
-}
-.day-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue), #00c6ff);
-}
-.day-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(10,25,47,0.10); }
-.day-badge {
-  display: inline-block; background: var(--blue-pale); color: var(--blue);
-  font-family: var(--heading); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
-}
-.day-card h3 { font-family: var(--heading); font-weight: 800; font-size: 1.25rem; color: var(--navy); margin-bottom: 10px; }
-.day-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
-.day-card-result {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 16px; font-size: 0.8rem; font-weight: 600;
-  color: var(--blue); background: var(--blue-pale);
-  padding: 5px 10px; border-radius: 100px;
-}
+/* PROBLEM */
+.problem{background:var(--navy)}
+.problem .section-label{color:#5bc3ff}
+.problem .section-title{color:var(--white)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.problem-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:24px 20px;transition:background 0.2s,border-color 0.2s}
+.problem-card:hover{background:rgba(0,123,255,0.1);border-color:rgba(0,123,255,0.3)}
+.problem-card-num{font-family:var(--heading);font-weight:800;font-size:2rem;color:rgba(0,123,255,0.3);letter-spacing:-0.04em;line-height:1;margin-bottom:12px}
+.problem-card h3{font-family:var(--heading);font-weight:700;font-size:1rem;color:var(--white);margin-bottom:6px}
+.problem-card p{font-size:0.86rem;color:rgba(255,255,255,0.5);line-height:1.58}
+.problem-callout{background:rgba(0,123,255,0.12);border:1px solid rgba(0,123,255,0.25);border-radius:14px;padding:22px 26px;margin-top:28px;display:flex;align-items:center;gap:16px}
+.problem-callout-icon{width:40px;height:40px;min-width:40px;background:rgba(0,123,255,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.problem-callout p{font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.55;font-weight:500}
+.problem-callout span{color:#5bc3ff;font-weight:700}
 
-/* ===== HOW IT WORKS ===== */
-.how { background: var(--white); }
-.how-action-box {
-  background: var(--navy); border-radius: 16px; padding: 28px 32px;
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  margin-top: 48px; flex-wrap: wrap;
-}
-.how-action-box p {
-  font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
-  color: var(--white); line-height: 1.4;
-}
-.how-action-box span { color: #5bc3ff; }
+/* HOW — 3 days */
+.how{background:var(--gray)}
+.days-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.day-card{background:var(--white);border-radius:16px;padding:28px 24px;border:1px solid rgba(0,123,255,0.1);box-shadow:0 2px 10px rgba(10,25,47,0.05);position:relative;overflow:hidden;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s}
+.day-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#00c6ff)}
+.day-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(10,25,47,0.10)}
+.day-badge{display:inline-block;background:var(--blue-pale);color:var(--blue);font-family:var(--heading);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:14px}
+.day-card h3{font-family:var(--heading);font-weight:800;font-size:1.2rem;color:var(--navy);margin-bottom:8px}
+.day-card p{font-size:0.88rem;color:var(--text-muted);line-height:1.6}
+.day-result{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:0.78rem;font-weight:600;color:var(--blue);background:var(--blue-pale);padding:4px 10px;border-radius:100px}
 
-/* ===== RESULTS ===== */
-.results { background: var(--navy); text-align: center; }
-.results .section-label { color: #5bc3ff; }
-.results .section-title { color: var(--white); }
-.results-sub { color: rgba(255,255,255,0.6); font-size: 1rem; margin-top: 12px; line-height: 1.65; }
-.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
-.result-card {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(0,123,255,0.2);
-  border-radius: 16px; padding: 28px 20px;
-  transition: background 0.2s, border-color 0.2s;
-}
-.result-card:hover { background: rgba(0,123,255,0.1); border-color: rgba(0,123,255,0.4); }
-.result-card-num {
-  font-family: var(--heading); font-weight: 800; font-size: 2.4rem;
-  color: var(--blue-light); line-height: 1; letter-spacing: -0.04em;
-  margin-bottom: 8px;
-}
-.result-card-label { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.45; }
-.results-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(0,123,255,0.15); border: 1px solid rgba(0,123,255,0.35);
-  color: #5bc3ff; font-family: var(--heading); font-weight: 700; font-size: 0.85rem;
-  padding: 8px 18px; border-radius: 100px; margin: 36px 0 28px;
-}
+/* WHAT YOU GET */
+.whatget{background:var(--white)}
+.whatget-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:44px}
+.whatget-list{display:flex;flex-direction:column;gap:12px}
+.whatget-item{display:flex;align-items:flex-start;gap:14px;background:var(--gray);border-radius:12px;padding:16px 18px;border:1px solid rgba(0,123,255,0.08)}
+.whatget-check{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.whatget-item p{font-size:0.92rem;color:var(--navy);font-weight:500;line-height:1.45}
+.whatget-price-box{background:var(--navy);border-radius:20px;padding:40px 36px;text-align:center}
+.whatget-price-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5bc3ff;margin-bottom:12px}
+.whatget-price{font-family:var(--heading);font-weight:800;font-size:4.5rem;color:var(--white);line-height:1;letter-spacing:-0.05em}
+.whatget-price sup{font-size:2rem;vertical-align:top;margin-top:8px;display:inline-block}
+.whatget-price-desc{font-size:0.9rem;color:rgba(255,255,255,0.5);margin:10px 0 20px}
+.whatget-roi{background:rgba(0,123,255,0.15);border:1px solid rgba(0,123,255,0.3);border-radius:10px;padding:12px 16px;font-size:0.88rem;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:20px;line-height:1.45}
+.whatget-roi span{color:#5bc3ff}
+.whatget-btn{display:block;width:100%;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:16px;border-radius:12px;text-decoration:none;text-align:center;box-shadow:0 4px 20px rgba(0,123,255,0.3);transition:background 0.2s,transform 0.2s}
+.whatget-btn:hover{background:#0066dd;transform:translateY(-2px)}
+.whatget-btn-sub{display:block;font-size:0.78rem;font-weight:400;opacity:0.8;margin-top:4px}
+.guarantee{background:rgba(255,183,77,0.1);border:1px solid rgba(255,183,77,0.3);border-radius:12px;padding:16px 18px;margin-top:16px;display:flex;align-items:flex-start;gap:12px;text-align:left}
+.guarantee-icon{font-size:1.2rem;flex-shrink:0;line-height:1}
+.guarantee strong{display:block;color:#f59e0b;font-size:0.85rem;font-family:var(--heading);font-weight:700;margin-bottom:3px}
+.guarantee p{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.5}
 
-/* ===== OBJECTIONS ===== */
-.objections { background: var(--white); }
-.obj-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 44px; }
-.obj-item {
-  background: #f7fbff; border: 1px solid rgba(0,123,255,0.1);
-  border-radius: 14px; padding: 24px 28px;
-  display: grid; grid-template-columns: 1fr 1.6fr; gap: 28px; align-items: center;
-}
-.obj-q {
-  font-family: var(--heading); font-weight: 700; font-size: 1rem; color: var(--text-muted);
-}
-.obj-q::before {
-  content: '"'; color: var(--navy); font-size: 1.5rem;
-  font-family: var(--heading); display: block; line-height: 1; margin-bottom: 4px;
-}
-.obj-a { font-size: 0.95rem; color: var(--navy); line-height: 1.65; }
-.obj-a strong { color: var(--blue); }
+/* FAQ */
+.faq{background:var(--gray)}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.faq-item{background:var(--white);border-radius:var(--radius);border:1px solid rgba(0,123,255,0.1);overflow:hidden}
+.faq-q{padding:18px 22px;font-family:var(--heading);font-weight:700;font-size:0.95rem;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.15s}
+.faq-q:hover{background:var(--blue-pale)}
+.faq-q-arrow{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),background 0.2s}
+.faq-item.open .faq-q-arrow{transform:rotate(180deg);background:var(--blue)}
+.faq-item.open .faq-q-arrow svg{stroke:white}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1);font-size:0.91rem;color:var(--text-muted);line-height:1.68}
+.faq-item.open .faq-a{max-height:200px;padding:0 22px 18px;border-top:1px solid rgba(0,123,255,0.08);padding-top:12px}
 
-/* ===== PRICE ===== */
-.price-section { background: linear-gradient(160deg, #f0f7ff 0%, #f8fbff 100%); }
-.price-card {
-  background: var(--white); border: 2px solid var(--blue);
-  border-radius: 24px; padding: 52px 44px;
-  max-width: 540px; margin: 0 auto;
-  box-shadow: 0 8px 60px rgba(0,123,255,0.12);
-  text-align: center;
-}
-.price-label {
-  display: inline-block; background: var(--blue-pale); color: var(--blue);
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 100px; margin-bottom: 20px;
-}
-.price-amount {
-  font-family: var(--heading); font-weight: 800; font-size: 5rem;
-  color: var(--navy); line-height: 1; letter-spacing: -0.05em;
-}
-.price-amount sup { font-size: 2.2rem; vertical-align: top; margin-top: 10px; display: inline-block; }
-.price-desc { color: var(--text-muted); font-size: 0.97rem; margin: 12px 0 0; }
-.price-roi {
-  background: var(--blue-pale); border: 1px solid rgba(0,123,255,0.2);
-  border-radius: 10px; padding: 14px 20px;
-  font-size: 0.93rem; color: var(--navy); font-weight: 600;
-  margin: 24px 0;
-}
-.price-roi span { color: var(--blue); }
-.price-btn {
-  display: block; width: 100%;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1.05rem;
-  padding: 18px; border-radius: 12px; text-decoration: none; text-align: center;
-  box-shadow: 0 4px 20px rgba(0,123,255,0.3);
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.price-btn:hover { background: #0066dd; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,123,255,0.42); }
-.price-btn-sub { display: block; font-size: 0.8rem; font-weight: 400; opacity: 0.8; margin-top: 4px; }
-.guarantee {
-  background: linear-gradient(135deg, #fff8f0, #fff);
-  border: 2px solid #ffb347; border-radius: 14px;
-  padding: 20px 22px; margin-top: 20px; text-align: left;
-  display: flex; align-items: flex-start; gap: 14px;
-}
-.guarantee-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; margin-top: 2px; }
-.guarantee-title { font-family: var(--heading); font-weight: 700; font-size: 0.95rem; color: #b45309; margin-bottom: 4px; }
-.guarantee-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,#0d2a4f 0%,var(--navy) 50%,#0a1f3d 100%);text-align:center;padding:110px 5%;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:600px;background:radial-gradient(ellipse,rgba(0,123,255,0.16) 0%,transparent 65%);pointer-events:none}
+.final-cta .section-label{color:#5bc3ff;position:relative;z-index:1}
+.final-cta h2{font-family:var(--heading);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);color:var(--white);line-height:1.08;letter-spacing:-0.03em;max-width:660px;margin:14px auto 0;position:relative;z-index:1}
+.final-cta h2 span{color:var(--blue-light)}
+.final-cta-sub{color:rgba(255,255,255,0.55);font-size:1rem;margin:14px auto 36px;position:relative;z-index:1;max-width:460px;display:block;line-height:1.65}
+.final-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 36px;position:relative;z-index:1}
+.final-badge{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:6px 14px;font-family:var(--heading);font-weight:600;font-size:0.82rem;color:rgba(255,255,255,0.7)}
+.final-btn{display:inline-flex;flex-direction:column;align-items:center;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1.1rem;padding:20px 48px;border-radius:14px;text-decoration:none;box-shadow:0 8px 32px rgba(0,123,255,0.4);position:relative;z-index:1;transition:transform 0.2s,box-shadow 0.2s}
+.final-btn:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,123,255,0.5)}
+.final-btn-sub{font-size:0.8rem;font-weight:400;opacity:0.8;margin-top:4px}
+.final-note{color:rgba(255,255,255,0.3);font-size:0.82rem;margin-top:14px;position:relative;z-index:1}
 
-/* ===== FINAL CTA ===== */
-.final-cta {
-  background: linear-gradient(135deg, #0d2a4f 0%, var(--navy) 50%, #0a1f3d 100%);
-  text-align: center; padding: 110px 5%; position: relative; overflow: hidden;
-}
-.final-cta::before {
-  content: ''; position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
-  width: 700px; height: 600px;
-  background: radial-gradient(ellipse, rgba(0,123,255,0.16) 0%, transparent 65%);
-  pointer-events: none;
-}
-.final-cta .section-label { color: #5bc3ff; position: relative; z-index: 1; }
-.final-cta h2 {
-  font-family: var(--heading); font-weight: 800;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color: var(--white); line-height: 1.08; letter-spacing: -0.03em;
-  max-width: 680px; margin: 14px auto 0; position: relative; z-index: 1;
-}
-.final-cta h2 span { color: var(--blue-light); }
-.final-cta p { color: rgba(255,255,255,0.55); font-size: 1rem; margin: 14px 0 44px; position: relative; z-index: 1; }
-.final-fears {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 12px; max-width: 740px; margin: 0 auto 44px;
-  position: relative; z-index: 1;
-}
-.fear-card {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px; padding: 18px 16px;
-}
-.fear-card strong {
-  display: block; font-family: var(--heading); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(255,255,255,0.35); margin-bottom: 6px;
-}
-.fear-card p { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
-.final-btn {
-  display: inline-flex; flex-direction: column; align-items: center;
-  background: var(--blue); color: var(--white);
-  font-family: var(--heading); font-weight: 700; font-size: 1.1rem;
-  padding: 20px 44px; border-radius: 14px; text-decoration: none;
-  box-shadow: 0 8px 32px rgba(0,123,255,0.4);
-  position: relative; z-index: 1;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.final-btn:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,123,255,0.5); }
-.final-btn-sub { font-size: 0.8rem; font-weight: 400; opacity: 0.8; margin-top: 4px; }
-.final-note { color: rgba(255,255,255,0.3); font-size: 0.82rem; margin-top: 16px; position: relative; z-index: 1; }
+/* FOOTER */
+footer{background:var(--navy);padding:36px 5%;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.07)}
+.footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.footer-logo{height:28px}
+.footer-name{font-family:var(--heading);font-weight:700;color:var(--white);font-size:1rem}
+footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
 
-/* ===== FOOTER ===== */
-footer {
-  background: var(--navy); padding: 36px 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.07);
-}
-.footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.footer-logo { height: 28px; }
-.footer-name { font-family: var(--heading); font-weight: 700; color: var(--white); font-size: 1rem; }
-footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
 
-/* ===== SCROLL REVEAL ===== */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+/* DARK MODE */
+body.dark{background:#080e1a;color:#f0f6ff}
+body.dark nav{background:rgba(8,14,26,0.92);border-bottom-color:rgba(0,200,255,0.12)}
+body.dark .nav-name{color:#fff}
+body.dark .nav-back{color:#8bafd4;border-color:rgba(255,255,255,0.1)}
+body.dark .section-title{color:#f0f6ff}
+body.dark .section-label{color:#00c8ff}
+body.dark .section-title span{color:#00c8ff}
+body.dark .hero{background:#080e1a}
+body.dark .hero h1{color:#f0f6ff}
+body.dark .hero-sub{color:#6a8fae}
+body.dark .hero-bullets li{color:#f0f6ff}
+body.dark .how{background:#0d1526}
+body.dark .day-card{background:#111d33;border-color:rgba(0,200,255,0.1)}
+body.dark .day-card h3{color:#f0f6ff}
+body.dark .day-card p{color:#6a8fae}
+body.dark .whatget{background:#080e1a}
+body.dark .whatget-item{background:#111d33;border-color:rgba(0,200,255,0.08)}
+body.dark .whatget-item p{color:#f0f6ff}
+body.dark .faq{background:#0d1526}
+body.dark .faq-item{background:#111d33;border-color:rgba(0,200,255,0.1)}
+body.dark .faq-q{color:#f0f6ff}
+body.dark .faq-q:hover{background:rgba(0,200,255,0.08)}
+body.dark footer{background:#060c18;border-top-color:rgba(255,255,255,0.05)}
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .what-header { grid-template-columns: 1fr; gap: 32px; }
-  .days-grid { grid-template-columns: 1fr; }
-  .problem-cards { grid-template-columns: 1fr; }
-  .results-grid { grid-template-columns: 1fr; gap: 12px; }
-  .obj-item { grid-template-columns: 1fr; gap: 12px; }
-  .final-fears { grid-template-columns: 1fr; max-width: 420px; }
-  footer { flex-direction: column; gap: 14px; text-align: center; }
-  .how-action-box { flex-direction: column; align-items: flex-start; gap: 18px; }
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-visual{order:-1}
+  .days-grid,.problem-grid{grid-template-columns:1fr}
+  .whatget-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:14px;text-align:center}
+  .final-badges{flex-direction:column;align-items:center}
 }
-
-@media (max-width: 768px) {
-  section { padding: 64px 5%; }
-  .hero { padding: calc(var(--nav-h) + 48px) 5% 60px; }
-  .hero-cta { align-items: stretch; }
-  .btn-primary, .btn-primary-dark { justify-content: center; }
-  .price-card { padding: 36px 24px; }
-  .problem-impact { flex-direction: column; align-items: flex-start; }
-  .nav-back { display: none; }
+@media(max-width:768px){
+  section{padding:64px 5%}
+  .hero{padding:calc(var(--nav-h) + 48px) 5% 60px}
+  .hero h1{font-size:2.3rem}
+  .btn-primary{justify-content:center;width:100%}
+  .nav-back{display:none}
 }
-
-@media (max-width: 480px) {
-  .hero h1 { font-size: 2.2rem; }
-  .price-amount { font-size: 4rem; }
-  .what-header-box { padding: 24px 20px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, .hero-badge, .hero h1, .hero-sub, .hero-bullets, .hero-cta, .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
-}
+@media(prefers-reduced-motion:reduce){*,.hero-badge,.hero h1,.hero-sub,.hero-bullets,.hero-cta-group,.hero-visual,.reveal{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="../index.html" class="nav-brand">
     <img src="../Logo.png" alt="ARCENIX logo" class="nav-logo">
@@ -467,43 +219,62 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
       Volver al inicio
     </a>
     <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="nav-cta">Diagnóstico gratuito</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="inner">
-    <span class="hero-badge"><span class="hero-badge-dot"></span>Plan de Rescate 72H</span>
-    <h1>Recupera leads perdidos.<br><span class="grad">En menos de 72 horas.</span></h1>
-    <p class="hero-sub">
-      Mensajes listos + pasos exactos para convertir contactos olvidados en reservas reales — sin publicidad extra, sin herramientas complicadas.
-    </p>
-    <ul class="hero-bullets">
-      <li>
-        <span class="hero-bullet-icon">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </span>
-        Convierte conversaciones en clientes en 3 días o menos
-      </li>
-      <li>
-        <span class="hero-bullet-icon">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </span>
-        Mensajes validados específicamente en centros fitness boutique
-      </li>
-      <li>
-        <span class="hero-bullet-icon">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </span>
-        Sin conocimientos de marketing. Solo copia, pega y ejecuta.
-      </li>
-    </ul>
-    <div class="hero-cta">
-      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary">
-        Quiero mi diagnóstico gratuito
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-      <span class="hero-note">Sin compromiso. Sin tarjeta de crédito.</span>
+  <div class="hero-inner">
+    <div>
+      <span class="hero-badge"><span class="hero-badge-dot"></span>Inicio rápido · 9,99€</span>
+      <h1>Leads fríos que<br><span class="grad">se convierten en reservas.</span></h1>
+      <p class="hero-sub">Mensajes listos para copiar y enviar. Proceso exacto de cuándo y cómo usarlos. Resultados en 72 horas.</p>
+      <ul class="hero-bullets">
+        <li><span class="hero-bullet-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Sin publicidad. Sin herramientas nuevas.</li>
+        <li><span class="hero-bullet-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>30 minutos de trabajo. Solo copia, pega y ejecuta.</li>
+        <li><span class="hero-bullet-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Validado en centros fitness boutique.</li>
+      </ul>
+      <div class="hero-cta-group">
+        <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary">
+          Quiero el Plan de Rescate
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <span class="hero-note">Acceso inmediato · Solo 9,99€ · Garantía total</span>
+      </div>
+    </div>
+
+    <!-- VISUAL: message preview -->
+    <div class="hero-visual">
+      <div class="msg-preview">
+        <div class="msg-preview-header">
+          <div class="msg-preview-avatar">72H</div>
+          <div>
+            <div class="msg-preview-name">Plan Rescate 72H</div>
+            <div class="msg-preview-sub">Mensajes incluidos en la guía</div>
+          </div>
+        </div>
+        <div class="msg-preview-days">
+          <div class="msg-day">
+            <span class="msg-day-label">Día 1 — Activación</span>
+            <div class="msg-bubble" style="letter-spacing:2px;color:rgba(255,255,255,0.9)">████████████████████████████</div>
+            <span class="msg-result">✓ El lead responde</span>
+          </div>
+          <div class="msg-day">
+            <span class="msg-day-label">Día 2 — Seguimiento</span>
+            <div class="msg-bubble day2" style="letter-spacing:2px;color:rgba(255,255,255,0.7)">████████████████████</div>
+            <span class="msg-result">✓ La conversación avanza</span>
+          </div>
+          <div class="msg-day">
+            <span class="msg-day-label">Día 3 — Cierre</span>
+            <div class="msg-bubble day3" style="letter-spacing:2px;color:rgba(255,255,255,0.5)">██████████████████████████</div>
+            <span class="msg-result">✓ Reserva confirmada</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -513,197 +284,130 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
   <div class="inner-wide">
     <span class="section-label reveal">El problema real</span>
     <h2 class="section-title reveal">Tienes clientes esperando.<br>Solo falta el mensaje correcto.</h2>
-    <p class="problem-intro reveal">La mayoría de estudios pierden entre el 60% y el 80% de sus leads no por falta de interés, sino por no dar seguimiento en el momento adecuado.</p>
-    <div class="problem-cards">
+    <div class="problem-grid">
       <div class="problem-card reveal">
         <div class="problem-card-num">01</div>
         <h3>Te escribieron</h3>
-        <p>Mostraron interés, preguntaron precios, querían saber más. Pero nunca recibieron un segundo mensaje tuyo.</p>
+        <p>Mostraron interés, preguntaron precios. Pero nunca recibieron un segundo mensaje tuyo.</p>
       </div>
       <div class="problem-card reveal reveal-delay-1">
         <div class="problem-card-num">02</div>
         <h3>Estuvieron cerca</h3>
-        <p>Estuvieron a punto de reservar… y algo los frenó. Una duda sin resolver. Una espera demasiado larga.</p>
+        <p>A punto de reservar. Una duda sin resolver, una espera demasiado larga... y se fueron.</p>
       </div>
       <div class="problem-card reveal reveal-delay-2">
         <div class="problem-card-num">03</div>
-        <h3>No los perdiste para siempre</h3>
+        <h3>No los perdiste</h3>
         <p>No se fueron a la competencia. Solo dejaron de recibir el mensaje correcto en el momento correcto.</p>
       </div>
     </div>
-    <div class="problem-impact reveal">
-      <div class="problem-impact-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5bc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-      </div>
+    <div class="problem-callout reveal">
+      <div class="problem-callout-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5bc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
       <p>No necesitas más leads. <span>Necesitas convertir los que ya tienes.</span></p>
     </div>
   </div>
 </section>
 
-<!-- WHAT IS -->
-<section class="what" id="que-es">
+<!-- HOW — 3 DAYS -->
+<section class="how" id="como-funciona">
   <div class="inner-wide">
-    <div class="what-header">
-      <div class="what-header-text">
-        <span class="section-label reveal">Qué es el Plan de Rescate 72H</span>
-        <h2 class="section-title reveal">Un sistema de acción<br>en 3 días exactos.</h2>
-        <p class="reveal">No es una guía genérica. Es un protocolo de mensajes probados con pasos concretos para cada día — pensado para ejecutarse en 30–60 minutos.</p>
-      </div>
-      <div class="what-header-box reveal">
-        <p class="what-header-box-label">Qué consigues</p>
-        <div class="what-header-box-stat">
-          <div class="what-stat-row">
-            <div class="what-stat-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Respuestas de leads que creías fríos
-          </div>
-          <div class="what-stat-row">
-            <div class="what-stat-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Conversaciones que avanzan hacia el cierre
-          </div>
-          <div class="what-stat-row">
-            <div class="what-stat-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Reservas confirmadas en menos de 72h
-          </div>
-          <div class="what-stat-row">
-            <div class="what-stat-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            Sin publicidad. Sin nuevo presupuesto.
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <span class="section-label reveal">Cómo funciona</span>
+    <h2 class="section-title reveal">Un proceso en 3 días.<br><span>Exacto. Sin improvisar.</span></h2>
     <div class="days-grid">
       <div class="day-card reveal">
         <span class="day-badge">Día 1</span>
         <h3>Activación</h3>
-        <p>Reactivas todos tus leads con un mensaje estratégico diseñado para provocar respuestas, no para vender de golpe. Natural y directo.</p>
-        <span class="day-card-result">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          El lead responde
-        </span>
+        <p>Envías el primer mensaje a tus leads. Diseñado para provocar respuesta, no para vender de golpe.</p>
+        <span class="day-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>El lead responde</span>
       </div>
       <div class="day-card reveal reveal-delay-1">
         <span class="day-badge">Día 2</span>
         <h3>Seguimiento</h3>
-        <p>Recuperas a los que no respondieron con un segundo mensaje que reabre la conversación de forma natural, sin presión y sin parecer desesperado.</p>
-        <span class="day-card-result">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          La conversación avanza
-        </span>
+        <p>Reactivas a los que no contestaron con un segundo mensaje que reabre la conversación de forma natural.</p>
+        <span class="day-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>La conversación avanza</span>
       </div>
       <div class="day-card reveal reveal-delay-2">
         <span class="day-badge">Día 3</span>
         <h3>Cierre</h3>
-        <p>Provocas la decisión con el mensaje que elimina la fricción final. Sin empujar. Sin descuentos. Solo el argumento correcto en el momento justo.</p>
-        <span class="day-card-result">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          La reserva se confirma
-        </span>
+        <p>Provocas la decisión con el argumento correcto. Sin empujar, sin descuentos, sin improvisar.</p>
+        <span class="day-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>La reserva se confirma</span>
       </div>
-    </div>
-
-    <div class="how-action-box reveal">
-      <p>Solo copia, pega y ejecuta. <span>Sin complicaciones, sin curva de aprendizaje.</span></p>
-      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary">
-        Ver si aplica a mi negocio
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
     </div>
   </div>
 </section>
 
-<!-- RESULTS -->
-<section class="results" id="resultados">
-  <div class="inner">
-    <span class="section-label reveal">Lo que puedes esperar</span>
-    <h2 class="section-title reveal" style="color:var(--white)">Resultados reales,<br>en menos de 72 horas.</h2>
-    <p class="results-sub reveal">Después de ejecutar el Plan de Rescate 72H, esto es lo que ocurre habitualmente:</p>
-    <div class="results-grid">
-      <div class="result-card reveal">
-        <div class="result-card-num">+60%</div>
-        <div class="result-card-label">de tasa de respuesta en leads que llevaban semanas sin contestar</div>
-      </div>
-      <div class="result-card reveal reveal-delay-1">
-        <div class="result-card-num">3–7</div>
-        <div class="result-card-label">reservas nuevas de media en el primer ciclo de 72h</div>
-      </div>
-      <div class="result-card reveal reveal-delay-2">
-        <div class="result-card-num">30 min</div>
-        <div class="result-card-label">es todo el tiempo que necesitas para ejecutar el plan completo</div>
-      </div>
-    </div>
-    <div class="results-tag reveal">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      Empieza a ver resultados este mismo fin de semana
-    </div>
-    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
-      Diagnóstico gratuito — Cómo aplicarlo a mi negocio
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
-  </div>
-</section>
-
-<!-- OBJECTIONS -->
-<section class="objections" id="dudas">
-  <div class="inner">
-    <span class="section-label reveal">Resolvemos tus dudas</span>
-    <h2 class="section-title reveal">Hemos escuchado<br>todas las objeciones.</h2>
-    <div class="obj-grid">
-      <div class="obj-item reveal">
-        <div class="obj-q">No soy bueno vendiendo</div>
-        <div class="obj-a">Estos mensajes están diseñados para <strong>vender sin parecer agresivo</strong>. El sistema hace el trabajo por ti — tú solo copias y pegas.</div>
-      </div>
-      <div class="obj-item reveal">
-        <div class="obj-q">No tengo tiempo</div>
-        <div class="obj-a">Solo necesitas <strong>30–60 minutos</strong> para ejecutarlo. Está pensado para propietarios de negocio con agendas reales, no para marketers.</div>
-      </div>
-      <div class="obj-item reveal">
-        <div class="obj-q">Mis leads no responden</div>
-        <div class="obj-a">No es el lead. <strong>Es el mensaje.</strong> La mayoría de leads fríos responden cuando reciben el mensaje correcto en el momento correcto.</div>
-      </div>
-      <div class="obj-item reveal">
-        <div class="obj-q">No sé qué decir</div>
-        <div class="obj-a">Por eso existe este plan. Tienes <strong>exactamente qué decir</strong> en cada momento — sin improvisar, sin adivinar.</div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary-dark reveal">
-        Consulta gratuita — Resuelve tus dudas con nosotros
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- PRICE -->
-<section class="price-section" id="precio">
-  <div class="inner">
-    <span class="section-label reveal" style="display:block;text-align:center">Invierte una vez. Recupera clientes siempre.</span>
-    <div class="price-card reveal">
-      <span class="price-label">Acceso inmediato</span>
-      <div class="price-amount"><sup>€</sup>9,99</div>
-      <p class="price-desc">Acceso completo al Plan de Rescate 72H</p>
-      <div class="price-roi">
-        Recupera <span>1 solo cliente</span> y ya lo has rentabilizado. Con creces.
-      </div>
-      <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="price-btn">
-        Quiero mi Plan Rescate 72H
-        <span class="price-btn-sub">Acceso inmediato tras el pago</span>
-      </a>
-      <div class="guarantee">
-        <div class="guarantee-icon">🛡️</div>
-        <div>
-          <p class="guarantee-title">Garantía total de resultados</p>
-          <p class="guarantee-text">Si aplicas el plan siguiendo los pasos y no obtienes ninguna respuesta, te devolvemos el dinero. Sin preguntas.</p>
+<!-- WHAT YOU GET + PRICE -->
+<section class="whatget" id="que-incluye">
+  <div class="inner-wide">
+    <span class="section-label reveal">Qué incluye</span>
+    <h2 class="section-title reveal">Todo lo que necesitas<br><span>para empezar hoy.</span></h2>
+    <div class="whatget-grid">
+      <div class="whatget-list reveal">
+        <div class="whatget-item">
+          <div class="whatget-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <p>Mensajes listos para copiar y enviar —> día 1, 2 y 3</p>
         </div>
+        <div class="whatget-item">
+          <div class="whatget-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <p>Proceso exacto de cuándo y cómo enviarlos</p>
+        </div>
+        <div class="whatget-item">
+          <div class="whatget-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <p>Variantes para WhatsApp, Instagram y correo</p>
+        </div>
+        <div class="whatget-item">
+          <div class="whatget-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <p>Respuestas a las objeciones más comunes</p>
+        </div>
+        <div class="whatget-item">
+          <div class="whatget-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <p>Checklist de ejecución paso a paso</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="whatget-price-box">
+          <p class="whatget-price-label">Acceso inmediato</p>
+          <div class="whatget-price"><sup>€</sup>9,99</div>
+          <p class="whatget-price-desc">Pago único · Sin suscripción</p>
+          <div class="whatget-roi">Recupera <span>1 solo cliente</span> y ya lo has rentabilizado.</div>
+          <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="whatget-btn">
+            Quiero el Plan de Rescate
+            <span class="whatget-btn-sub">Acceso inmediato tras el pago</span>
+          </a>
+          <div class="guarantee">
+            <div class="guarantee-icon">🛡️</div>
+            <div>
+              <strong>Garantía total</strong>
+              <p>Si aplicas el plan y no obtienes ninguna respuesta, te devolvemos el dinero.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="preguntas">
+  <div class="inner">
+    <span class="section-label reveal">Preguntas frecuentes</span>
+    <h2 class="section-title reveal">Lo que suelen preguntarnos.</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">"No soy bueno vendiendo"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Estos mensajes están diseñados para vender sin parecer agresivo. Solo copias y pegas — el sistema hace el trabajo por ti.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"No tengo tiempo"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Solo necesitas 30–60 minutos para ejecutarlo todo. Pensado para propietarios con agendas reales, no para marketers.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"Mis leads no responden"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">No es el lead: es el mensaje. La mayoría de leads fríos responden cuando reciben el mensaje correcto en el momento correcto.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"¿Funciona para mi tipo de centro?"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Sí. Los mensajes están adaptados específicamente a centros fitness boutique: pilates, yoga, entrenamiento personal y clases dirigidas. Puedes agendar una llamada con nosotros para que te aclaremos tus dudas.</div>
       </div>
     </div>
   </div>
@@ -712,30 +416,20 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 <!-- FINAL CTA -->
 <section class="final-cta" id="contacto">
   <span class="section-label">Da el paso</span>
-  <h2>Recupera clientes en 72 horas.<br><span>Empieza hoy.</span></h2>
-  <p>Resultados en días, no en meses.</p>
-  <div class="final-fears">
-    <div class="fear-card reveal">
-      <strong>Cada día que pasa</strong>
-      <p>Hay mensajes sin responder que se enfrían. Cada semana sin actuar es dinero sobre la mesa.</p>
-    </div>
-    <div class="fear-card reveal reveal-delay-1">
-      <strong>No necesitas más</strong>
-      <p>Solo un plan claro y el mensaje correcto. Ya tienes los leads — solo falta activarlos.</p>
-    </div>
-    <div class="fear-card reveal reveal-delay-2">
-      <strong>Empieza hoy</strong>
-      <p>72 horas desde ahora ya puedes tener reservas confirmadas y clases llenas.</p>
-    </div>
+  <h2>Recupera clientes<br><span>en las próximas 72 horas.</span></h2>
+  <span class="final-cta-sub">Ya tienes los leads. Solo falta el mensaje correcto en el momento correcto.</span>
+  <div class="final-badges">
+    <div class="final-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Solo 9,99€ · Pago único</div>
+    <div class="final-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Acceso inmediato</div>
+    <div class="final-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Garantía total de resultados</div>
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="final-btn reveal">
-    Quiero mi diagnóstico gratuito ahora
-    <span class="final-btn-sub">Reserva en menos de 2 minutos</span>
+    Quiero el Plan de Rescate
+    <span class="final-btn-sub">Acceso inmediato · 9,99€</span>
   </a>
-  <p class="final-note">Sin compromiso. Sin tarjeta de crédito.</p>
+  <p class="final-note">Sin compromiso. Garantía de devolución incluida.</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <a href="../index.html" class="footer-brand">
     <img src="../Logo.png" alt="ARCENIX logo" class="footer-logo">
@@ -745,17 +439,28 @@ footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 </footer>
 
 <script>
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+const obs=new IntersectionObserver((e)=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open)item.classList.add('open');
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
 </script>
-
+<script>
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const body=document.body;
+  if(localStorage.getItem('arcenix-theme')==='dark')body.classList.add('dark');
+  toggle.addEventListener('click',function(){
+    body.classList.toggle('dark');
+    localStorage.setItem('arcenix-theme',body.classList.contains('dark')?'dark':'light');
+  });
+})();
+</script>
 </body>
 </html>
