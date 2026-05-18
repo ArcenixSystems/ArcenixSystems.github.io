@@ -225,7 +225,6 @@ body.dark footer{background:#060c18;border-top-color:rgba(255,255,255,0.05)}
 /* RESPONSIVE */
 @media(max-width:900px){
   .hero-inner{grid-template-columns:1fr;gap:40px}
-  .hero-visual{order:-1}
   .forwho-layout{grid-template-columns:1fr;gap:28px}
   .problem-leaks{grid-template-columns:1fr}
   .pillars-grid{grid-template-columns:1fr}
@@ -247,6 +246,7 @@ body.dark footer{background:#060c18;border-top-color:rgba(255,255,255,0.05)}
   .results-strip-inner{grid-template-columns:1fr}
   .result-stat:nth-child(odd){border-right:none}
 }
+@media(max-width:600px){.nav-back{display:none}.nav-cta{display:none}.nav-right{gap:4px}nav{padding:0 4%}}
 @media(max-width:480px){.hero h1{font-size:2rem}}
 @media(prefers-reduced-motion:reduce){*,.hero-badge,.hero h1,.hero-sub,.hero-bullets,.hero-cta-group,.hero-visual,.reveal{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
