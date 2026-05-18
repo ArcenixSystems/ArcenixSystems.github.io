@@ -61,7 +61,7 @@ section{padding:88px 5%}
 
 /* HERO VISUAL — message preview */
 .hero-visual{opacity:0;animation:fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s forwards}
-.msg-preview{background:var(--navy);border-radius:20px;padding:24px;box-shadow:0 20px 60px rgba(10,25,47,0.18)}
+.msg-preview{background:var(--navy);border-radius:20px;padding:24px;box-shadow:0 20px 60px rgba(10,25,47,0.18);overflow:hidden;width:100%}
 .msg-preview-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .msg-preview-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#00c6ff);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:0.75rem;color:#fff}
 .msg-preview-name{font-family:var(--heading);font-weight:700;font-size:0.85rem;color:#fff}
@@ -69,7 +69,7 @@ section{padding:88px 5%}
 .msg-preview-days{display:flex;flex-direction:column;gap:16px}
 .msg-day{display:flex;flex-direction:column;gap:8px}
 .msg-day-label{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
-.msg-bubble{background:var(--blue);color:#fff;border-radius:12px 12px 3px 12px;padding:10px 14px;font-size:0.8rem;line-height:1.5;align-self:flex-end;max-width:90%}
+.msg-bubble{background:var(--blue);color:#fff;border-radius:12px 12px 3px 12px;padding:10px 14px;font-size:0.8rem;line-height:1.5;align-self:flex-end;max-width:100%;overflow:hidden;word-break:break-word;letter-spacing:1px}
 .msg-bubble.day2{background:rgba(0,123,255,0.6)}
 .msg-bubble.day3{background:rgba(0,123,255,0.35)}
 .msg-result{display:inline-flex;align-items:center;gap:5px;background:rgba(0,230,118,0.15);border:1px solid rgba(0,230,118,0.3);color:#00e676;font-size:0.72rem;font-weight:600;padding:4px 10px;border-radius:100px;align-self:flex-start}
@@ -205,7 +205,10 @@ body.dark footer{background:#060c18;border-top-color:rgba(255,255,255,0.05)}
   .hero h1{font-size:2.3rem}
   .btn-primary{justify-content:center;width:100%}
   .nav-back{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual{order:-1}
 }
+@media(max-width:480px){.nav-cta{display:none}.nav-right{gap:4px}nav{padding:0 4%}}
 @media(prefers-reduced-motion:reduce){*,.hero-badge,.hero h1,.hero-sub,.hero-bullets,.hero-cta-group,.hero-visual,.reveal{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 </head>
@@ -394,11 +397,11 @@ body.dark footer{background:#060c18;border-top-color:rgba(255,255,255,0.05)}
     <div class="faq-list reveal">
       <div class="faq-item">
         <div class="faq-q">"No soy bueno vendiendo"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
-        <div class="faq-a">Estos mensajes están diseñados para vender sin parecer agresivo. Solo los tienes que copiar y pegar.</div>
+        <div class="faq-a">Estos mensajes están diseñados para vender sin parecer agresivo. Solo copias y pegas — el sistema hace el trabajo por ti.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">"No tengo tiempo"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
-        <div class="faq-a">Solo necesitas unos minutos para ejecutarlo todo. Pensado para propietarios con agendas reales, no para marketers.</div>
+        <div class="faq-a">Solo necesitas 30–60 minutos para ejecutarlo todo. Pensado para propietarios con agendas reales, no para marketers.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">"Mis leads no responden"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
