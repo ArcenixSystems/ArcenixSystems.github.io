@@ -11,16 +11,27 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--body);color:var(--text);background:var(--white);overflow-x:hidden}
+
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,123,255,0.1);transition:box-shadow 0.3s}
 nav.scrolled{box-shadow:0 4px 24px rgba(10,25,47,0.10)}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .nav-logo{height:34px;width:auto}
 .nav-name{font-family:var(--heading);font-weight:800;font-size:1.25rem;color:var(--navy);letter-spacing:-0.02em}
-.nav-right{display:flex;align-items:center;gap:10px}
+.nav-right{display:flex;align-items:center;gap:8px}
 .nav-back{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:0.82rem;font-weight:500;color:var(--text-muted);text-decoration:none;padding:7px 14px;border-radius:8px;border:1px solid rgba(10,25,47,0.1);transition:background 0.18s,color 0.18s}
-.nav-back:hover{background:var(--blue-pale);color:var(--blue);border-color:rgba(0,123,255,0.2)}
+.nav-back:hover{background:var(--blue-pale);color:var(--blue)}
 .nav-cta{font-family:var(--body);font-size:0.875rem;font-weight:600;background:var(--blue);color:var(--white);border:none;border-radius:8px;padding:10px 22px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
 .nav-cta:hover{background:#0066dd;transform:translateY(-1px)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid rgba(0,123,255,0.2);background:transparent;cursor:pointer;transition:all 0.2s;flex-shrink:0}
+.theme-toggle:hover{background:var(--blue-pale)}
+body.dark .theme-toggle{border-color:rgba(0,200,255,0.2);background:rgba(0,200,255,0.05)}
+.icon-sun{display:block}
+.icon-moon{display:none}
+body.dark .icon-sun{display:none}
+body.dark .icon-moon{display:block}
+
+/* SHARED */
 section{padding:88px 5%}
 .inner{max-width:860px;margin:0 auto}
 .inner-wide{max-width:1100px;margin:0 auto}
@@ -29,127 +40,217 @@ section{padding:88px 5%}
 .section-title span{color:var(--blue)}
 .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:17px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(0,123,255,0.32);transition:background 0.22s,transform 0.22s,box-shadow 0.22s}
 .btn-primary:hover{background:#0066dd;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,123,255,0.42)}
-.btn-primary svg{transition:transform 0.2s}
+.btn-primary svg,.btn-primary:hover svg{transition:transform 0.2s}
 .btn-primary:hover svg{transform:translateX(3px)}
-.btn-dark{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:17px 36px;border-radius:12px;text-decoration:none;transition:background 0.22s,transform 0.22s}
-.btn-dark:hover{background:#0d2a4f;transform:translateY(-2px)}
 .btn-note{display:block;font-size:0.82rem;color:var(--text-muted);margin-top:10px}
-.btn-note-light{display:block;font-size:0.82rem;color:rgba(255,255,255,0.4);margin-top:10px}
+
+/* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
-.hero{padding:calc(var(--nav-h) + 80px) 5% 88px;background:var(--white);position:relative;overflow:hidden;text-align:center}
-.hero::before{content:'';position:absolute;top:-180px;right:-200px;width:640px;height:640px;background:radial-gradient(circle,rgba(0,123,255,0.08) 0%,transparent 70%);pointer-events:none}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-4px);opacity:1}}
+
+/* HERO */
+.hero{padding:calc(var(--nav-h) + 80px) 5% 88px;background:var(--navy);position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse,rgba(0,123,255,0.14) 0%,rgba(0,123,255,0.04) 50%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,123,255,0.4),transparent)}
 .hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--blue-pale);color:var(--blue);font-family:var(--body);font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:6px 14px;border-radius:100px;border:1px solid rgba(0,123,255,0.2);margin-bottom:28px;opacity:0;animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards}
-.hero-badge-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s ease infinite}
-.hero h1{font-family:var(--heading);font-weight:800;font-size:clamp(2.5rem,6.5vw,4.8rem);line-height:1.05;letter-spacing:-0.04em;color:var(--navy);margin-bottom:22px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards}
-.hero h1 .grad{background:linear-gradient(135deg,var(--blue) 0%,#00c6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{font-size:clamp(1.05rem,2vw,1.18rem);color:var(--text-muted);max-width:560px;margin:0 auto 36px;line-height:1.68;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.32s forwards}
-.hero-cta{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.44s forwards}
-.hero-stats{display:flex;gap:0;justify-content:center;margin-top:60px;border:1px solid rgba(0,123,255,0.12);border-radius:16px;overflow:hidden;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.56s forwards}
-.hero-stat{flex:1;padding:22px 16px;text-align:center;border-right:1px solid rgba(0,123,255,0.12)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,123,255,0.15);color:#5bc3ff;font-family:var(--body);font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:6px 14px;border-radius:100px;border:1px solid rgba(0,123,255,0.3);margin-bottom:28px;opacity:0;animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards}
+.hero-badge-dot{width:6px;height:6px;background:#5bc3ff;border-radius:50%;animation:pulse 2s ease infinite}
+.hero h1{font-family:var(--heading);font-weight:800;font-size:clamp(2.5rem,6.5vw,4.8rem);line-height:1.05;letter-spacing:-0.04em;color:var(--white);margin-bottom:22px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards}
+.hero h1 .grad{background:linear-gradient(135deg,#5bc3ff 0%,#007BFF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(1.05rem,2vw,1.15rem);color:rgba(255,255,255,0.6);max-width:560px;margin:0 auto 14px;line-height:1.68;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.32s forwards}
+.hero-channels{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:8px 18px;margin-bottom:32px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s forwards}
+.hero-channel{display:flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.75)}
+.hero-channel-sep{color:rgba(255,255,255,0.2);font-size:0.9rem}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.48s forwards}
+.hero-note{font-size:0.82rem;color:rgba(255,255,255,0.35)}
+.hero-stats{display:flex;gap:0;justify-content:center;margin-top:56px;border:1px solid rgba(0,123,255,0.2);border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.04);opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.58s forwards}
+.hero-stat{flex:1;padding:20px 14px;text-align:center;border-right:1px solid rgba(0,123,255,0.15)}
 .hero-stat:last-child{border-right:none}
-.hero-stat-num{font-family:var(--heading);font-weight:800;font-size:1.7rem;color:var(--blue);letter-spacing:-0.03em}
-.hero-stat-label{font-size:0.76rem;color:var(--text-muted);margin-top:4px;line-height:1.4}
-.problem{background:var(--navy)}
-.problem .section-label{color:#5bc3ff}
-.problem .section-title{color:var(--white)}
-.problem-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:48px}
-.flow-chain{display:flex;flex-direction:column;gap:0}
-.flow-step{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.07)}
-.flow-step:last-child{border-bottom:none}
-.flow-dot{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(0,123,255,0.18);border:1px solid rgba(0,123,255,0.35);display:flex;align-items:center;justify-content:center;margin-top:2px}
-.flow-dot span{width:8px;height:8px;background:var(--blue);border-radius:50%;display:block}
-.flow-dot.red{background:rgba(255,80,80,0.15);border-color:rgba(255,80,80,0.3)}
-.flow-dot.red span{background:#FF5050}
-.flow-text{font-family:var(--heading);font-weight:600;font-size:0.97rem;color:rgba(255,255,255,0.82);padding-top:5px;line-height:1.4}
-.flow-text em{font-style:italic;color:rgba(255,255,255,0.4);font-weight:400}
-.problem-right{display:flex;flex-direction:column;gap:14px}
-.problem-who-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px 20px;transition:background 0.2s}
-.problem-who-card:hover{background:rgba(0,123,255,0.1)}
-.problem-who-card h4{font-family:var(--heading);font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:4px}
-.problem-who-card p{font-size:0.84rem;color:rgba(255,255,255,0.5);line-height:1.5}
-.problem-callout{background:rgba(0,123,255,0.12);border:1px solid rgba(0,123,255,0.3);border-radius:var(--radius);padding:22px 26px;margin-top:28px}
-.problem-callout p{font-family:var(--heading);font-weight:800;font-size:1.1rem;color:var(--white);line-height:1.4}
+.hero-stat-num{font-family:var(--heading);font-weight:800;font-size:1.7rem;color:#5bc3ff;letter-spacing:-0.03em}
+.hero-stat-label{font-size:0.74rem;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4}
+
+/* PROBLEM */
+.problem{background:var(--gray)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:48px}
+.problem-list{display:flex;flex-direction:column;gap:14px}
+.problem-item{display:flex;align-items:flex-start;gap:16px;background:var(--white);border-radius:14px;padding:20px;border:1px solid rgba(10,25,47,0.07);box-shadow:0 2px 8px rgba(10,25,47,0.04)}
+.problem-icon{width:38px;height:38px;min-width:38px;border-radius:10px;background:#fff0f0;display:flex;align-items:center;justify-content:center}
+.problem-item h4{font-family:var(--heading);font-weight:700;font-size:0.92rem;color:var(--navy);margin-bottom:2px}
+.problem-item p{font-size:0.84rem;color:var(--text-muted);line-height:1.5}
+.problem-item-cost{display:inline-block;margin-top:6px;font-family:var(--heading);font-weight:700;font-size:0.75rem;color:#e03e3e;background:#fff0f0;padding:3px 10px;border-radius:100px}
+.problem-callout{background:var(--navy);border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:16px;margin-top:16px}
+.problem-callout-icon{flex-shrink:0;width:38px;height:38px;border-radius:9px;background:rgba(0,123,255,0.2);display:flex;align-items:center;justify-content:center}
+.problem-callout p{font-family:var(--heading);font-weight:800;font-size:0.97rem;color:var(--white);line-height:1.4}
 .problem-callout span{color:#5bc3ff}
+
+/* CHAT MOCKUP */
+.chat-mockup{background:var(--navy);border-radius:18px;padding:20px;width:100%;max-width:360px;box-shadow:0 16px 48px rgba(10,25,47,0.2)}
+.chat-mockup-bar{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:14px}
+.chat-mockup-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#00c6ff);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:800;font-size:0.7rem;color:#fff;flex-shrink:0}
+.chat-mockup-name{font-family:var(--heading);font-weight:700;font-size:0.82rem;color:#fff}
+.chat-mockup-status{font-size:0.7rem;color:#00e676;display:flex;align-items:center;gap:4px}
+.chat-mockup-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#00e676;display:inline-block}
+.chat-messages{display:flex;flex-direction:column;gap:8px;height:240px;overflow-y:auto}
+.chat-msg{max-width:82%;padding:9px 13px;border-radius:12px;font-size:0.8rem;line-height:1.45}
+.chat-msg.user{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);align-self:flex-start;border-radius:12px 12px 12px 3px}
+.chat-msg.bot{background:var(--blue);color:#fff;align-self:flex-end;border-radius:12px 12px 3px 12px}
+.chat-time-label{font-size:0.68rem;color:rgba(255,255,255,0.35);text-align:right;margin-top:2px}
+.chat-bot-label{font-size:0.68rem;color:rgba(255,255,255,0.4);text-align:right;margin-bottom:2px}
+.chat-typing{display:flex;align-items:center;gap:4px;padding:9px 13px;background:rgba(0,123,255,0.3);border-radius:12px;align-self:flex-end;width:52px}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6);animation:typing 1.2s ease infinite}
+.chat-typing span:nth-child(2){animation-delay:0.2s}
+.chat-typing span:nth-child(3){animation-delay:0.4s}
+.chat-channel-badge{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:10px}
+.chat-channel-dot{width:7px;height:7px;border-radius:50%;background:#25D366}
+
+/* CHANNELS */
+.channels{background:var(--white)}
+.channels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.channel-card{border-radius:16px;padding:28px 24px;border:1px solid rgba(0,123,255,0.1);text-align:center;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s;position:relative;overflow:hidden}
+.channel-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1)}
+.channel-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(10,25,47,0.10)}
+.channel-card:hover::before{transform:scaleX(1)}
+.channel-card.whatsapp{background:#f0fdf4}
+.channel-card.whatsapp::before{background:linear-gradient(90deg,#25D366,#128C7E)}
+.channel-card.instagram{background:#fdf4ff}
+.channel-card.instagram::before{background:linear-gradient(90deg,#E1306C,#C13584,#833AB4)}
+.channel-card.web{background:var(--blue-pale)}
+.channel-card.web::before{background:linear-gradient(90deg,var(--blue),#00c6ff)}
+.channel-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.channel-card.whatsapp .channel-icon{background:#25D366}
+.channel-card.instagram .channel-icon{background:linear-gradient(135deg,#E1306C,#833AB4)}
+.channel-card.web .channel-icon{background:var(--blue)}
+.channel-card h3{font-family:var(--heading);font-weight:800;font-size:1rem;color:var(--navy);margin-bottom:8px}
+.channel-card p{font-size:0.86rem;color:var(--text-muted);line-height:1.58}
+.channel-tag{display:inline-block;margin-top:12px;font-size:0.74rem;font-weight:600;padding:4px 10px;border-radius:100px}
+.channel-card.whatsapp .channel-tag{background:#dcfce7;color:#16a34a}
+.channel-card.instagram .channel-tag{background:#fce7f3;color:#be185d}
+.channel-card.web .channel-tag{background:var(--blue-pale);color:var(--blue)}
+
+/* SOLUTION / BEFORE-AFTER */
 .solution{background:var(--gray)}
 .solution-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:48px}
-.solution-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.solution-list li{display:flex;align-items:flex-start;gap:14px}
-.sol-check{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;margin-top:2px}
-.solution-list li span{font-size:0.97rem;color:var(--navy);line-height:1.55;font-weight:500}
-.solution-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-.solution-tag{background:var(--white);border:1px solid rgba(0,123,255,0.15);color:var(--blue);border-radius:100px;padding:6px 14px;font-family:var(--heading);font-weight:700;font-size:0.74rem;letter-spacing:0.04em;text-transform:uppercase}
+.solution-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.solution-list li{display:flex;align-items:flex-start;gap:12px}
+.sol-check{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.solution-list li span{font-size:0.95rem;color:var(--navy);line-height:1.55;font-weight:500}
 .ba-box{background:var(--navy);border-radius:16px;overflow:hidden}
-.ba-col{padding:26px 24px}
+.ba-col{padding:24px}
 .ba-col.without{border-bottom:1px solid rgba(255,255,255,0.08)}
-.ba-col-label{font-family:var(--heading);font-weight:700;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px}
+.ba-col-label{font-family:var(--heading);font-weight:700;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px}
 .ba-col.without .ba-col-label{color:rgba(255,255,255,0.35)}
 .ba-col.with .ba-col-label{color:#5bc3ff}
-.ba-item{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ba-item{display:flex;align-items:center;gap:10px;margin-bottom:9px}
 .ba-item:last-of-type{margin-bottom:0}
 .ba-item-icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .ba-col.without .ba-item-icon{background:rgba(255,80,80,0.15)}
 .ba-col.with .ba-item-icon{background:rgba(0,123,255,0.25)}
-.ba-item span{font-family:var(--heading);font-weight:600;font-size:0.88rem;line-height:1.35}
-.ba-col.without .ba-item span{color:rgba(255,255,255,0.5)}
+.ba-item span{font-family:var(--heading);font-weight:600;font-size:0.86rem;line-height:1.35}
+.ba-col.without .ba-item span{color:rgba(255,255,255,0.45)}
 .ba-col.with .ba-item span{color:rgba(255,255,255,0.85)}
-.ba-footer{font-family:var(--heading);font-weight:800;font-size:0.95rem;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08)}
-.ba-col.without .ba-footer{color:rgba(255,255,255,0.28)}
+.ba-footer{font-family:var(--heading);font-weight:800;font-size:0.92rem;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)}
+.ba-col.without .ba-footer{color:rgba(255,255,255,0.25)}
 .ba-col.with .ba-footer{color:var(--white)}
+
+/* FEATURES */
 .features{background:var(--white)}
-.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
-.feature-card{background:var(--gray);border-radius:var(--radius);border:1px solid rgba(0,123,255,0.1);padding:30px 26px;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s;position:relative;overflow:hidden}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px}
+.feature-card{background:var(--gray);border-radius:var(--radius);border:1px solid rgba(0,123,255,0.1);padding:28px 24px;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),box-shadow 0.25s;position:relative;overflow:hidden}
 .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#00c6ff);transform:scaleX(0);transform-origin:left;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1)}
 .feature-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(10,25,47,0.09)}
 .feature-card:hover::before{transform:scaleX(1)}
-.feature-icon{width:44px;height:44px;border-radius:11px;background:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.feature-card h4{font-family:var(--heading);font-weight:800;font-size:1rem;color:var(--navy);margin-bottom:8px}
-.feature-card p{font-size:0.9rem;color:var(--text-muted);line-height:1.62}
-.feature-result{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:0.77rem;font-weight:600;color:var(--blue);background:var(--blue-pale);padding:4px 10px;border-radius:100px}
-.results-strip{background:var(--navy);padding:64px 5%}
-.results-strip-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
-.result-stat{text-align:center;padding:0 24px}
+.feature-icon{width:42px;height:42px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.feature-card h4{font-family:var(--heading);font-weight:800;font-size:0.97rem;color:var(--navy);margin-bottom:6px}
+.feature-card p{font-size:0.87rem;color:var(--text-muted);line-height:1.6}
+.feature-result{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:0.75rem;font-weight:600;color:var(--blue);background:var(--blue-pale);padding:4px 10px;border-radius:100px}
+
+/* RESULTS */
+.results-strip{background:var(--navy);padding:60px 5%}
+.results-strip-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.result-stat{text-align:center;padding:0 20px}
 .result-stat:not(:last-child){border-right:1px solid rgba(255,255,255,0.08)}
 .result-stat-num{font-family:var(--heading);font-weight:800;font-size:2.2rem;color:var(--blue-light);letter-spacing:-0.04em;display:block}
-.result-stat-label{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:8px;display:block;line-height:1.4}
+.result-stat-label{font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:6px;display:block;line-height:1.4}
+
+/* FAQ */
 .faq{background:var(--gray)}
-.faq-list{display:flex;flex-direction:column;gap:12px;margin-top:44px}
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-top:40px}
 .faq-item{background:var(--white);border-radius:var(--radius);border:1px solid rgba(0,123,255,0.1);overflow:hidden}
-.faq-q{padding:20px 24px;font-family:var(--heading);font-weight:700;font-size:0.97rem;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.15s}
+.faq-q{padding:18px 22px;font-family:var(--heading);font-weight:700;font-size:0.95rem;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:background 0.15s}
 .faq-q:hover{background:var(--blue-pale)}
-.faq-q-arrow{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),background 0.2s}
+.faq-q-arrow{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;transition:transform 0.25s cubic-bezier(0.16,1,0.3,1),background 0.2s}
 .faq-item.open .faq-q-arrow{transform:rotate(180deg);background:var(--blue)}
 .faq-item.open .faq-q-arrow svg{stroke:white}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1);font-size:0.93rem;color:var(--text-muted);line-height:1.7}
-.faq-item.open .faq-a{max-height:200px;padding:0 24px 20px;border-top:1px solid rgba(0,123,255,0.08);padding-top:14px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1);font-size:0.91rem;color:var(--text-muted);line-height:1.68}
+.faq-item.open .faq-a{max-height:200px;padding:0 22px 18px;border-top:1px solid rgba(0,123,255,0.08);padding-top:12px}
+
+/* FINAL CTA */
 .final-cta{background:linear-gradient(135deg,#0d2a4f 0%,var(--navy) 50%,#0a1f3d 100%);text-align:center;padding:110px 5%;position:relative;overflow:hidden}
 .final-cta::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:600px;background:radial-gradient(ellipse,rgba(0,123,255,0.16) 0%,transparent 65%);pointer-events:none}
 .final-cta .section-label{color:#5bc3ff;position:relative;z-index:1}
 .final-cta h2{font-family:var(--heading);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);color:var(--white);line-height:1.08;letter-spacing:-0.03em;max-width:660px;margin:14px auto 0;position:relative;z-index:1}
 .final-cta h2 span{color:var(--blue-light)}
-.final-cta-sub{color:rgba(255,255,255,0.55);font-size:1rem;margin:14px auto 40px;position:relative;z-index:1;max-width:460px;display:block;line-height:1.65}
-.final-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:0 0 40px;position:relative;z-index:1}
-.final-badge{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:7px 14px;font-family:var(--heading);font-weight:600;font-size:0.83rem;color:rgba(255,255,255,0.7)}
+.final-cta-sub{color:rgba(255,255,255,0.55);font-size:1rem;margin:14px auto 36px;position:relative;z-index:1;max-width:460px;display:block;line-height:1.65}
+.final-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 36px;position:relative;z-index:1}
+.final-badge{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:6px 14px;font-family:var(--heading);font-weight:600;font-size:0.82rem;color:rgba(255,255,255,0.7)}
 .final-btn{display:inline-flex;flex-direction:column;align-items:center;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1.1rem;padding:20px 48px;border-radius:14px;text-decoration:none;box-shadow:0 8px 32px rgba(0,123,255,0.4);position:relative;z-index:1;transition:transform 0.2s,box-shadow 0.2s}
 .final-btn:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,123,255,0.5)}
 .final-btn-sub{font-size:0.8rem;font-weight:400;opacity:0.8;margin-top:4px}
-.final-note{color:rgba(255,255,255,0.3);font-size:0.82rem;margin-top:16px;position:relative;z-index:1}
+.final-note{color:rgba(255,255,255,0.3);font-size:0.82rem;margin-top:14px;position:relative;z-index:1}
+
+/* FOOTER */
 footer{background:var(--navy);padding:36px 5%;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.07)}
 .footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .footer-logo{height:28px}
 .footer-name{font-family:var(--heading);font-weight:700;color:var(--white);font-size:1rem}
 footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
+
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:0.1s}
 .reveal-delay-2{transition-delay:0.2s}
 .reveal-delay-3{transition-delay:0.3s}
+
+/* DARK MODE */
+body.dark{background:#080e1a;color:#f0f6ff}
+body.dark nav{background:rgba(8,14,26,0.92);border-bottom-color:rgba(0,200,255,0.12)}
+body.dark .nav-name{color:#fff}
+body.dark .nav-back{color:#8bafd4;border-color:rgba(255,255,255,0.1)}
+body.dark .nav-back:hover{background:rgba(0,200,255,0.1);color:#00c8ff}
+body.dark .section-title{color:#f0f6ff}
+body.dark .section-label{color:#00c8ff}
+body.dark .section-title span{color:#00c8ff}
+body.dark .hero{background:#080e1a}
+body.dark .problem{background:#0d1526}
+body.dark .problem-item{background:#111d33;border-color:rgba(255,255,255,0.06)}
+body.dark .problem-item h4{color:#f0f6ff}
+body.dark .problem-icon{background:rgba(224,62,62,0.12)}
+body.dark .channels{background:#080e1a}
+body.dark .channel-card{background:#111d33;border-color:rgba(0,200,255,0.1)}
+body.dark .channel-card h3{color:#f0f6ff}
+body.dark .channel-card p{color:#6a8fae}
+body.dark .solution{background:#0d1526}
+body.dark .solution-list li span{color:#f0f6ff}
+body.dark .features{background:#080e1a}
+body.dark .feature-card{background:#111d33;border-color:rgba(0,200,255,0.1)}
+body.dark .feature-card h4{color:#f0f6ff}
+body.dark .feature-card p{color:#6a8fae}
+body.dark .feature-result{background:rgba(0,200,255,0.1);color:#00c8ff}
+body.dark .faq{background:#0d1526}
+body.dark .faq-item{background:#111d33;border-color:rgba(0,200,255,0.1)}
+body.dark .faq-q{color:#f0f6ff}
+body.dark .faq-q:hover{background:rgba(0,200,255,0.08)}
+body.dark footer{background:#060c18;border-top-color:rgba(255,255,255,0.05)}
+
+/* RESPONSIVE */
 @media(max-width:900px){
-  .problem-layout,.solution-layout{grid-template-columns:1fr;gap:36px}
-  .features-grid{grid-template-columns:1fr}
-  .results-strip-inner{grid-template-columns:1fr;gap:28px}
-  .result-stat:not(:last-child){border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:24px}
+  .problem-grid,.solution-layout{grid-template-columns:1fr;gap:36px}
+  .channels-grid,.features-grid{grid-template-columns:1fr}
+  .results-strip-inner{grid-template-columns:repeat(2,1fr);gap:28px}
+  .result-stat:not(:last-child){border-right:none}
+  .result-stat:nth-child(odd){border-right:1px solid rgba(255,255,255,0.08)}
   footer{flex-direction:column;gap:14px;text-align:center}
 }
 @media(max-width:768px){
@@ -159,13 +260,14 @@ footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
   .hero-stats{flex-direction:column}
   .hero-stat{border-right:none!important;border-bottom:1px solid rgba(0,123,255,0.12)}
   .hero-stat:last-child{border-bottom:none}
-  .btn-primary,.btn-dark{justify-content:center;width:100%}
+  .btn-primary{justify-content:center;width:100%}
   .nav-back{display:none}
-  .final-badges{flex-direction:column;align-items:center}
-  .results-strip{padding:52px 5%}
+  .results-strip-inner{grid-template-columns:1fr}
+  .result-stat:nth-child(odd){border-right:none}
+  .hero-channels{flex-wrap:wrap;justify-content:center}
 }
 @media(max-width:480px){.hero h1{font-size:1.95rem}}
-@media(prefers-reduced-motion:reduce){*,.hero-badge,.hero h1,.hero-sub,.hero-cta,.hero-stats,.reveal{animation:none!important;opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){*,.hero-badge,.hero h1,.hero-sub,.hero-channels,.hero-cta,.hero-stats,.reveal{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -181,110 +283,177 @@ footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
       Volver al inicio
     </a>
     <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="nav-cta">Diagnóstico gratuito</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <span class="hero-badge"><span class="hero-badge-dot"></span>Para centros fitness boutique</span>
-    <h1>Estás perdiendo clientes<br><span class="grad">cada día sin darte cuenta.</span></h1>
-    <p class="hero-sub">Un sistema automático que responde, califica y agenda por ti — en menos de 5 minutos, 24 horas al día, sin que tengas que hacer nada.</p>
+    <span class="hero-badge"><span class="hero-badge-dot"></span>Automatización · Para centros fitness boutique</span>
+    <h1>Cada lead sin respuesta<br><span class="grad">son 80–150€ perdidos.</span></h1>
+    <p class="hero-sub">Un sistema de respuesta con tono humano que responde en menos de 5 minutos, califica leads y cierra reservas por ti</p>
+    <div class="hero-channels">
+      <span class="hero-channel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.007 2.003C5.946 2.003 1.847 6.102 1.847 11.163c0 1.604.422 3.11 1.15 4.416L1 21l5.549-1.457c1.274.695 2.726 1.086 4.27 1.086h.004c5.061 0 9.16-4.099 9.16-9.16 0-2.447-.952-4.747-2.68-6.477-1.728-1.73-4.027-2.689-6.296-2.989z"/></svg>
+        WhatsApp
+      </span>
+      <span class="hero-channel-sep">·</span>
+      <span class="hero-channel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig)"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.5" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg>
+        Instagram
+      </span>
+      <span class="hero-channel-sep">·</span>
+      <span class="hero-channel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        Web
+      </span>
+    </div>
     <div class="hero-cta">
       <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary">
-        Quiero saber qué está fallando
+        Ver cómo funciona en mi centro
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
-      <span class="btn-note">Diagnóstico gratuito · Sin compromiso · 30 minutos</span>
+      <span class="hero-note">Diagnóstico gratuito · Sin compromiso · 30 minutos</span>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">78%</div>
-        <div class="hero-stat-label">de clientes elige al primero que responde</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">&lt;5 min</div>
-        <div class="hero-stat-label">tiempo crítico antes de que el lead se enfríe</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">3x</div>
-        <div class="hero-stat-label">más conversiones con respuesta automática</div>
-      </div>
+      <div class="hero-stat"><div class="hero-stat-num">78%</div><div class="hero-stat-label">de leads elige al primero que responde</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">&lt;5 min</div><div class="hero-stat-label">tiempo crítico antes de que el lead se enfríe</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">3x</div><div class="hero-stat-label">más conversiones con respuesta automática</div></div>
     </div>
   </div>
 </section>
 
+<!-- PROBLEM -->
 <section class="problem" id="problema">
   <div class="inner-wide">
-    <span class="section-label reveal">El problema real</span>
-    <h2 class="section-title reveal">Ahora mismo te está pasando esto.</h2>
-    <div class="problem-layout">
-      <div>
-        <div class="flow-chain reveal">
-          <div class="flow-step"><div class="flow-dot"><span></span></div><p class="flow-text">Alguien pregunta por tus clases</p></div>
-          <div class="flow-step"><div class="flow-dot"><span></span></div><p class="flow-text">Estás impartiendo clase — no puedes responder</p></div>
-          <div class="flow-step"><div class="flow-dot"><span></span></div><p class="flow-text">El cliente se enfría y mira otras opciones</p></div>
-          <div class="flow-step"><div class="flow-dot red"><span></span></div><p class="flow-text">No reserva. <em>Y ese cliente se pierde para siempre.</em></p></div>
+    <span class="section-label reveal">El problema</span>
+    <h2 class="section-title reveal">Estás perdiendo reservas<br>cada vez que impartes clase.</h2>
+    <div class="problem-grid">
+      <div class="problem-list reveal">
+        <div class="problem-item">
+          <div class="problem-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+          <div>
+            <h4>No puedes responder mientras enseñas</h4>
+            <p>Cada hora de clase son mensajes sin leer. El lead reserva en otro sitio.</p>
+            <span class="problem-item-cost">80–150€ perdidos por lead sin respuesta</span>
+          </div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+          <div>
+            <h4>El seguimiento no siempre se hace</h4>
+            <p>Leads interesados que se enfrían porque nadie hizo el segundo contacto en el momento justo.</p>
+            <span class="problem-item-cost">5–10 reservas perdidas al mes</span>
+          </div>
+        </div>
+        <div class="problem-item">
+          <div class="problem-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e03e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+          <div>
+            <h4>La demanda existe, falla la conversión</h4>
+            <p>No es un problema de captación. Los clientes preguntan, pero no reciben respuesta a tiempo.</p>
+            <span class="problem-item-cost">Ingresos perdidos sin que te des cuenta</span>
+          </div>
         </div>
         <div class="problem-callout reveal">
+          <div class="problem-callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5bc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
           <p>El primer centro que responde <span>se queda con el cliente.</span> Siempre.</p>
         </div>
       </div>
-      <div class="problem-right reveal">
-        <div class="problem-who-card">
-          <h4>Eres profesor, gestor y comercial a la vez</h4>
-          <p>No puedes responder mensajes mientras impartes clase. Y eso te cuesta reservas cada día.</p>
+
+      <!-- CHAT ANIMADO -->
+      <div class="reveal reveal-delay-1" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px">El sistema responde por ti en segundos</p>
+        <div class="chat-mockup">
+          <div class="chat-mockup-bar">
+            <div class="chat-mockup-avatar">AI</div>
+            <div>
+              <div class="chat-mockup-name">Cliente potencial</div>
+              <div class="chat-mockup-status">WhatsApp</div>
+            </div>
+          </div>
+          <div class="chat-channel-badge">
+            <span class="chat-channel-dot"></span>
+            WhatsApp · mientras tú impartes clase
+          </div>
+          <div class="chat-messages" id="chatMessages"></div>
         </div>
-        <div class="problem-who-card">
-          <h4>El seguimiento no siempre se hace</h4>
-          <p>Leads interesados que se enfrían porque nadie hizo el segundo contacto en el momento justo.</p>
-        </div>
-        <div class="problem-who-card">
-          <h4>Crees que faltan clientes</h4>
-          <p>La demanda existe. El problema no es la captación — es la conversión. Y eso tiene solución.</p>
-        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;max-width:300px;margin-top:4px">Mientras tú enseñas, el sistema capta, califica y cierra la reserva.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CHANNELS -->
+<section class="channels" id="canales">
+  <div class="inner-wide">
+    <span class="section-label reveal">Dónde opera el sistema</span>
+    <h2 class="section-title reveal">Activo en los canales<br><span>donde ya están tus clientes.</span></h2>
+    <div class="channels-grid">
+      <div class="channel-card whatsapp reveal">
+        <div class="channel-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM11.007 2.003C5.946 2.003 1.847 6.102 1.847 11.163c0 1.604.422 3.11 1.15 4.416L1 21l5.549-1.457c1.274.695 2.726 1.086 4.27 1.086h.004c5.061 0 9.16-4.099 9.16-9.16 0-2.447-.952-4.747-2.68-6.477-1.728-1.73-4.027-2.689-6.296-2.989z"/></svg>
+        </div>
+        <h3>WhatsApp</h3>
+        <p>El canal preferido de tus clientes. Respuesta instantánea con tono cercano y natural, nunca parece un bot.</p>
+        <span class="channel-tag">Canal #1 de consultas</span>
+      </div>
+      <div class="channel-card instagram reveal reveal-delay-1">
+        <div class="channel-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"></circle></svg>
+        </div>
+        <h3>Instagram DMs</h3>
+        <p>Los mensajes directos de Instagram se responden solos. Ningún lead que llega por stories o posts se queda sin atender.</p>
+        <span class="channel-tag">Alto volumen de leads</span>
+      </div>
+      <div class="channel-card web reveal reveal-delay-2">
+        <div class="channel-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <h3>Chat en tu web</h3>
+        <p>Widget integrado en tu web que capta a quien llega por búsqueda o anuncio. Convierte visitas en reservas sin que hagas nada.</p>
+        <span class="channel-tag">Convierte tráfico orgánico</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
 <section class="solution" id="solucion">
   <div class="inner-wide">
-    <span class="section-label reveal">La solución</span>
-    <h2 class="section-title reveal">Sistema "Cierre en 5 Minutos":<br><span>trabaja por ti las 24h.</span></h2>
+    <span class="section-label reveal">Cómo funciona</span>
+    <h2 class="section-title reveal">Responde, califica y cierra.<br><span>Sin que intervengas.</span></h2>
     <div class="solution-layout">
       <div class="reveal">
         <ul class="solution-list">
-          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Responde a cada lead en segundos, a cualquier hora</span></li>
-          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Califica con las preguntas correctas y guía al lead al servicio ideal</span></li>
-          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Agenda directamente sin ninguna intervención tuya</span></li>
-          <li><div class="sol-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Hace seguimiento automático a quien no confirmó</span></li>
+          <li><div class="sol-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Responde en segundos, con tono humano y personalizado</span></li>
+          <li><div class="sol-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Hace las preguntas correctas para entender qué busca el cliente</span></li>
+          <li><div class="sol-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Agenda la reserva directamente — tú solo hablas con quien ya va a venir</span></li>
+          <li><div class="sol-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Hace seguimiento automático si el lead no confirma</span></li>
+          <li><div class="sol-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Activo los 7 días, festivos y fuera de horario — sin excepciones</span></li>
         </ul>
-        <div class="solution-tags">
-          <span class="solution-tag">24/7 activo</span>
-          <span class="solution-tag">Implementado por ARCENIX</span>
-          <span class="solution-tag">A medida de tu centro</span>
-        </div>
-        <div style="margin-top:32px;">
-          <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-dark">
-            Cómo funciona en mi centro
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <span class="btn-note">Te lo explicamos en 30 minutos sin compromiso</span>
-        </div>
+        <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary">
+          Quiero ver cómo aplica a mi centro
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <span class="btn-note">30 minutos · Sin compromiso</span>
       </div>
       <div class="ba-box reveal reveal-delay-1">
         <div class="ba-col without">
           <p class="ba-col-label">Sin el sistema</p>
           <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>Mensajes sin leer mientras impartes clase</span></div>
-          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>El seguimiento llega tarde o no se hace</span></div>
-          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>Pierdes oportunidades cada semana sin saberlo</span></div>
-          <p class="ba-footer">Dependes de ti para cada venta.</p>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>Seguimiento manual que no siempre se hace</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#FF5050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div><span>Leads que se enfrían y reservan en otro sitio</span></div>
+          <p class="ba-footer">Dependes de ti para cada reserva.</p>
         </div>
         <div class="ba-col with">
           <p class="ba-col-label">Con el sistema</p>
-          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Todo se responde en menos de 5 minutos, siempre</span></div>
-          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>El seguimiento es automático y sin errores</span></div>
-          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Conviertes más leads sin dedicar más tiempo</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Respuesta en segundos, las 24 horas</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Seguimiento automático sin errores ni olvidos</span></div>
+          <div class="ba-item"><div class="ba-item-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div><span>Más reservas sin más horas de trabajo</span></div>
           <p class="ba-footer">El sistema trabaja. Tú enseñas.</p>
         </div>
       </div>
@@ -292,6 +461,7 @@ footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
   </div>
 </section>
 
+<!-- FEATURES -->
 <section class="features" id="que-incluye">
   <div class="inner-wide">
     <span class="section-label reveal">Qué incluye</span>
@@ -300,89 +470,93 @@ footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
       <div class="feature-card reveal">
         <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
         <h4>Respuesta automática instantánea</h4>
-        <p>Detecta cada nuevo mensaje y responde en segundos con información personalizada sobre tus clases, precios y disponibilidad.</p>
-        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>0 leads sin respuesta</span>
+        <p>Detecta cada mensaje nuevo y responde en segundos con información personalizada — clases, precios, disponibilidad. En los 3 canales a la vez.</p>
+        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>0 mensajes sin responder</span>
       </div>
       <div class="feature-card reveal reveal-delay-1">
         <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
         <h4>Calificación inteligente</h4>
-        <p>Pregunta lo necesario para entender qué busca el cliente y lo guía al servicio ideal. Tú solo hablas con quien ya tiene intención de reservar.</p>
-        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Solo hablas con quien va a reservar</span>
+        <p>Hace las preguntas correctas para entender qué busca cada cliente y lo guía al servicio que encaja. Tú solo hablas con quien ya tiene intención real de reservar.</p>
+        <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Solo leads con intención real</span>
       </div>
-      <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-card reveal">
         <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
         <h4>Agendado automático</h4>
-        <p>Cuando el lead muestra intención, el sistema ofrece disponibilidad y confirma la reserva directamente — sin que tú intervengas.</p>
+        <p>Cuando el lead muestra intención, el sistema ofrece disponibilidad y confirma la reserva. Sin que tú intervengas en ningún momento del proceso.</p>
         <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Reservas confirmadas en minutos</span>
       </div>
-      <div class="feature-card reveal reveal-delay-3">
+      <div class="feature-card reveal reveal-delay-1">
         <div class="feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
         <h4>Seguimiento automático</h4>
-        <p>Si alguien no confirma, el sistema lo reactiva con mensajes calibrados. Sin presión, sin perder el tono de tu marca.</p>
+        <p>Si alguien no confirma, el sistema lo reactiva con mensajes calibrados. Sin presión, manteniendo el tono natural de tu centro.</p>
         <span class="feature-result"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Recuperas leads que creías perdidos</span>
       </div>
     </div>
-    <div style="text-align:center;margin-top:44px;">
+    <div style="text-align:center;margin-top:44px">
       <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="btn-primary reveal">
-        Pedir consulta gratuita
+        Reservar diagnóstico gratuito
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
     </div>
   </div>
 </section>
 
+<!-- RESULTS STRIP -->
 <div class="results-strip">
   <div class="results-strip-inner">
-    <div class="result-stat reveal"><span class="result-stat-num">+40%</span><span class="result-stat-label">de media en reservas el primer mes</span></div>
-    <div class="result-stat reveal reveal-delay-1"><span class="result-stat-num">24/7</span><span class="result-stat-label">el sistema activo aunque el estudio esté cerrado</span></div>
-    <div class="result-stat reveal reveal-delay-2"><span class="result-stat-num">0 h</span><span class="result-stat-label">de trabajo manual adicional para el propietario</span></div>
+    <div class="result-stat reveal"><span class="result-stat-num">+40%</span><span class="result-stat-label">Media de aumento en reservas el primer mes</span></div>
+    <div class="result-stat reveal reveal-delay-1"><span class="result-stat-num">&lt;5 min</span><span class="result-stat-label">Tiempo máximo de respuesta al lead</span></div>
+    <div class="result-stat reveal reveal-delay-2"><span class="result-stat-num">24/7</span><span class="result-stat-label">Activo aunque el estudio esté cerrado</span></div>
+    <div class="result-stat reveal reveal-delay-3"><span class="result-stat-num">0 h</span><span class="result-stat-label">Trabajo manual adicional para el propietario</span></div>
   </div>
 </div>
 
+<!-- FAQ -->
 <section class="faq" id="preguntas">
   <div class="inner">
     <span class="section-label reveal">Preguntas frecuentes</span>
-    <h2 class="section-title reveal">Resolvemos tus dudas.</h2>
+    <h2 class="section-title reveal">Lo que suelen preguntarnos.</h2>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <div class="faq-q">"No sé si funcionará en mi centro"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
-        <div class="faq-a">Este sistema se adapta completamente a tus clases, horario y cliente ideal. Lo configuramos a tu medida — por eso hacemos siempre un diagnóstico previo.</div>
+        <div class="faq-q">"¿Parecerá un bot genérico?"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">No. Lo configuramos con el tono, el vocabulario y la información concreta de tu centro. Los clientes no notan que es automático — notan que reciben respuesta rápida.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">"No tengo tiempo para implementarlo"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
-        <div class="faq-a">Lo instalamos nosotros por ti. Tú no haces nada técnico. Solo nos cuentas cómo funciona tu centro y nosotros nos encargamos del resto.</div>
+        <div class="faq-q">"¿Tengo que hacer algo yo para instalarlo?"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Nada. Nos cuentas cómo funciona tu centro y nosotros nos encargamos de todo. El sistema está activo en menos de 48 horas sin que hagas nada técnico.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">"Me parece caro"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
-        <div class="faq-a">Un par de clientes recuperados cada mes lo amortizan. Y el sistema trabaja todos los días del año, sin descanso, sin vacaciones, sin errores.</div>
+        <div class="faq-q">"¿Funciona en los tres canales a la vez?"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">Sí. WhatsApp, Instagram DMs y el chat de tu web funcionan simultáneamente. Un lead que escribe a las 11 de la noche por Instagram recibe respuesta en segundos.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">"Prefiero hacerlo de forma manual"<div class="faq-q-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
-        <div class="faq-a">Manual significa inconsistente. Y inconsistente significa pérdidas silenciosas. El sistema garantiza que ningún lead se quede sin respuesta, a ninguna hora.</div>
+        <div class="faq-q">"¿Qué pasa si el cliente hace una pregunta que el sistema no sabe responder?"<div class="faq-q-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div></div>
+        <div class="faq-a">El sistema detecta cuando una consulta necesita atención humana y te avisa. Tú intervienes solo cuando es necesario — el resto del tiempo el sistema lo gestiona solo.</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FINAL CTA -->
 <section class="final-cta" id="contacto">
   <span class="section-label">Es el momento</span>
-  <h2>Activa tu sistema de<br><span>cierre automático.</span></h2>
-  <span class="final-cta-sub">Deja de perder clientes. Empieza a llenar tus clases sin más horas de trabajo.</span>
+  <h2>Deja de perder reservas<br><span>mientras enseñas.</span></h2>
+  <span class="final-cta-sub">Empieza con un diagnóstico gratuito de 30 minutos. Te decimos exactamente cuántos leads estás perdiendo y cómo lo solucionamos.</span>
   <div class="final-badges">
-    <div class="final-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Implementación a cargo de ARCENIX</div>
-    <div class="final-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Sistema personalizado para tu centro</div>
-    <div class="final-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Resultados desde el primer día</div>
+    <div class="final-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>WhatsApp · Instagram · Web</div>
+    <div class="final-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Activo en menos de 48h</div>
+    <div class="final-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Implementado por ARCENIX</div>
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="final-btn reveal">
-    Quiero activar mi sistema
-    <span class="final-btn-sub">Diagnóstico gratuito · 30 minutos</span>
+    Reservar diagnóstico gratuito
+    <span class="final-btn-sub">30 minutos · Sin compromiso</span>
   </a>
   <p class="final-note">Sin compromiso. Sin tarjeta de crédito.</p>
 </section>
 
 <footer>
   <a href="../index.html" class="footer-brand">
-    <img src="../Logo.png" alt="ARCENIX logo" class="footer-logo">
+    <img src="../Logo.png" alt="ARCENIX logo" class="nav-logo footer-logo">
     <span class="footer-name">ARCENIX</span>
   </a>
   <p>© 2025 ARCENIX. Todos los derechos reservados.</p>
@@ -400,6 +574,79 @@ document.querySelectorAll('.faq-item').forEach(item=>{
     if(!open)item.classList.add('open');
   });
 });
+</script>
+<script>
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const body=document.body;
+  if(localStorage.getItem('arcenix-theme')==='dark')body.classList.add('dark');
+  toggle.addEventListener('click',function(){
+    body.classList.toggle('dark');
+    localStorage.setItem('arcenix-theme',body.classList.contains('dark')?'dark':'light');
+  });
+})();
+</script>
+<script>
+(function(){
+  const container=document.getElementById('chatMessages');
+  if(!container)return;
+  const steps=[
+    {type:'user',text:'Hola, ¿tenéis clases de pilates por las mañanas?'},
+    {type:'time',text:'10:47 — Tú impartiendo clase'},
+    {type:'typing',duration:1200},
+    {type:'label',text:'ARCENIX · Respuesta en 6 segundos'},
+    {type:'bot',text:'¡Hola! Sí, tenemos pilates a las 9h y 11h de lunes a viernes. ¿Buscas algo más relajado o más intenso?'},
+    {type:'pause',duration:1400},
+    {type:'user',text:'Algo suave, acabo de empezar'},
+    {type:'typing',duration:900},
+    {type:'label',text:'ARCENIX · Respuesta en 5 segundos'},
+    {type:'bot',text:'Perfecto, la clase de las 9h es ideal para ti. ¿Te apunto al jueves para que lo pruebes gratis?'},
+    {type:'pause',duration:1200},
+    {type:'user',text:'Sí, me viene bien'},
+    {type:'typing',duration:800},
+    {type:'label',text:'ARCENIX · Respuesta en 4 segundos'},
+    {type:'bot',text:'¡Listo! Jueves a las 9h anotado. Te llega confirmación ahora mismo. ¡Hasta el jueves! 🎉'},
+    {type:'pause',duration:3500},
+    {type:'reset'},
+  ];
+  let idx=0,started=false;
+  function makeEl(type,text){
+    const el=document.createElement('div');
+    if(type==='user'){el.className='chat-msg user';el.textContent=text;}
+    else if(type==='bot'){el.className='chat-msg bot';el.textContent=text;}
+    else if(type==='time'){el.className='chat-time-label';el.textContent=text;}
+    else if(type==='label'){el.className='chat-bot-label';el.textContent=text;}
+    else if(type==='typing'){el.className='chat-typing';el.innerHTML='<span></span><span></span><span></span>';}
+    el.style.opacity='0';el.style.transform='translateY(6px)';
+    el.style.transition='opacity 0.3s ease,transform 0.3s ease';
+    return el;
+  }
+  function fadeIn(el){requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform='translateY(0)'});}
+  let typingEl=null;
+  function runStep(){
+    if(idx>=steps.length)idx=0;
+    const step=steps[idx++];
+    if(step.type==='reset'){setTimeout(()=>{container.innerHTML='';runStep();},step.duration||0);return;}
+    if(step.type==='pause'){setTimeout(runStep,step.duration);return;}
+    if(step.type==='typing'){
+      typingEl=makeEl('typing','');
+      container.appendChild(typingEl);fadeIn(typingEl);
+      container.scrollTop=container.scrollHeight;
+      setTimeout(()=>{if(typingEl&&typingEl.parentNode)typingEl.parentNode.removeChild(typingEl);runStep();},step.duration);
+      return;
+    }
+    const el=makeEl(step.type,step.text);
+    container.appendChild(el);
+    requestAnimationFrame(()=>fadeIn(el));
+    container.scrollTop=container.scrollHeight;
+    const delay=step.type==='user'?950:step.type==='bot'?750:400;
+    setTimeout(runStep,delay);
+  }
+  const chatObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting&&!started){started=true;runStep();}});
+  },{threshold:0.3});
+  chatObs.observe(container);
+})();
 </script>
 </body>
 </html>
