@@ -21,7 +21,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(10,25,47,0.10)}
 .nav-right{display:flex;align-items:center;gap:8px}
 .nav-back{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:0.82rem;font-weight:500;color:var(--text-muted);text-decoration:none;padding:7px 14px;border-radius:8px;border:1px solid rgba(10,25,47,0.1);transition:background 0.18s,color 0.18s}
 .nav-back:hover{background:var(--blue-pale);color:var(--blue)}
-.nav-cta{font-family:var(--body);font-size:0.875rem;font-weight:600;background:var(--blue);color:var(--white);border:none;border-radius:8px;padding:10px 22px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
+.nav-cta{font-family:var(--);font-size:0.875rem;font-weight:600;background:var(--blue);color:var(--white);border:none;border-radius:8px;padding:10px 22px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;white-space:nowrap}
 .nav-cta:hover{background:#0066dd;transform:translateY(-1px)}
 .theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid rgba(0,123,255,0.2);background:transparent;cursor:pointer;transition:all 0.2s;flex-shrink:0}
 .theme-toggle:hover{background:var(--blue-pale)}
@@ -175,7 +175,10 @@ body.dark .hero h1{color:#f0f6ff}
 body.dark .hero-sub{color:#6a8fae}
 body.dark .hero-bullets li{color:#f0f6ff}
 body.dark .how{background:#0d1526}
-body.dark .day-card{background:#111d33;border-color:rgba(0,200,255,0.1)}
+body.dark .day-card{background:#0d1526;border-color:rgba(255,255,255,0.08)}
+body.dark .day-card::before{background:linear-gradient(90deg,rgba(0,200,255,0.5),rgba(0,123,255,0.3))}
+body.dark .day-badge{background:rgba(0,200,255,0.1);color:#00c8ff;border:1px solid rgba(0,200,255,0.2)}
+body.dark .day-result{background:rgba(0,200,255,0.08);color:#00c8ff;border:1px solid rgba(0,200,255,0.15)}
 body.dark .day-card h3{color:#f0f6ff}
 body.dark .day-card p{color:#6a8fae}
 body.dark .whatget{background:#080e1a}
