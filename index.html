@@ -54,7 +54,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(10,25,47,0.10)}
 .mobile-menu-divider{height:1px;background:rgba(0,123,255,0.1);margin:12px 0}
 .mobile-menu-cta{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:0.95rem;padding:14px;border-radius:12px;text-decoration:none;transition:background 0.2s}
 .mobile-menu-cta:hover{background:#0066dd}
-@media(max-width:600px){.nav-center{display:none}.nav-cta{display:none}.nav-hamburger{display:flex}.mobile-menu{display:block}.theme-toggle{border-color:rgba(0,123,255,0.2)}}
+@media(max-width:768px){.nav-center{display:none}.nav-cta{display:none}.nav-hamburger{display:flex}.mobile-menu{display:block}}
 
 /* HERO */
 .hero{min-height:100vh;padding:calc(var(--nav-h) + 60px) 5% 80px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--white);overflow:hidden}
@@ -388,28 +388,7 @@ body.dark .nav-link-section:hover{background:rgba(0,200,255,0.1);color:#00c8ff}
   </a>
   <div class="nav-center" style="display:flex;align-items:center;gap:4px">
     <a href="#problema" class="nav-link-section">El problema</a>
-    <div class="nav-dropdown" id="navServiciosDropdown">
-      <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
-        Servicios
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </button>
-      <div class="nav-dropdown-menu" role="menu">
-        <a href="#servicios" class="nav-dropdown-item" role="menuitem">
-          <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
-          <div class="nav-dropdown-item-text">
-            <span class="nav-dropdown-item-label">Plan Rescate de Clientes 72h</span>
-            <span class="nav-dropdown-item-sub">Recupera leads perdidos</span>
-          </div>
-        </a>
-        <a href="#servicios" class="nav-dropdown-item" role="menuitem">
-          <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-          <div class="nav-dropdown-item-text">
-            <span class="nav-dropdown-item-label">Sistema Cierre en 5 Minutos</span>
-            <span class="nav-dropdown-item-sub">Convierte interés en reserva</span>
-          </div>
-        </a>
-        <a href="#servicios" class="nav-dropdown-item" role="menuitem">
-          <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+    <a href="#servicios" class="nav-link-section">Servicios</a>
           <div class="nav-dropdown-item-text">
             <span class="nav-dropdown-item-label">Agenda Llena + Facturación Predecible</span>
             <span class="nav-dropdown-item-sub">El sistema completo</span>
@@ -862,14 +841,7 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scro
 const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
-<script>
-(function(){
-  const dd=document.getElementById('navServiciosDropdown');
-  const btn=dd.querySelector('.nav-dropdown-btn');
-  btn.addEventListener('click',function(e){e.stopPropagation();const isOpen=dd.classList.toggle('open');btn.setAttribute('aria-expanded',isOpen)});
-  document.addEventListener('click',function(e){if(!dd.contains(e.target)){dd.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
-})();
-</script>
+
 <script>
 (function(){
   const hamburger=document.getElementById('navHamburger');
