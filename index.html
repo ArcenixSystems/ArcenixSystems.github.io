@@ -59,8 +59,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(10,25,47,0.10)}
 /* HERO */
 .hero{min-height:100vh;padding:calc(var(--nav-h) + 60px) 5% 80px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;background:var(--white);overflow:hidden}
 .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse at center,rgba(0,123,255,0.10) 0%,rgba(0,123,255,0.03) 50%,transparent 70%);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--blue-pale);color:var(--blue);font-family:var(--body);font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:6px 16px;border-radius:100px;border:1px solid rgba(0,123,255,0.2);margin-bottom:28px;opacity:0;animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards}
-.hero-badge-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s ease infinite}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);font-family:var(--body);font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:6px 16px;border-radius:100px;border:1px solid rgba(0,123,255,0.3);margin-bottom:28px;font-size:0.85rem;padding:8px 18px;opacity:0;animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s forwards}
+.hero-badge-dot{width:7px;height:7px;background:#00e676;border-radius:50%;animation:pulse 2s ease infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
 .hero h1{font-family:var(--heading);font-weight:800;font-size:clamp(2.8rem,7vw,5.2rem);line-height:1.06;letter-spacing:-0.035em;color:var(--navy);max-width:860px;opacity:0;animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards}
 .hero h1 .grad{background:linear-gradient(135deg,var(--blue) 0%,#00c6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -372,6 +372,11 @@ body.dark .theme-toggle:hover{background:rgba(0,200,255,0.12);border-color:rgba(
 .icon-moon{display:none}
 body.dark .icon-sun{display:none}
 body.dark .icon-moon{display:block}
+.nav-link-section{font-family:var(--body);font-size:0.875rem;font-weight:500;color:var(--text-muted);text-decoration:none;padding:6px 12px;border-radius:8px;transition:background 0.15s,color 0.15s;white-space:nowrap}
+.nav-link-section:hover{background:var(--blue-pale);color:var(--blue)}
+body.dark .nav-link-section{color:#8bafd4}
+body.dark .nav-link-section:hover{background:rgba(0,200,255,0.1);color:#00c8ff}
+@media(max-width:900px){.nav-link-section{display:none}}
 </style>
 </head>
 <body>
@@ -381,28 +386,29 @@ body.dark .icon-moon{display:block}
     <img src="Logo.png" alt="ARCENIX logo" class="nav-logo">
     <span class="nav-name">ARCENIX</span>
   </a>
-  <div class="nav-center">
+  <div class="nav-center" style="display:flex;align-items:center;gap:4px">
+    <a href="#problema" class="nav-link-section">El problema</a>
     <div class="nav-dropdown" id="navServiciosDropdown">
       <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
         Servicios
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </button>
       <div class="nav-dropdown-menu" role="menu">
-        <a href="/plan-rescate" class="nav-dropdown-item" role="menuitem">
+        <a href="#servicios" class="nav-dropdown-item" role="menuitem">
           <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
           <div class="nav-dropdown-item-text">
             <span class="nav-dropdown-item-label">Plan Rescate de Clientes 72h</span>
             <span class="nav-dropdown-item-sub">Recupera leads perdidos</span>
           </div>
         </a>
-        <a href="/sistema-cierre" class="nav-dropdown-item" role="menuitem">
+        <a href="#servicios" class="nav-dropdown-item" role="menuitem">
           <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
           <div class="nav-dropdown-item-text">
             <span class="nav-dropdown-item-label">Sistema Cierre en 5 Minutos</span>
             <span class="nav-dropdown-item-sub">Convierte interés en reserva</span>
           </div>
         </a>
-        <a href="/agenda-llena" class="nav-dropdown-item" role="menuitem">
+        <a href="#servicios" class="nav-dropdown-item" role="menuitem">
           <div class="nav-dropdown-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
           <div class="nav-dropdown-item-text">
             <span class="nav-dropdown-item-label">Agenda Llena + Facturación Predecible</span>
@@ -411,9 +417,13 @@ body.dark .icon-moon{display:block}
         </a>
       </div>
     </div>
+    <a href="#como-funciona" class="nav-link-section">Cómo funciona</a>
+    <a href="#por-que-arcenix" class="nav-link-section">Por qué ARCENIX</a>
+    <a href="#para-quien" class="nav-link-section">Para quién</a>
+    <a href="#contacto" class="nav-link-section">Contacto</a>
   </div>
   <div style="display:flex;align-items:center;gap:8px;">
-    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="nav-cta">Reservar llamada</a>
+    <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="nav-cta">Diagnóstico gratuito</a>
     <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo oscuro/claro">
       <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -440,7 +450,7 @@ body.dark .icon-moon{display:block}
   </a>
   <div class="mobile-menu-divider"></div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="mobile-menu-cta">
-    Reservar llamada
+    Diagnóstico gratuito
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
   </a>
 </div>
@@ -449,7 +459,7 @@ body.dark .icon-moon{display:block}
 <section class="hero" id="hero">
   <span class="hero-badge"><span class="hero-badge-dot"></span>Para centros fitness boutique</span>
   <h1>Más reservas. Más ingresos.<br><span class="grad">Sin trabajo manual.</span></h1>
-  <p class="hero-sub" style="font-size:0.9rem;font-weight:600;color:var(--blue);letter-spacing:0.02em;margin-bottom:6px">Para centros fitness que trabajan por reserva.</p><p class="hero-sub" style="margin-top:0">Pierdes clientes potenciales mientras impartes clase. Y los que vienen a la prueba gratuita no siempre vuelven.</p>
+  <p class="hero-sub" style="font-size:0.85rem;font-weight:700;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Para centros fitness que trabajan por reserva</p><p class="hero-sub" style="margin-top:0">Pierdes clientes potenciales mientras impartes clase. Y los que vienen a la prueba gratuita no siempre vuelven.</p>
   <div class="hero-impact">
     <span class="hero-impact-dot"></span>
     Media de +2.600€/mes en ingresos recuperados por centro
@@ -560,7 +570,7 @@ body.dark .icon-moon{display:block}
     </div>
     <div style="text-align:center;margin-top:52px;" class="reveal">
       <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:17px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(0,123,255,0.32);transition:background 0.22s,transform 0.22s" onmouseover="this.style.background='#0066dd';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--blue)';this.style.transform='translateY(0)'">
-        Reservar llamada gratuita
+        Solicitar diagnóstico gratuito
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
       <p style="margin-top:10px;font-size:0.82rem;color:var(--text-muted)">Sin compromiso · 30 minutos</p>
@@ -646,8 +656,8 @@ body.dark .icon-moon{display:block}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           3–7 reservas en 72h
         </span>
-        <a href="/plan-rescate" class="service-link">
-          Ver el servicio
+        <a href="https://buy.stripe.com/4gMcMX2XNdvTdYzeyt6EU01" target="_blank" rel="noopener" class="service-link" style="color:#007BFF;font-weight:700">
+          Empezar por 9,99€
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -685,10 +695,13 @@ body.dark .icon-moon{display:block}
     </div>
     <div style="text-align:center;margin-top:48px;" class="reveal">
       <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:1rem;padding:17px 36px;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(0,123,255,0.32);transition:background 0.22s,transform 0.22s" onmouseover="this.style.background='#0066dd';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--blue)';this.style.transform='translateY(0)'">
-      Reservar llamada gratuita
+      Solicitar diagnóstico gratuito
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
       <p style="margin-top:10px;font-size:0.82rem;color:var(--text-muted)">Sin compromiso · 30 minutos</p>
+    </div>
+    <div style="text-align:center;margin-top:16px" class="reveal">
+      <p style="font-size:0.82rem;color:var(--text-muted)">¿Quieres empezar hoy mismo? <a href="https://buy.stripe.com/4gMcMX2XNdvTdYzeyt6EU01" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:none">Consigue el Plan Rescate por 9,99€ →</a></p>
     </div>
   </div>
 </section>
@@ -784,7 +797,7 @@ body.dark .icon-moon{display:block}
           <p style="font-size:0.84rem;color:rgba(255,255,255,0.7);line-height:1.55">En 30 días: el seguimiento ocurre solo.<br>Tú no persigues a nadie.</p>
         </div>
         <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;background:var(--blue);color:var(--white);font-family:var(--heading);font-weight:700;font-size:0.9rem;padding:13px 22px;border-radius:10px;text-decoration:none;transition:background 0.2s" onmouseover="this.style.background='#0066dd'" onmouseout="this.style.background='var(--blue)'">
-          Reservar llamada gratuita
+          Solicitar diagnóstico gratuito
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -822,14 +835,14 @@ body.dark .icon-moon{display:block}
 <section class="cta-final" id="contacto">
   <span class="section-label">Da el paso</span>
   <h2>¿Cuánto dinero estás<br><span>dejando sobre la mesa?</span></h2>
-  <p class="cta-final-sub">Reserva una llamada de 30 minutos. Analizamos tu negocio y te decimos exactamente cuánto estás perdiendo y cómo lo recuperamos.</p>
+  <p class="cta-final-sub">Solicita un diagnóstico gratuito de 30 minutos. Analizamos tu negocio y te decimos exactamente cuánto estás perdiendo y cómo lo recuperamos.</p>
   <div class="cta-nopes">
     <div class="cta-nope"><div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Sin setup complicado</div>
     <div class="cta-nope"><div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Sin contratos largos</div>
     <div class="cta-nope"><div class="cta-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>Resultados desde la primera semana</div>
   </div>
   <a href="https://calendly.com/arcenixsystems-info/30min" target="_blank" rel="noopener" class="cta-btn">
-    Reservar llamada gratuita
+    Solicitar diagnóstico gratuito
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
   </a>
   <p class="cta-fine">Sin compromiso. Sin tarjeta de crédito.</p>
