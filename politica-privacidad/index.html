@@ -1,73 +1,150 @@
-# Política de Privacidad
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad — ARCENIX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A192F;--blue:#007BFF;--blue-pale:#e8f3ff;--white:#FFFFFF;--gray:#f7fbff;--text:#0A192F;--text-muted:#4a6580;--heading:'Sora',sans-serif;--body:'DM Sans',sans-serif;--nav-h:72px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);color:var(--text);background:var(--white);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,123,255,0.1)}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{height:36px;width:auto}
+.nav-name{font-family:var(--heading);font-weight:800;font-size:1.3rem;color:var(--navy);letter-spacing:-0.02em}
+.nav-back{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);font-size:0.82rem;font-weight:500;color:var(--text-muted);text-decoration:none;padding:7px 14px;border-radius:8px;border:1px solid rgba(10,25,47,0.1);transition:background 0.18s,color 0.18s}
+.nav-back:hover{background:var(--blue-pale);color:var(--blue)}
 
-## 1. Responsable del tratamiento
+.page{max-width:760px;margin:0 auto;padding:calc(var(--nav-h) + 56px) 5% 80px}
+.page-label{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:block}
+.page-title{font-family:var(--heading);font-weight:800;font-size:clamp(2rem,5vw,3rem);color:var(--navy);letter-spacing:-0.03em;margin-bottom:8px}
+.page-date{font-size:0.85rem;color:var(--text-muted);margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid rgba(0,123,255,0.1)}
 
-La responsable del tratamiento de los datos personales recabados a través de este sitio web es:
+.section{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(10,25,47,0.07)}
+.section:last-child{border-bottom:none}
+.section h2{font-family:var(--heading);font-weight:700;font-size:clamp(1.3rem,3vw,1.7rem);color:var(--navy);margin-bottom:16px;letter-spacing:-0.02em}
+.section p{font-size:0.97rem;color:var(--text-muted);line-height:1.75;margin-bottom:12px}
+.section p:last-child{margin-bottom:0}
+.section strong{color:var(--navy);font-weight:600}
+.section a{color:var(--blue);text-decoration:none}
+.section a:hover{text-decoration:underline}
+.section ul{margin:12px 0 12px 20px;display:flex;flex-direction:column;gap:8px}
+.section ul li{font-size:0.97rem;color:var(--text-muted);line-height:1.65}
 
-**Titular:** Irene Espinosa
+footer{background:var(--navy);padding:32px 5%;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.07)}
+.footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.footer-logo{height:28px}
+.footer-brand span{font-family:var(--heading);font-weight:700;color:var(--white);font-size:1rem}
+footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
 
-**Correo electrónico:** [irene@arcenixsystems.com](mailto:irene@arcenixsystems.com)
+@media(max-width:600px){
+  .page{padding:calc(var(--nav-h) + 36px) 6% 60px}
+  footer{flex-direction:column;gap:16px;text-align:center}
+  .nav-back span{display:none}
+}
+</style>
+</head>
+<body>
 
-**Sitio web:** arcenixsystems.com
+<nav>
+  <a href="/" class="nav-brand">
+    <img src="/Logo.png" alt="ARCENIX logo" class="nav-logo">
+    <span class="nav-name">ARCENIX</span>
+  </a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    <span>Volver al inicio</span>
+  </a>
+</nav>
 
-## 2. Qué datos se recogen
+<div class="page">
+  <span class="page-label">Legal</span>
+  <h1 class="page-title">Política de Privacidad</h1>
+  <p class="page-date">Última actualización: julio de 2025</p>
 
-Este sitio web no dispone de formularios de contacto propios.
+  <div class="section">
+    <h2>1. Responsable del tratamiento</h2>
+    <p>La responsable del tratamiento de los datos personales recabados a través de este sitio web es:</p>
+    <p><strong>Titular:</strong> Irene Espinosa</p>
+    <p><strong>Correo electrónico:</strong> <a href="mailto:irene@arcenixsystems.com">irene@arcenixsystems.com</a></p>
+    <p><strong>Sitio web:</strong> arcenixsystems.com</p>
+  </div>
 
-Si el usuario decide reservar una reunión mediante el enlace a Calendly, podrá facilitar datos como su nombre, dirección de correo electrónico, empresa y cualquier otra información que decida incluir durante el proceso de reserva.
+  <div class="section">
+    <h2>2. Qué datos se recogen</h2>
+    <p>Este sitio web no dispone de formularios de contacto propios.</p>
+    <p>Si el usuario decide reservar una reunión mediante el enlace a Calendly, podrá facilitar datos como su nombre, dirección de correo electrónico, empresa y cualquier otra información que decida incluir durante el proceso de reserva.</p>
+    <p>Estos datos serán tratados únicamente para gestionar la solicitud de reunión y las comunicaciones relacionadas con la prestación de los servicios ofrecidos por Arcenix Systems.</p>
+  </div>
 
-Estos datos serán tratados únicamente para gestionar la solicitud de reunión y las comunicaciones relacionadas con la prestación de los servicios ofrecidos por Arcenix Systems.
+  <div class="section">
+    <h2>3. Finalidad del tratamiento</h2>
+    <p>Los datos personales podrán utilizarse para:</p>
+    <ul>
+      <li>Gestionar solicitudes de información y reuniones.</li>
+      <li>Contactar con personas interesadas en los servicios ofrecidos.</li>
+      <li>Preparar propuestas comerciales cuando sean solicitadas.</li>
+      <li>Mantener comunicaciones relacionadas con la prestación de los servicios.</li>
+    </ul>
+    <p>No se utilizarán los datos para enviar comunicaciones comerciales no solicitadas.</p>
+  </div>
 
-## 3. Finalidad del tratamiento
+  <div class="section">
+    <h2>4. Base jurídica</h2>
+    <p>La base legal para el tratamiento de los datos es el consentimiento del interesado al solicitar una reunión o contactar voluntariamente, así como la aplicación de medidas precontractuales cuando el usuario solicita información sobre los servicios.</p>
+  </div>
 
-Los datos personales podrán utilizarse para:
+  <div class="section">
+    <h2>5. Conservación de los datos</h2>
+    <p>Los datos personales se conservarán únicamente durante el tiempo necesario para atender la solicitud realizada o mientras exista una relación comercial o precontractual, salvo que la legislación exija un plazo superior de conservación.</p>
+  </div>
 
-* Gestionar solicitudes de información y reuniones.
-* Contactar con personas interesadas en los servicios ofrecidos.
-* Preparar propuestas comerciales cuando sean solicitadas.
-* Mantener comunicaciones relacionadas con la prestación de los servicios.
+  <div class="section">
+    <h2>6. Destinatarios de los datos</h2>
+    <p>Los datos podrán ser tratados por proveedores tecnológicos necesarios para la prestación del servicio, tales como:</p>
+    <ul>
+      <li>Calendly, para la gestión de reservas de reuniones.</li>
+      <li>Proveedores de correo electrónico para las comunicaciones con los usuarios.</li>
+      <li>Otros proveedores tecnológicos utilizados para la prestación de los servicios, cuando resulte necesario.</li>
+    </ul>
+    <p>Estos proveedores podrán tratar los datos siguiendo sus propias políticas de privacidad y, en su caso, como encargados del tratamiento.</p>
+  </div>
 
-No se utilizarán los datos para enviar comunicaciones comerciales no solicitadas.
+  <div class="section">
+    <h2>7. Derechos de los usuarios</h2>
+    <p>Los usuarios podrán ejercer en cualquier momento sus derechos de:</p>
+    <ul>
+      <li>Acceso.</li>
+      <li>Rectificación.</li>
+      <li>Supresión.</li>
+      <li>Oposición.</li>
+      <li>Limitación del tratamiento.</li>
+      <li>Portabilidad de los datos.</li>
+    </ul>
+    <p>Para ello podrán enviar una solicitud a: <a href="mailto:irene@arcenixsystems.com">irene@arcenixsystems.com</a></p>
+    <p>Asimismo, si consideran que el tratamiento de sus datos no se ajusta a la normativa aplicable, podrán presentar una reclamación ante la autoridad de control competente.</p>
+  </div>
 
-## 4. Base jurídica
+  <div class="section">
+    <h2>8. Seguridad</h2>
+    <p>Se adoptan medidas técnicas y organizativas razonables para proteger los datos personales frente a accesos no autorizados, pérdida o alteración.</p>
+  </div>
 
-La base legal para el tratamiento de los datos es el consentimiento del interesado al solicitar una reunión o contactar voluntariamente, así como la aplicación de medidas precontractuales cuando el usuario solicita información sobre los servicios.
+  <div class="section">
+    <h2>9. Cambios en esta política</h2>
+    <p>La presente Política de Privacidad podrá actualizarse para adaptarse a cambios legales, técnicos o en la prestación de los servicios. La versión publicada en este sitio web será la vigente en cada momento.</p>
+  </div>
+</div>
 
-## 5. Conservación de los datos
+<footer>
+  <a href="/" class="footer-brand">
+    <img src="/Logo.png" alt="ARCENIX logo" class="footer-logo">
+    <span>ARCENIX</span>
+  </a>
+  <p>© 2025 ARCENIX. Todos los derechos reservados.</p>
+</footer>
 
-Los datos personales se conservarán únicamente durante el tiempo necesario para atender la solicitud realizada o mientras exista una relación comercial o precontractual, salvo que la legislación exija un plazo superior de conservación.
-
-## 6. Destinatarios de los datos
-
-Los datos podrán ser tratados por proveedores tecnológicos necesarios para la prestación del servicio, tales como:
-
-* Calendly, para la gestión de reservas de reuniones.
-* Proveedores de correo electrónico para las comunicaciones con los usuarios.
-* Otros proveedores tecnológicos utilizados para la prestación de los servicios, cuando resulte necesario.
-
-Estos proveedores podrán tratar los datos siguiendo sus propias políticas de privacidad y, en su caso, como encargados del tratamiento.
-
-## 7. Derechos de los usuarios
-
-Los usuarios podrán ejercer en cualquier momento sus derechos de:
-
-* Acceso.
-* Rectificación.
-* Supresión.
-* Oposición.
-* Limitación del tratamiento.
-* Portabilidad de los datos.
-
-Para ello podrán enviar una solicitud a:
-
-**[irene@arcenixsystems.com](mailto:irene@arcenixsystems.com)**
-
-Asimismo, si consideran que el tratamiento de sus datos no se ajusta a la normativa aplicable, podrán presentar una reclamación ante la autoridad de control competente.
-
-## 8. Seguridad
-
-Se adoptan medidas técnicas y organizativas razonables para proteger los datos personales frente a accesos no autorizados, pérdida o alteración.
-
-## 9. Cambios en esta política
-
-La presente Política de Privacidad podrá actualizarse para adaptarse a cambios legales, técnicos o en la prestación de los servicios. La versión publicada en este sitio web será la vigente en cada momento.
+</body>
+</html>
